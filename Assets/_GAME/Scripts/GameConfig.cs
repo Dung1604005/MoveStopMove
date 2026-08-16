@@ -13,6 +13,8 @@ public static class GameConfig
 
     public const String ANIM_ATTACK = "attack";
 
+    public const String CHARACTER_TAG = "Character";
+
     
 
 }

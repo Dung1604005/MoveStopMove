@@ -70,6 +70,8 @@ public class EnemyState: MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
+
+        OnExecute(currentState);
     }
 }
 

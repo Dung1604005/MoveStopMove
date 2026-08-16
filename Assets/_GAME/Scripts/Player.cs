@@ -48,8 +48,10 @@ public class Player : Character
 
         Vector3 moveDir3 = new Vector3(moveDir.x, 0f, moveDir.y);
 
-        ChangeRotation(new Vector3(moveDir.x, 0f, moveDir.y));
-
+        if (!IsStop())
+        {
+             ChangeRotation(new Vector3(moveDir.x, 0f, moveDir.y));
+        }
         tf.position = Vector3.MoveTowards(tf.position , tf.position + moveDir3, stat.GetSpeed()*Time.fixedDeltaTime);
     }
 
@@ -62,6 +64,10 @@ public class Player : Character
     public override bool IsStop()
     {
         return moveDir.sqrMagnitude < 0.1f;
+    }
+
+    void Awake(){
+        inputActions = new InputSystem_Actions();
     }
 
     void FixedUpdate()
