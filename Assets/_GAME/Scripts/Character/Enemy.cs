@@ -27,7 +27,7 @@ public class Enemy : Character
 
     public override bool IsStop()
     {
-        return (tf.position - destination).sqrMagnitude < 0.1f;
+        return (tf.position - destination).sqrMagnitude < 1f;
     }
 
     public override void Move()

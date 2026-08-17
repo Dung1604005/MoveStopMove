@@ -4,7 +4,8 @@ public static class AttackState
 {
       public static void OnEnter(Enemy e)
     {
-        e.ChangeAnim(GameConfig.ANIM_ATTACK);
+        
+        e.StopMove();
         e.GetCombat().Attack();
 
     }

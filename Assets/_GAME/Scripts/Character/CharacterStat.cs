@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CharacterStat : MonoBehaviour
 {
+    [SerializeField] private Character character;
    [SerializeField] private float healthBase;
 
    [SerializeField] private float currentHealth;
@@ -27,6 +28,8 @@ public class CharacterStat : MonoBehaviour
 
    public float GetAtk(){return atk;}
 
+   public float GetCurrentHealth() {return currentHealth;}
+
    public void SetSpeed(float _speed){speed = _speed;}
 
    public void SetAtkSpd(float _atkSpd){atkSpd = _atkSpd;}
@@ -47,7 +50,7 @@ public class CharacterStat : MonoBehaviour
 
    public float Atk => atk;
 
-   public bool IsDead => currentHealth <= 0;
+   public bool IsDead => currentHealth <= 0.01f;
 
    public void OnInit()
     {
@@ -59,9 +62,19 @@ public class CharacterStat : MonoBehaviour
         currentHealth = healthBase;
     }
 
+    public void OnDead()
+    {
+        character.ChangeAnim(GameConfig.ANIM_DEAD);
+        character.OnDespawn();
+    }
     public void OnHit(float damage)
     {
+        if(IsDead)return;
         currentHealth = Mathf.Max(0f, currentHealth - damage);
+        if (IsDead)
+        {
+            character.ChangeAnim(GameConfig.ANIM_DEAD);
+        }
     }
 
 

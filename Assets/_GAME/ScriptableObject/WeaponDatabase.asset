@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bb6135916f04f74baaf604028aca6ae, type: 3}
-  m_Name: KnifeDataSO
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponDataSO
-  weaponId: 0
-  rangeBuff: 0
-  cooldown: 1
-  atkBuff: 15
-  moveSpeedBullet: 10
+  m_Script: {fileID: 11500000, guid: 4d5e26c163c3da7428a0a98a6d8a92f2, type: 3}
+  m_Name: WeaponDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponDatabase
+  listWeaponData:
+  - {fileID: 11400000, guid: 48ecb66d9cd171c47b60c92ec5e64ebb, type: 2}

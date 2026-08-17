@@ -25,6 +25,10 @@ public class Player : Character
     {
         moveDir = context.ReadValue<Vector2>();
         moveDir = moveDir.normalized;
+        if(moveDir.sqrMagnitude > 0.1f)
+        {
+            combat.EndAttack();
+        }
     }
 
     public void EndInputMove(InputAction.CallbackContext context)
@@ -36,7 +40,28 @@ public class Player : Character
     public override void Move()
     {
         base.Move();
+        if (combat.IsAttacking() || stat.IsDead)
+        {
+            return;
+        }
+        ChangeAnimByMoveDir();
 
+        Vector3 moveDir3 = new Vector3(moveDir.x, 0f, moveDir.y);
+
+        if (!IsStop())
+        {
+             SetTargetRotation(new Vector3(moveDir.x, 0f, moveDir.y));
+        }
+
+        tf.position = Vector3.MoveTowards(tf.position , tf.position + moveDir3, stat.GetSpeed()*Time.fixedDeltaTime);
+    }
+
+    public void ChangeAnimByMoveDir()
+    {
+        if (combat.IsAttacking() || stat.IsDead)
+        {
+            return;
+        }
         if(moveDir.sqrMagnitude > 0.1f)
         {
             ChangeAnim(GameConfig.ANIM_MOVING);
@@ -45,14 +70,6 @@ public class Player : Character
         {
             ChangeAnim(GameConfig.ANIM_IDLE);
         }
-
-        Vector3 moveDir3 = new Vector3(moveDir.x, 0f, moveDir.y);
-
-        if (!IsStop())
-        {
-             ChangeRotation(new Vector3(moveDir.x, 0f, moveDir.y));
-        }
-        tf.position = Vector3.MoveTowards(tf.position , tf.position + moveDir3, stat.GetSpeed()*Time.fixedDeltaTime);
     }
 
     public override void StopMove()
@@ -66,7 +83,8 @@ public class Player : Character
         return moveDir.sqrMagnitude < 0.1f;
     }
 
-    void Awake(){
+    protected override void Awake(){
+        base.Awake();
         inputActions = new InputSystem_Actions();
     }
 
@@ -74,6 +92,15 @@ public class Player : Character
     {
         Move();
 
+    }
+
+    void Update()
+    {
+        if (combat.HaveTarget)
+        {
+            combat.Attack();
+        }
+        ChangeRotation();
     }
 
 

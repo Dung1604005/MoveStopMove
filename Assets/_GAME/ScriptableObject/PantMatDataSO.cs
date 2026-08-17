@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PantMatDataSO", menuName = "Scriptable Objects/PantMatDataSO")]
@@ -25,5 +26,6 @@ public enum PantType
     COMI = 2,
     DABAO = 3,
     SKULL = 4,
-    VANTIM = 5
+    VANTIM = 5,
+    NONE = 6
 }

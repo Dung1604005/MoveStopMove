@@ -2,23 +2,31 @@ using UnityEngine;
 
 public class BulletBase : GameUnit
 {
-    [SerializeField] private Vector2 moveDir;
+    [SerializeField] private Vector3 moveDir;
 
     [SerializeField] private float moveSpeed;
 
     [SerializeField] private float damage;
     
-    public void LoadData(Vector2 _moveDir, float _moveSpeed, float _damage)
+    public void LoadData(Vector3 _moveDir, float _moveSpeed, float _damage)
     {
         moveDir = _moveDir;
         moveSpeed = _moveSpeed;
         damage = _damage;
+
+        tf.rotation = Quaternion.LookRotation(moveDir);
+    }
+
+    public void OnDespawn()
+    {
+        SimplePool.Despawn(this);
     }
 
     public void Move()
     {
-        Vector3 moveDir3D = new Vector3(moveDir.x, 0f, moveDir.y);
-        tf.position = Vector3.MoveTowards(tf.position, tf.position + moveDir3D, moveSpeed*Time.fixedDeltaTime);
+       
+        tf.position = Vector3.MoveTowards(tf.position, tf.position + moveDir, moveSpeed*Time.fixedDeltaTime);
+        
     }
 
     void FixedUpdate()
@@ -31,8 +39,16 @@ public class BulletBase : GameUnit
         if (collider.CompareTag(GameConfig.CHARACTER_TAG))
         {
             Character character = ColliderCache<Character>.GetComponent(collider);
-
+            if (character.GetStat().IsDead)
+            {
+                return;
+            }
+            OnDespawn();
             character?.GetStat()?.OnHit(damage);
+        }
+        else if(collider.CompareTag(GameConfig.OBSTACLE_TAG))
+        {
+            OnDespawn();
         }
     }
 }

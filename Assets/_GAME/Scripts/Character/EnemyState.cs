@@ -70,8 +70,10 @@ public class EnemyState: MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
-
-        OnExecute(currentState);
+        if (!enemy.GetStat().IsDead)
+        {
+            OnExecute(currentState);
+        }
     }
 }
 

@@ -11,9 +11,9 @@ public class CharacterCombat : MonoBehaviour
 
     [SerializeField] protected Character currentTarget;
 
-    private float timerCoolDown = 0f;
+    [SerializeField]private float timerCoolDown = 0f;
 
-    private bool isAttacking;
+    [SerializeField] private bool isAttacking;
     public bool HaveTarget => targetList?.Count > 0;
 
     public void OnInit()
@@ -42,18 +42,22 @@ public class CharacterCombat : MonoBehaviour
 
     public bool CanAttack()
     {
-        return timerCoolDown +0.0001f >= weapon.CaculateCoolDown(character.GetStat().GetAtkSpd()) && character.IsStop();
+        return timerCoolDown +0.0001f >= weapon.CaculateCoolDown(character.GetStat().GetAtkSpd()) && character.IsStop() && !isAttacking;
     }
 
     public bool IsTargetValid(Character target)
     {
-        return target != null && character.CaculateSquaredDistance(target.TF) + 0.001f <= character.GetStat().GetRangeAtk() 
-        && !character.GetStat().IsDead && target != character;
+        
+        return target != null && 
+        character.CaculateSquaredDistance(target.TF) <= character.GetStat().GetRangeAtk()*character.GetStat().GetRangeAtk()  + 5f
+        && !target.GetStat().IsDead && target != character;
     }
 
     public void AddTarget(Character character)
     {
-        targetList?.Add(character);
+        if(!targetList.Contains(character)){
+            targetList?.Add(character);
+        }
     }
 
     public void RemoveTarget(Character character)
@@ -82,10 +86,13 @@ public class CharacterCombat : MonoBehaviour
         if (CanAttack())
         {
             
-            if(IsTargetValid(currentTarget)){
+            if(IsTargetValid(GetNearestTarget())){
+                currentTarget =GetNearestTarget();
                 isAttacking = true;
+                character.SetTargetRotation(character.CaculateDir(currentTarget.TF));
                 character.ChangeAnim(GameConfig.ANIM_ATTACK);
             }
+            
         }
     }
 
@@ -98,6 +105,7 @@ public class CharacterCombat : MonoBehaviour
         }
     }
 
+    
     public void EndAttack()
     {
         weapon.SetActiveVisual(true);
@@ -110,12 +118,6 @@ public class CharacterCombat : MonoBehaviour
     {
         return currentTarget == null || currentTarget == GetNearestTarget();
     }
-    public void CancelAttack()
-    {
-        EndAttack();
-        character.ChangeAnim(GameConfig.ANIM_IDLE);    
-    }
-
     public bool IsAttacking()
     {
         return isAttacking;
@@ -124,10 +126,10 @@ public class CharacterCombat : MonoBehaviour
     void Update()
     {
         FilterAllTarget();
-        if (CheckCurrentTargetValid())
-        {
-            CancelAttack();
-        }
+        // if (CheckCurrentTargetValid())
+        // {
+        //     CancelAttack();
+        // }
         timerCoolDown += Time.deltaTime;
     }
 

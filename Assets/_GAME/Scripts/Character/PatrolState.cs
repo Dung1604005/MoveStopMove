@@ -13,19 +13,26 @@ public static class PatrolState
 
         if(randomWay == 1)
         {
-            e.SetDestination(MapManager.Instance.BoosterManager.GetNearestBooster(e.TF.position).TF.position);
+            if(MapManager.Instance.BoosterManager.GetNearestBooster(e.TF.position) == null)
+            {
+                e.SetDestination(MapManager.Instance.GetPlayerPosition());
+            }
+            else
+            {
+                e.SetDestination(MapManager.Instance.BoosterManager.GetNearestBooster(e.TF.position).TF.position);
+            }
         }
         //Cach 2: di chuyen den player
-        else if(randomWay == 2)
+        else //(randomWay == 2)
         {
             e.SetDestination(MapManager.Instance.GetPlayerPosition());
         }
 
         //Cach 3: di chuyen den bot khac
-        else
-        {
-            e.SetDestination(EnemyManager.Instance.GetRandomEnemy().TF.position);
-        }
+        // else
+        // {
+        //     e.SetDestination(EnemyManager.Instance.GetRandomEnemy().TF.position);
+        // }
 
 
         
@@ -33,14 +40,15 @@ public static class PatrolState
 
     public static void OnExecute(Enemy e)
     {
-        if (e.IsStop())
-        {
-            e.ChangeState(EnemyStateType.PATROLSTATE);
-        }
-        else if (e.GetCombat().HaveTarget && e.GetCombat().CanAttack())
+        if (e.GetCombat().HaveTarget)
         {
             e.ChangeState(EnemyStateType.IDLESTATE);
         }
+        else if (e.IsStop())
+        {
+            e.ChangeState(EnemyStateType.PATROLSTATE);
+        }
+      
     }
 
     public static void OnExit(Enemy e)

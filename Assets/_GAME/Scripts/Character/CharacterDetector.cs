@@ -18,6 +18,11 @@ public class CharacterDetector : MonoBehaviour
         if (collider.CompareTag(GameConfig.CHARACTER_TAG))
         {
             Character target = ColliderCache<Character>.GetComponent(collider);
+
+            if(target == null)
+            {
+                Debug.Log("TARGET NULL");
+            }
             if (combat.IsTargetValid(target))
             {
                 combat.AddTarget(target);

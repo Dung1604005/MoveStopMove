@@ -16,9 +16,17 @@ public class Character : GameUnit
 
     [SerializeField] protected float rotationSpeed;
 
-    public CharacterStat GetStat() {return stat;}
+    [SerializeField] protected bool isPlayer;
 
-    public CharacterCombat GetCombat() {return combat;}
+    [SerializeField] protected List<SkinDataSO> equipedSkins = new List<SkinDataSO>();
+
+    private Quaternion targetRotation = Quaternion.identity;
+
+    public CharacterStat GetStat() { return stat; }
+
+    public CharacterCombat GetCombat() { return combat; }
+
+    public bool IsPlayer => isPlayer;
 
     protected String currentAnim;
 
@@ -31,7 +39,7 @@ public class Character : GameUnit
 
     public void OnDespawn()
     {
-        
+        //SimplePool.Despawn(this);
     }
 
     public virtual bool IsStop()
@@ -41,40 +49,80 @@ public class Character : GameUnit
 
     public virtual void Move()
     {
-        
+
     }
     public virtual void StopMove()
     {
-        
+
     }
 
     public float CaculateSquaredDistance(Transform tf)
     {
-        return (this.tf.position - tf.position).sqrMagnitude;
+
+        Vector3 thisTFNoY = new Vector3(this.tf.position.x, 0f, this.tf.position.z);
+        Vector3 targetTFNoY = new Vector3(tf.position.x, 0f, tf.position.z);
+
+
+        return (thisTFNoY - targetTFNoY).sqrMagnitude;
     }
 
     public Vector3 CaculateDir(Transform tf)
     {
-        return (this.tf.position - tf.position).normalized;
+        Vector3 thisTFNoY = new Vector3(this.tf.position.x, 0f, this.tf.position.z);
+        Vector3 targetTFNoY = new Vector3(tf.position.x, 0f, tf.position.z);
+        return (-thisTFNoY + targetTFNoY).normalized;
+
+    }
+    public void SetTargetRotation(Vector3 dir)
+    {
+        targetRotation = Quaternion.LookRotation(dir.normalized);
     }
 
-    public void ChangeRotation(Vector3 dir)
+    public void ChangeRotation()
     {
-        Quaternion targetRotation = Quaternion.LookRotation(dir.normalized);
         tf.rotation = Quaternion.Slerp(tf.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
     }
 
     public void ChangePant(PantType pantType)
     {
         currentPant = pantType;
-
-        pantRenderer.materials[0] = DataManager.Instance.PantMatDataSO.GetPantMat(pantType); 
+        
+        pantRenderer.sharedMaterial = DataManager.Instance.PantMatDataSO.GetPantMat(pantType);
     }
 
-    public void ApplySkinData(SkinDataSO skinDataSO)
+    public void ApplySkin(SkinDataSO skinDataSO)
     {
+        foreach (SkinDataSO skinData in equipedSkins)
+        {
+            //khong cho trang bi tung
+            if (skinData.SkinType == skinDataSO.SkinType)
+            {
+                return;
+            }
+        }
         skinDataSO.ApplyBuff(stat);
+        equipedSkins.Add(skinDataSO);
+        skinDataSO.ChangeVisualSkin(this);
     }
+
+    public void RemoveSkin(SkinType skinType)
+    {
+        for (int i = 0; i < equipedSkins.Count; i++)
+        {
+            SkinDataSO skinDataSO = equipedSkins[i];
+            if (skinDataSO.SkinType == skinType)
+            {
+                skinDataSO.RemoveBuff(stat);
+                skinDataSO.RemoveVisualSkin(this);
+
+                equipedSkins.RemoveAt(i);
+                return;
+            }
+
+
+        }
+    }
+
 
     public void ChangeAnim(String animName)
     {
@@ -83,6 +131,11 @@ public class Character : GameUnit
         currentAnim = animName;
 
         anim.SetTrigger(animName);
+    }
+
+    protected virtual void Awake()
+    {
+        OnInit();
     }
 
 
