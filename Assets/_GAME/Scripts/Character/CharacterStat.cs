@@ -6,71 +6,56 @@ public class CharacterStat : MonoBehaviour
    [SerializeField] private float healthBase;
 
    [SerializeField] private float currentHealth;
-   [SerializeField] private float speedBase;
-
-   [SerializeField] private float speedBuff;
+   [SerializeField] private float speed;
    [SerializeField] private int level;
 
-   [SerializeField] private float sizeBase;
+   [SerializeField] private float size;
 
-   [SerializeField] private float sizeBuff;
+   [SerializeField] private float atkSpd;
 
-   [SerializeField] private float atkSpdBase;
+   [SerializeField] private float rangeAtk;
 
-   [SerializeField] private float atkSpdBuff;
+   [SerializeField] private float atk;
 
-   [SerializeField] private float rangeAtkBase;
+   public float GetSpeed() {return speed;}
 
-   [SerializeField] private float rangeAtkBuff;
+   public float GetSize() {return size;}
 
-   [SerializeField] private float atkBase;
+   public float GetAtkSpd() {return atkSpd;}
 
-   [SerializeField] private float atkBuff;
+   public float GetRangeAtk() {return rangeAtk;}
 
-   public float GetSpeed() {return speedBase + speedBuff;}
+   public float GetAtk(){return atk;}
 
-   public float GetSize() {return sizeBase + sizeBuff;}
+   public void SetSpeed(float _speed){speed = _speed;}
 
-   public float GetAtkSpd() {return atkSpdBase + atkSpdBuff;}
+   public void SetAtkSpd(float _atkSpd){atkSpd = _atkSpd;}
 
-   public float GetRangeAtk() {return rangeAtkBase + rangeAtkBuff;}
+   public void SetRangeAtk(float _rangeAtk){rangeAtk = _rangeAtk;}
 
-   public float GetAtk(){return atkBase + atkBuff;}
-
-   public void SetSpeedBuff(float buff){speedBuff = buff;}
-
-   public void SetSizeBuff(float buff){sizeBuff = buff;}
-
-   public void SetAtkSpdBuff(float buff){atkSpdBuff = buff;}
-
-   public void SetRangeAtkBuff(float buff){rangeAtkBuff = buff;}
-
-   public void SetAtkBuff(float buff){atkBuff = buff;}
+   public void SetAtk(float _atk){atk = _atk;}
 
    public void SetLevel(int _level){level = _level;}
 
    public int GetLevel(){return level;}
 
-   public float SpeedBuff => speedBuff;
+   public float Speed => speed;
 
-   public float SizeBuff => sizeBuff;
+   public float AtkSpd => atkSpd;
 
-   public float AtkSpdBuff => atkSpdBuff;
+   public float RangeAtk => rangeAtk;
 
-   public float RangeAtkBuff => rangeAtkBuff;
-
-   public float AtkBuff => atkBuff;
+   public float Atk => atk;
 
    public bool IsDead => currentHealth <= 0;
 
    public void OnInit()
     {
-        level = 0;
-        sizeBuff = 0f;
-        speedBuff = 0f;
-        atkSpdBuff = 0f;
-        atkBuff = 0f;
-        rangeAtkBuff = 0f;
+        // level = 0;
+        // speed = 0f;
+        // atkSpd = 0f;
+        // atk = 0f;
+        // rangeAtk = 0f;
         currentHealth = healthBase;
     }
 

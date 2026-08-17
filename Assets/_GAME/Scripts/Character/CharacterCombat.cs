@@ -12,10 +12,13 @@ public class CharacterCombat : MonoBehaviour
     [SerializeField] protected Character currentTarget;
 
     private float timerCoolDown = 0f;
+
+    private bool isAttacking;
     public bool HaveTarget => targetList?.Count > 0;
 
     public void OnInit()
     {
+        isAttacking = false;
         timerCoolDown = 0f;
         targetList = new List<Character>(); 
         weapon.OnInit();
@@ -68,12 +71,6 @@ public class CharacterCombat : MonoBehaviour
             }
         }
     }
-
-    public void UpdateCurrentTarget()
-    {
-        currentTarget = GetNearestTarget();
-    }
-
     public void ResetCooldown()
     {
         timerCoolDown = 0f;
@@ -86,23 +83,51 @@ public class CharacterCombat : MonoBehaviour
         {
             
             if(IsTargetValid(currentTarget)){
-                
+                isAttacking = true;
                 character.ChangeAnim(GameConfig.ANIM_ATTACK);
-                weapon.StartAttack(character.CaculateDir(currentTarget.TF));
             }
         }
     }
 
+    public void StartAttack()
+    {
+        if (CheckCurrentTargetValid())
+        {
+            weapon.SetActiveVisual(false);
+            weapon.StartAttack(character.CaculateDir(currentTarget.TF));
+        }
+    }
+
+    public void EndAttack()
+    {
+        weapon.SetActiveVisual(true);
+        ResetCooldown();
+        currentTarget = null;
+        isAttacking = false;
+    }
+
+    public bool CheckCurrentTargetValid()
+    {
+        return currentTarget == null || currentTarget == GetNearestTarget();
+    }
     public void CancelAttack()
     {
-        character.ChangeAnim(GameConfig.ANIM_IDLE);
-        
+        EndAttack();
+        character.ChangeAnim(GameConfig.ANIM_IDLE);    
+    }
+
+    public bool IsAttacking()
+    {
+        return isAttacking;
     }
 
     void Update()
     {
         FilterAllTarget();
-        UpdateCurrentTarget();
+        if (CheckCurrentTargetValid())
+        {
+            CancelAttack();
+        }
         timerCoolDown += Time.deltaTime;
     }
 

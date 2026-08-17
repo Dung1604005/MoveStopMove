@@ -39,7 +39,7 @@ public static class PatrolState
         }
         else if (e.GetCombat().HaveTarget && e.GetCombat().CanAttack())
         {
-            e.ChangeState(EnemyStateType.ATTACKSTATE);
+            e.ChangeState(EnemyStateType.IDLESTATE);
         }
     }
 

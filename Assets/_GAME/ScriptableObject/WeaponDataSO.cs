@@ -26,8 +26,8 @@ public class WeaponDataSO : ScriptableObject
 
     public void ApplyBuff(CharacterStat stat)
     {
-        stat.SetRangeAtkBuff(stat.RangeAtkBuff + rangeBuff);
+        stat.SetRangeAtk(stat.RangeAtk + rangeBuff);
 
-        stat.SetAtkBuff(stat.AtkBuff + atkBuff);
+        stat.SetAtk(stat.Atk + atkBuff);
     }
 }

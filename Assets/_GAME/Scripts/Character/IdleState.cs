@@ -7,7 +7,7 @@ public static class IdleState
         e.ChangeAnim(GameConfig.ANIM_IDLE);
         e.StopMove();
 
-        e.GetEnemyState().SetTimer(1f);
+        e.GetEnemyState().SetTimer(1.5f);
     }
 
     public static void OnExecute(Enemy e)

@@ -21,10 +21,10 @@ public class SkinDataSO : ScriptableObject
 
     public void ApplyBuff(CharacterStat stat)
     {
-        stat.SetAtkSpdBuff(stat.AtkSpdBuff + atkSpdBuff);
+        stat.SetAtkSpd(stat.AtkSpd + atkSpdBuff);
 
-        stat.SetRangeAtkBuff(stat.RangeAtkBuff + rangeBuff);
+        stat.SetRangeAtk(stat.RangeAtk + rangeBuff);
 
-        stat.SetSpeedBuff(stat.SpeedBuff + speedBuff);
+        stat.SetSpeed(stat.Speed + speedBuff);
     }
 }
