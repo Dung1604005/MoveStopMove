@@ -94,13 +94,14 @@ public class Player : Character
 
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         if (combat.HaveTarget)
         {
             combat.Attack();
         }
-        ChangeRotation();
+        
     }
 
 

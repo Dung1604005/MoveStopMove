@@ -11,10 +11,18 @@ public class EnemyManager : Singleton<EnemyManager>
         listEnemy = new List<Enemy>();
     }
 
-    public Enemy GetRandomEnemy()
+    public void GenerateEnemy()
+    {
+        
+    }
+
+    public Enemy GetRandomEnemy(Enemy excludeEnemy = null)
     {
         int randomEnemy = Random.Range(0, listEnemy.Count);
-
+        if(listEnemy[randomEnemy] == excludeEnemy)
+        {
+            randomEnemy = (randomEnemy + 1) % listEnemy.Count;
+        }
         return listEnemy[randomEnemy];
     }
 }

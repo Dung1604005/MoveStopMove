@@ -29,7 +29,7 @@ public class WeaponBase : GameUnit
 
     public virtual void StartAttack(Vector3 dir)
     {
-        BulletBase bulletBase = SimplePool.Spawn<BulletBase>(PoolType.BulletPool, posSpawnTf.position, tf.rotation);
+        BulletBase bulletBase = SimplePool.Spawn<BulletBase>(PoolType.BulletPool, TF.position, tf.rotation);
 
         bulletBase.LoadData(dir, weaponDataSO.MoveSpeedBullet, stat.GetAtk());
 

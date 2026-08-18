@@ -4,6 +4,7 @@ public static class IdleState
 {
     public static void OnEnter(Enemy e)
     {
+        
         e.StopMove();
         e.ChangeAnim(GameConfig.ANIM_IDLE);
         e.GetEnemyState().SetTimer(1.5f);

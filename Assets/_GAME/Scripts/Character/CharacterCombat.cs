@@ -5,22 +5,26 @@ using UnityEngine;
 public class CharacterCombat : MonoBehaviour
 {
     [SerializeField] protected Character character;
-    [SerializeField] protected WeaponBase  weapon;
+    [SerializeField] protected WeaponBase weapon;
 
     [SerializeField] protected List<Character> targetList;
 
     [SerializeField] protected Character currentTarget;
 
-    [SerializeField]private float timerCoolDown = 0f;
+    [SerializeField] private float timerCoolDown = 0f;
 
     [SerializeField] private bool isAttacking;
     public bool HaveTarget => targetList?.Count > 0;
+
+    public bool IsCurrentTargetValid => currentTarget == GetNearestTarget();
+
+    public bool IsCurrentTargetNull => currentTarget == null;
 
     public void OnInit()
     {
         isAttacking = false;
         timerCoolDown = 0f;
-        targetList = new List<Character>(); 
+        targetList = new List<Character>();
         weapon.OnInit();
     }
 
@@ -28,10 +32,10 @@ public class CharacterCombat : MonoBehaviour
     {
         float smallestDis = 10000000000f;
         Character result = null;
-        foreach(Character target in targetList)
+        foreach (Character target in targetList)
         {
             float dis = (character.TF.position - target.TF.position).sqrMagnitude;
-            if(dis < smallestDis)
+            if (dis < smallestDis)
             {
                 result = target;
                 smallestDis = (character.TF.position - target.TF.position).sqrMagnitude;
@@ -42,20 +46,21 @@ public class CharacterCombat : MonoBehaviour
 
     public bool CanAttack()
     {
-        return timerCoolDown +0.0001f >= weapon.CaculateCoolDown(character.GetStat().GetAtkSpd()) && character.IsStop() && !isAttacking;
+        return timerCoolDown + 0.0001f >= weapon.CaculateCoolDown(character.GetStat().GetAtkSpd()) && character.IsStop() && !isAttacking;
     }
 
     public bool IsTargetValid(Character target)
     {
-        
-        return target != null && 
-        character.CaculateSquaredDistance(target.TF) <= character.GetStat().GetRangeAtk()*character.GetStat().GetRangeAtk()  + 5f
+
+        return target != null &&
+        character.CaculateSquaredDistance(target.TF) <= character.GetStat().GetRangeAtk() * character.GetStat().GetRangeAtk() + 5f
         && !target.GetStat().IsDead && target != character;
     }
 
     public void AddTarget(Character character)
     {
-        if(!targetList.Contains(character)){
+        if (!targetList.Contains(character))
+        {
             targetList?.Add(character);
         }
     }
@@ -67,12 +72,22 @@ public class CharacterCombat : MonoBehaviour
 
     public void FilterAllTarget()
     {
-        for(int i = targetList.Count - 1; i >= 0; i--)
+        for (int i = targetList.Count - 1; i >= 0; i--)
         {
             if (!IsTargetValid(targetList[i]))
             {
+                targetList[i].GetDetector().SetActiveInTargetState(false);
                 targetList.RemoveAt(i);
             }
+        }
+    }
+
+    public void UpdateVisualTarget()
+    {
+        Character nearest = GetNearestTarget();
+        foreach(Character target in targetList)
+        {
+            target.GetDetector().SetActiveInTargetState(nearest == target);
         }
     }
     public void ResetCooldown()
@@ -85,27 +100,28 @@ public class CharacterCombat : MonoBehaviour
     {
         if (CanAttack())
         {
-            
-            if(IsTargetValid(GetNearestTarget())){
-                currentTarget =GetNearestTarget();
+
+            if (IsTargetValid(GetNearestTarget()))
+            {
+                currentTarget = GetNearestTarget();
                 isAttacking = true;
                 character.SetTargetRotation(character.CaculateDir(currentTarget.TF));
                 character.ChangeAnim(GameConfig.ANIM_ATTACK);
             }
-            
+
         }
     }
 
     public void StartAttack()
     {
-        if (CheckCurrentTargetValid())
+        if (IsCurrentTargetValid && !IsCurrentTargetNull)
         {
             weapon.SetActiveVisual(false);
             weapon.StartAttack(character.CaculateDir(currentTarget.TF));
         }
     }
 
-    
+
     public void EndAttack()
     {
         weapon.SetActiveVisual(true);
@@ -113,23 +129,19 @@ public class CharacterCombat : MonoBehaviour
         currentTarget = null;
         isAttacking = false;
     }
-
-    public bool CheckCurrentTargetValid()
-    {
-        return currentTarget == null || currentTarget == GetNearestTarget();
-    }
     public bool IsAttacking()
     {
         return isAttacking;
     }
 
-    void Update()
+    public void CombatUpdate()
     {
         FilterAllTarget();
-        // if (CheckCurrentTargetValid())
-        // {
-        //     CancelAttack();
-        // }
+        if (!(IsCurrentTargetNull || IsCurrentTargetValid))
+        {
+            EndAttack();
+        }
+        if(character.IsPlayer)UpdateVisualTarget();
         timerCoolDown += Time.deltaTime;
     }
 

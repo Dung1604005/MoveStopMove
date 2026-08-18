@@ -7,7 +7,18 @@ public class Enemy : Character
 
     [SerializeField] private EnemyState enemyState;
 
-    private Vector3 destination;
+    [SerializeField] private Vector3 destination;
+
+    public override void OnInit()
+    {
+        base.OnInit();
+        SetActiveAgent(true);
+    }
+    public override void OnDespawn()
+    {
+        base.OnDespawn();
+        SetActiveAgent(false);
+    }
 
     public EnemyState GetEnemyState()
     {
@@ -21,8 +32,17 @@ public class Enemy : Character
 
     public void SetDestination(Vector3 _destination)
     {
-        this.destination = _destination;
-        agent.SetDestination(destination);
+        if (IsAgentActive())
+        {
+            this.destination = _destination;
+            agent.SetDestination(destination);
+        }
+
+    }
+
+    public bool IsAgentActive()
+    {
+        return !stat.IsDead && agent.enabled;
     }
 
     public override bool IsStop()
@@ -32,12 +52,17 @@ public class Enemy : Character
 
     public override void Move()
     {
-        
+
     }
 
     public override void StopMove()
     {
         SetDestination(tf.position);
+    }
+
+    public void SetActiveAgent(bool active)
+    {
+        agent.enabled = active;
     }
 
 

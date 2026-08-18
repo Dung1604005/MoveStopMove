@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6160818159784225119}
   - component: {fileID: 8488309676311254789}
-  - component: {fileID: 5847584551563312192}
+  - component: {fileID: 3878633444265966004}
   m_Layer: 0
   m_Name: knife
   m_TagString: Untagged
@@ -142,8 +142,10 @@ MonoBehaviour:
   moveDir: {x: 0, y: 0, z: 0}
   moveSpeed: 0
   damage: 0
---- !u!136 &5847584551563312192
-CapsuleCollider:
+  liveTime: 1
+  timerLive: 0
+--- !u!65 &3878633444265966004
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -160,8 +162,6 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.0021258353
-  m_Height: 0.023034047
-  m_Direction: 1
-  m_Center: {x: -0.0000026705675, y: -0.00003497163, z: -4.9697673e-19}
+  serializedVersion: 3
+  m_Size: {x: 0.014042247, y: 0.0025744066, z: 0.03299339}
+  m_Center: {x: -0.00030719873, y: 0.00045092945, z: -0.0012929887}

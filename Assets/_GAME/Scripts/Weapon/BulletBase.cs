@@ -7,12 +7,17 @@ public class BulletBase : GameUnit
     [SerializeField] private float moveSpeed;
 
     [SerializeField] private float damage;
+
+    [SerializeField] private float liveTime;
+
+    [SerializeField] private float timerLive;
     
     public void LoadData(Vector3 _moveDir, float _moveSpeed, float _damage)
     {
         moveDir = _moveDir;
         moveSpeed = _moveSpeed;
         damage = _damage;
+        timerLive = 0f;
 
         tf.rotation = Quaternion.LookRotation(moveDir);
     }
@@ -32,6 +37,15 @@ public class BulletBase : GameUnit
     void FixedUpdate()
     {
         Move();
+    }
+
+    void Update()
+    {
+        timerLive += Time.deltaTime;
+        if(timerLive >= liveTime)
+        {
+            OnDespawn();
+        }
     }
 
     public void OnTriggerEnter(Collider collider)

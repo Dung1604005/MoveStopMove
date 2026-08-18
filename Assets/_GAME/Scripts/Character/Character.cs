@@ -10,6 +10,8 @@ public class Character : GameUnit
 
     [SerializeField] protected CharacterCombat combat;
 
+    [SerializeField] protected CharacterDetector characterDetector;
+
     [SerializeField] protected Renderer pantRenderer;
 
     [SerializeField] protected PantType currentPant;
@@ -26,18 +28,22 @@ public class Character : GameUnit
 
     public CharacterCombat GetCombat() { return combat; }
 
+    public CharacterDetector GetDetector(){return characterDetector;}
+
     public bool IsPlayer => isPlayer;
 
     protected String currentAnim;
 
-    public void OnInit()
+    public virtual void OnInit()
     {
+       
         stat.OnInit();
         combat.OnInit();
+        characterDetector.OnInit();
     }
 
 
-    public void OnDespawn()
+    public virtual void OnDespawn()
     {
         //SimplePool.Despawn(this);
     }
@@ -80,7 +86,7 @@ public class Character : GameUnit
 
     public void ChangeRotation()
     {
-        tf.rotation = Quaternion.Slerp(tf.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+        tf.rotation = Quaternion.Slerp(tf.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
     public void ChangePant(PantType pantType)
@@ -136,6 +142,14 @@ public class Character : GameUnit
     protected virtual void Awake()
     {
         OnInit();
+    }
+
+    protected virtual void Update()
+    {
+        if(stat.IsDead) return;
+
+        combat.CombatUpdate();
+        ChangeRotation();
     }
 
 

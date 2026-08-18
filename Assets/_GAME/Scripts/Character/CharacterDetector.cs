@@ -7,10 +7,26 @@ public class CharacterDetector : MonoBehaviour
 
     [SerializeField] private CharacterStat stat;
 
+    [SerializeField] private Transform inTargetStateTF;
+
+    [SerializeField] private bool isInTargetState;
+
 
     public void OnInit()
     {
-        tf.localScale = Vector3.one*stat.GetRangeAtk();
+        tf.localScale = Vector3.one*stat.GetRangeAtk()*2;
+        SetActiveInTargetState(false);
+    }
+
+    public void OnDespawn()
+    {
+        SetActiveInTargetState(false);
+    }
+
+    public void SetActiveInTargetState(bool active)
+    {
+        inTargetStateTF.gameObject.SetActive(active);
+        isInTargetState = active;
     }
 
     public void OnTriggerEnter(Collider collider)
@@ -29,5 +45,10 @@ public class CharacterDetector : MonoBehaviour
             }
         }
        
+    }
+
+    void Update()
+    {
+        
     }
 }

@@ -4,6 +4,7 @@ public static class PatrolState
 {
     public static void OnEnter(Enemy e)
     {
+        
         e.ChangeAnim(GameConfig.ANIM_MOVING);
 
         //Random way to move
@@ -23,16 +24,16 @@ public static class PatrolState
             }
         }
         //Cach 2: di chuyen den player
-        else //(randomWay == 2)
+        else if(randomWay == 2)
         {
             e.SetDestination(MapManager.Instance.GetPlayerPosition());
         }
 
         //Cach 3: di chuyen den bot khac
-        // else
-        // {
-        //     e.SetDestination(EnemyManager.Instance.GetRandomEnemy().TF.position);
-        // }
+        else
+        {
+            e.SetDestination(EnemyManager.Instance.GetRandomEnemy().TF.position);
+        }
 
 
         
@@ -46,7 +47,7 @@ public static class PatrolState
         }
         else if (e.IsStop())
         {
-            e.ChangeState(EnemyStateType.PATROLSTATE);
+            e.ChangeState(EnemyStateType.IDLESTATE);
         }
       
     }

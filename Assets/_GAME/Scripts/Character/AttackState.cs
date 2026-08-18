@@ -6,6 +6,7 @@ public static class AttackState
     {
         
         e.StopMove();
+        
         e.GetCombat().Attack();
 
     }
