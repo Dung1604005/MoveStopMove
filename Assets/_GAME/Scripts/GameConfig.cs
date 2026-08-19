@@ -17,6 +17,20 @@ public static class GameConfig
 
     public const String OBSTACLE_TAG = "Obstacle";
 
+    // Stat chung
+
+    public const float BASE_EXP = 100f;
+
+    public const float EXP_GROWTHRATE = 1.1f;
+
+    public const float EXP_GAIN_PER_LEVEL = 67f;
+
+    public const float SIZE_GROWTHRATE = 0.3f;
+
+    public const float RANGE_GROWTH = 1.4f;
+
+    public const float ATK_GROWTH = 5f;
+
 
     
 

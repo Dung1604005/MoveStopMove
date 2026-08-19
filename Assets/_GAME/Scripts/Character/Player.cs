@@ -50,10 +50,10 @@ public class Player : Character
 
         if (!IsStop())
         {
-             SetTargetRotation(new Vector3(moveDir.x, 0f, moveDir.y));
+            SetTargetRotation(new Vector3(moveDir.x, 0f, moveDir.y));
         }
 
-        tf.position = Vector3.MoveTowards(tf.position , tf.position + moveDir3, stat.GetSpeed()*Time.fixedDeltaTime);
+        tf.position = Vector3.MoveTowards(tf.position , tf.position + moveDir3, stat.Speed*Time.fixedDeltaTime);
     }
 
     public void ChangeAnimByMoveDir()
@@ -101,6 +101,7 @@ public class Player : Character
         {
             combat.Attack();
         }
+        ChangeRotation();
         
     }
 

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class WeaponBase : GameUnit
 {
+    [SerializeField] private Character owner;
 
-    [SerializeField] private CharacterStat stat;
     [SerializeField] private WeaponDataSO weaponDataSO;
 
     [SerializeField] private Transform posSpawnTf;
@@ -31,7 +31,7 @@ public class WeaponBase : GameUnit
     {
         BulletBase bulletBase = SimplePool.Spawn<BulletBase>(PoolType.BulletPool, TF.position, tf.rotation);
 
-        bulletBase.LoadData(dir, weaponDataSO.MoveSpeedBullet, stat.GetAtk());
+        bulletBase.LoadData(dir, weaponDataSO.MoveSpeedBullet, owner.GetStat().Atk, owner);
 
         SetActiveVisual(false);
     }

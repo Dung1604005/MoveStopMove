@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class DataManager : Singleton<DataManager>
 {
-    [SerializeField] private PantMatDataSO pantMatDataSO;
+    [SerializeField] private PantSkinDatabase pantSkinDatabase;
 
-    public PantMatDataSO PantMatDataSO => pantMatDataSO;
+    [SerializeField] private HatSkinDatabase hatSkinDatabase;
+
+    public PantSkinDatabase PantSkinDatabase => pantSkinDatabase;
+
+    public HatSkinDatabase HatSkinDatabase => hatSkinDatabase;
 }

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e188c96090c7a4caec4be65e2167ad, type: 3}
+  m_Name: PantChambi
+  m_EditorClassIdentifier: Assembly-CSharp::PantSkinDataSO
+  skinId: 1
+  skinType: 0
+  rangeBuff: 0
+  atkSpdBuff: 0.1
+  speedBuff: 0.5
+  pantType: 1
+  pantMat: {fileID: 2100000, guid: 3d826ef6df74a38499269e2e449fa25e, type: 2}

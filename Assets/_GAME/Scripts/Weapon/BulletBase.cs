@@ -11,13 +11,16 @@ public class BulletBase : GameUnit
     [SerializeField] private float liveTime;
 
     [SerializeField] private float timerLive;
+
+    [SerializeField] private Character owner;
     
-    public void LoadData(Vector3 _moveDir, float _moveSpeed, float _damage)
+    public void LoadData(Vector3 _moveDir, float _moveSpeed, float _damage, Character _owner)
     {
         moveDir = _moveDir;
         moveSpeed = _moveSpeed;
         damage = _damage;
         timerLive = 0f;
+        owner = _owner;
 
         tf.rotation = Quaternion.LookRotation(moveDir);
     }
@@ -58,7 +61,7 @@ public class BulletBase : GameUnit
                 return;
             }
             OnDespawn();
-            character?.GetStat()?.OnHit(damage);
+            character?.GetStat()?.OnHit(damage,owner );
         }
         else if(collider.CompareTag(GameConfig.OBSTACLE_TAG))
         {

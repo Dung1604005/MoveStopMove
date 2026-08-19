@@ -11,11 +11,11 @@ public class CharacterTestSkin : MonoBehaviour
 
     public void ApplyPant()
     {
-        character.ApplySkin(pantSkinDataSO);
+        
     }
 
     void Start()
     {
-        ApplyPant();
+       
     }
 }

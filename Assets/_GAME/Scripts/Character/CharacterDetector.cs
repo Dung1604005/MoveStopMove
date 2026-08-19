@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.Rendering.Universal;
 public class CharacterDetector : MonoBehaviour
 {
     [SerializeField] private Transform tf;
@@ -9,13 +9,21 @@ public class CharacterDetector : MonoBehaviour
 
     [SerializeField] private Transform inTargetStateTF;
 
+    [SerializeField] private DecalProjector decalProjector;
+
     [SerializeField] private bool isInTargetState;
 
 
     public void OnInit()
     {
-        tf.localScale = Vector3.one*stat.GetRangeAtk()*2;
+        
         SetActiveInTargetState(false);
+    }
+
+    public void SetSizeRange(float size)
+    {
+        tf.localScale = Vector3.one*size*2;
+        if(decalProjector!= null) decalProjector.size = new Vector3(size*2, size*2, 2f);
     }
 
     public void OnDespawn()

@@ -12,6 +12,8 @@ public class Character : GameUnit
 
     [SerializeField] protected CharacterDetector characterDetector;
 
+    [SerializeField] protected CharacterVisual characterVisual;
+
     [SerializeField] protected Renderer pantRenderer;
 
     [SerializeField] protected PantType currentPant;
@@ -29,6 +31,8 @@ public class Character : GameUnit
     public CharacterCombat GetCombat() { return combat; }
 
     public CharacterDetector GetDetector(){return characterDetector;}
+
+    public CharacterVisual GetVisual() {return characterVisual;}
 
     public bool IsPlayer => isPlayer;
 
@@ -89,47 +93,6 @@ public class Character : GameUnit
         tf.rotation = Quaternion.Slerp(tf.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
-    public void ChangePant(PantType pantType)
-    {
-        currentPant = pantType;
-        
-        pantRenderer.sharedMaterial = DataManager.Instance.PantMatDataSO.GetPantMat(pantType);
-    }
-
-    public void ApplySkin(SkinDataSO skinDataSO)
-    {
-        foreach (SkinDataSO skinData in equipedSkins)
-        {
-            //khong cho trang bi tung
-            if (skinData.SkinType == skinDataSO.SkinType)
-            {
-                return;
-            }
-        }
-        skinDataSO.ApplyBuff(stat);
-        equipedSkins.Add(skinDataSO);
-        skinDataSO.ChangeVisualSkin(this);
-    }
-
-    public void RemoveSkin(SkinType skinType)
-    {
-        for (int i = 0; i < equipedSkins.Count; i++)
-        {
-            SkinDataSO skinDataSO = equipedSkins[i];
-            if (skinDataSO.SkinType == skinType)
-            {
-                skinDataSO.RemoveBuff(stat);
-                skinDataSO.RemoveVisualSkin(this);
-
-                equipedSkins.RemoveAt(i);
-                return;
-            }
-
-
-        }
-    }
-
-
     public void ChangeAnim(String animName)
     {
         anim.ResetTrigger(currentAnim);
@@ -149,7 +112,6 @@ public class Character : GameUnit
         if(stat.IsDead) return;
 
         combat.CombatUpdate();
-        ChangeRotation();
     }
 
 

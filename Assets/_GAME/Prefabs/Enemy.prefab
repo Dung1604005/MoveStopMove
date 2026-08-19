@@ -54,10 +54,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStat
   character: {fileID: 723546836855892150}
   healthBase: 100
+  currentExp: 0
   currentHealth: 0
   speed: 5
   level: 1
-  size: 0
+  size: 1
   atkSpd: 0.8
   rangeAtk: 5
   atk: 50
@@ -83,7 +84,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -129,6 +130,7 @@ MonoBehaviour:
   anim: {fileID: 8737135446523339234}
   combat: {fileID: 5519082307235443383}
   characterDetector: {fileID: 8722949741741401077}
+  characterVisual: {fileID: 6767719632863886582}
   pantRenderer: {fileID: 3033111514638906379}
   currentPant: 0
   rotationSpeed: 5
@@ -184,7 +186,6 @@ GameObject:
   - component: {fileID: 8638295179606187267}
   - component: {fileID: 7328687537609653106}
   - component: {fileID: 8722949741741401077}
-  - component: {fileID: 3365247828024801310}
   - component: {fileID: 7038542101118552800}
   m_Layer: 7
   m_Name: DetectCollider
@@ -245,66 +246,8 @@ MonoBehaviour:
   combat: {fileID: 5519082307235443383}
   stat: {fileID: 7345714401820425648}
   inTargetStateTF: {fileID: 4921419137491738490}
+  decalProjector: {fileID: 0}
   isInTargetState: 0
---- !u!212 &3365247828024801310
-SpriteRenderer:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6719556645868908399}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 966962487
-  m_SortingLayer: 1
-  m_SortingOrder: 222
-  m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 168aff5cf61594343b70e7637b8056d8, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.49411765}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2.56, y: 2.56}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_SpriteSortPoint: 0
 --- !u!114 &7038542101118552800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,7 +421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponBase
   PoolType: 0
   tf: {fileID: 4271041716552296394}
-  stat: {fileID: 7345714401820425648}
+  owner: {fileID: 723546836855892150}
   weaponDataSO: {fileID: 11400000, guid: 48ecb66d9cd171c47b60c92ec5e64ebb, type: 2}
   posSpawnTf: {fileID: 4271041716552296394}
   visualTf: {fileID: 3198450579425324134}
@@ -1282,6 +1225,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5519082307235443383}
+    - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6767719632863886582}
   m_SourcePrefab: {fileID: 100100000, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
 --- !u!4 &143865682125458427 stripped
 Transform:
@@ -1316,6 +1262,19 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   timerCoolDown: 0
   isAttacking: 0
+--- !u!114 &6767719632863886582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2418943709996203659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e33d06fd4fc61c49833e39d402c9a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterVisual
+  tf: {fileID: 1714333946078809240}
 --- !u!137 &3033111514638906379 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -529177695146175607, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}

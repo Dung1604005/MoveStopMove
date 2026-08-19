@@ -46,14 +46,14 @@ public class CharacterCombat : MonoBehaviour
 
     public bool CanAttack()
     {
-        return timerCoolDown + 0.0001f >= weapon.CaculateCoolDown(character.GetStat().GetAtkSpd()) && character.IsStop() && !isAttacking;
+        return timerCoolDown + 0.0001f >= weapon.CaculateCoolDown(character.GetStat().AtkSpd) && character.IsStop() && !isAttacking;
     }
 
     public bool IsTargetValid(Character target)
     {
 
         return target != null &&
-        character.CaculateSquaredDistance(target.TF) <= character.GetStat().GetRangeAtk() * character.GetStat().GetRangeAtk() + 5f
+        character.CaculateSquaredDistance(target.TF) <= character.GetStat().RangeAtk * character.GetStat().RangeAtk + 5f
         && !target.GetStat().IsDead && target != character;
     }
 

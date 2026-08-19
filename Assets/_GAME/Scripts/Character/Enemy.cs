@@ -65,5 +65,14 @@ public class Enemy : Character
         agent.enabled = active;
     }
 
+    protected override void Update()
+    {
+        base.Update();
+        if (IsStop())
+        {
+            ChangeRotation();
+        }
+    }
+
 
 }

@@ -5,17 +5,23 @@ public class PantSkinDataSO : SkinDataSO
 {
     [SerializeField] private PantType pantType; 
 
+    [SerializeField] private Material pantMat;
+
 
     public PantType PantType => pantType;
 
-    public override void ChangeVisualSkin(Character character)
+    public Material GetPantMat()
     {
-        character.ChangePant(pantType);
+        return pantMat;
     }
-
-    public override void RemoveVisualSkin(Character character)
-    {
-        base.RemoveVisualSkin(character);
-        character.ChangePant(PantType.NONE);
-    }
+}
+public enum PantType
+{
+    BATMAN = 0,
+    CHAMBI = 1,
+    COMI = 2,
+    DABAO = 3,
+    SKULL = 4,
+    VANTIM = 5,
+    NONE = 6
 }
