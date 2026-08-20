@@ -1393,9 +1393,9 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0, b: 0.3931036, a: 1}
+        key0: {r: 1, g: 0.916, b: 0, a: 1}
         key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 1, g: 0, b: 0.3931036, a: 0}
+        key2: {r: 1, g: 0.866, b: 0, a: 0}
         key3: {r: 0.013242915, g: 0.93031704, b: 1, a: 0}
         key4: {r: 0.15441228, g: 0.18749729, b: 1, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -1403,7 +1403,7 @@ ParticleSystem:
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 2297
         ctime1: 33376
-        ctime2: 60923
+        ctime2: 61115
         ctime3: 49389
         ctime4: 65535
         ctime5: 0
@@ -5156,7 +5156,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0, b: 0.3931036, a: 1}
+      maxColor: {r: 0, g: 1, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10071,7 +10071,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0, b: 0.31034467, a: 0.13725491}
+      maxColor: {r: 0, g: 1, b: 0.006896496, a: 0.13725491}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -14783,7 +14783,7 @@ Transform:
   m_GameObject: {fileID: 8251662803116349088}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.768, y: 1.413, z: 9.7073}
+  m_LocalPosition: {x: 12.76236, y: 1.216, z: 2.48223}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -14982,7 +14982,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.875, g: 0.546875, b: 0.6622845, a: 1}
+      maxColor: {r: 0.55818963, g: 0.875, b: 0.546875, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -19686,7 +19686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab64b1a90d0c7e479491363ffa3f189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealBooster
-  PoolType: 3
+  PoolType: 0
   tf: {fileID: 3934838392584986962}
   boosterType: 1
   healAmount: 25

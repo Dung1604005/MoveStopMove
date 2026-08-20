@@ -52,7 +52,11 @@ public class BulletBase : GameUnit
     void Update()
     {
         timerLive += Time.deltaTime;
-        if(timerLive >= liveTime || owner.GetStat().IsDead)
+        if(owner != null && owner.GetStat().IsDead)
+        {
+            OnDespawn();
+        }
+        if(timerLive >= liveTime )
         {
             OnDespawn();
         }

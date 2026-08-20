@@ -96,6 +96,7 @@ public class CharacterStat : MonoBehaviour
 
     public void GainExp(float exp)
     {
+        if(IsDead)return;
         currentExp += exp;
 
         for (int i = 1; i <= 100; i++)
@@ -134,6 +135,7 @@ public class CharacterStat : MonoBehaviour
 
     public void Heal(float healthHeal)
     {
+        character.GetEffect().SetActiveVFX(CharacterVFXType.HEAL, true);
         currentHealth = Mathf.Min(currentHealth + healthHeal, healthBase);
     }
 

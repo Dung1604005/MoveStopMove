@@ -14,6 +14,8 @@ public class Character : GameUnit
 
     [SerializeField] protected CharacterVisual characterVisual;
 
+    [SerializeField] protected CharacterEffect characterEffect;
+
     [SerializeField] protected Renderer pantRenderer;
 
     [SerializeField] protected PantType currentPant;
@@ -33,6 +35,8 @@ public class Character : GameUnit
     public CharacterDetector GetDetector(){return characterDetector;}
 
     public CharacterVisual GetVisual() {return characterVisual;}
+
+    public CharacterEffect GetEffect() {return characterEffect;}
 
     public bool IsPlayer => isPlayer;
 

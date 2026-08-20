@@ -26,6 +26,10 @@ public class BoosterManager : MonoBehaviour
         BoosterBase result = null;
         for(int i = 0; i < listBooster.Count; i++)
         {
+            if(listBooster[i] == null)
+            {
+                Debug.Log("BOOSTER " + i + "IS NULL");
+            }
             if((listBooster[i].TF.position - position).sqrMagnitude <= minDis)
             {
                 result = listBooster[i];

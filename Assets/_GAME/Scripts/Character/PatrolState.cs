@@ -14,6 +14,10 @@ public static class PatrolState
 
         if(randomWay == 1)
         {
+            if(MapManager.Instance.BoosterManager == null)
+            {
+                Debug.Log("ENEMY tF NULL");
+            }
             if(MapManager.Instance.BoosterManager.GetNearestBooster(e.TF.position) == null)
             {
                 e.SetDestination(MapManager.Instance.GetPlayerPosition());

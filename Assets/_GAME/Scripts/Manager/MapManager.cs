@@ -42,7 +42,7 @@ public class MapManager : Singleton<MapManager>
         return false;
     }
 
-    void Start()
+    void Awake()
     {
         OnInit();
     }
