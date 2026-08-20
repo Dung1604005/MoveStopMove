@@ -25,6 +25,8 @@ public class CharacterStat : MonoBehaviour
 
     public void SetSpeed(float _speed) { speed = _speed; }
 
+    public void SetHealthBase(float _healthBase) {healthBase = _healthBase;}
+
     public void SetAtkSpd(float _atkSpd) { atkSpd = _atkSpd; }
 
     public void SetRangeAtk(float _rangeAtk)
@@ -83,7 +85,7 @@ public class CharacterStat : MonoBehaviour
     }
     public void OnHit(float damage, Character attacker)
     {
-        if (IsDead) return;
+        if (IsDead || attacker.GetStat().IsDead) return;
         currentHealth = Mathf.Max(0f, currentHealth - damage);
         if (IsDead)
         {
@@ -107,17 +109,10 @@ public class CharacterStat : MonoBehaviour
                 break;
             }
         }
-
-
-
     }
 
     public void LevelUp()
     {
-        if (character.IsPlayer)
-        {
-            GameManager.Instance.MainCameraFollow.UpOffset();
-        }
         SetLevel(level + 1);
 
         SetAtk(atk + GameConfig.ATK_GROWTH);
@@ -125,6 +120,20 @@ public class CharacterStat : MonoBehaviour
         SetRangeAtk(rangeAtk + GameConfig.RANGE_GROWTH);
 
         SetSize(size + GameConfig.SIZE_GROWTHRATE);
+
+        SetHealthBase(healthBase + GameConfig.HEALTH_GROWTH);
+
+        //Hoi day mau
+        Heal(9999f);
+        if (character.IsPlayer)
+        {
+            GameManager.Instance.MainCameraFollow.ChangeOffSet(rangeAtk);
+        }
+    }
+
+    public void Heal(float healthHeal)
+    {
+        currentHealth = Mathf.Min(currentHealth + healthHeal, healthBase);
     }
 
 

@@ -16,6 +16,13 @@ public class CharacterVisual : MonoBehaviour
 
     [SerializeField] protected HatType currentHat;
 
+    public void OnInit()
+    {
+        EquipHat(DataManager.Instance.HatSkinDatabase.GetRandomHat());
+
+        EquipPant(DataManager.Instance.PantSkinDatabase.GetRandomPant());
+    }
+
     public void SetSize(float size)
     {
         tf.localScale = Vector3.one*size;
@@ -28,11 +35,11 @@ public class CharacterVisual : MonoBehaviour
     }
     public void ChangeHatVisual(HatType hatType)
     {
-        Destroy(hatPrefab.gameObject);
+        Destroy(hatPrefab?.gameObject);
         if(hatType != HatType.NONE)
         {
             HatSkinDataSO hatSkinData = DataManager.Instance.HatSkinDatabase.GetHatData(hatType);
-            hatPrefab = Instantiate(hatSkinData.HatPrefab, hatSkinHolder.position + hatSkinData.SpawnPos, hatSkinHolder.rotation );
+            hatPrefab = Instantiate(hatSkinData.HatPrefab, hatSkinHolder.position + hatSkinData.SpawnPos, hatSkinHolder.rotation, hatSkinHolder );
         }       
     }
     public void ApplyChangeStatSkin(SkinDataSO skinDataSO)
@@ -59,4 +66,6 @@ public class CharacterVisual : MonoBehaviour
     
         ChangePantVisual(pantType);
     }
+
+
 }

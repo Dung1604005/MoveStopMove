@@ -12,9 +12,9 @@ public class PantSkinDatabase : ScriptableObject
         return listPantdata[(int)pantType];
     }
 
-    public PantSkinDataSO GetRandomPant(PantType pantType)
+    public PantType GetRandomPant()
     {
-        int randomVal = Random.Range(0, listPantdata.Count);
-        return listPantdata[randomVal];
+        int randomVal = Random.Range(0, listPantdata.Count-1);
+        return listPantdata[randomVal].PantType;
     }
 }

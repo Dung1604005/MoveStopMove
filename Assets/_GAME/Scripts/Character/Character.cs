@@ -44,6 +44,7 @@ public class Character : GameUnit
         stat.OnInit();
         combat.OnInit();
         characterDetector.OnInit();
+        characterVisual.OnInit();
     }
 
 

@@ -11,9 +11,9 @@ public class HatSkinDatabase : ScriptableObject
         return listHatdata[(int)hatType];
     }
 
-    public HatSkinDataSO GetRandomHat(HatType hatType)
+    public HatType GetRandomHat()
     {
-        int randomVal = Random.Range(0, listHatdata.Count);
-        return listHatdata[randomVal];
+        int randomVal = Random.Range(0, listHatdata.Count-1);
+        return listHatdata[randomVal].HatType;
     }
 }

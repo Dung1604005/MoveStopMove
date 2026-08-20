@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BulletBase : GameUnit
 {
+    [SerializeField] private Vector3 defaultScale;
     [SerializeField] private Vector3 moveDir;
 
     [SerializeField] private float moveSpeed;
@@ -13,6 +14,7 @@ public class BulletBase : GameUnit
     [SerializeField] private float timerLive;
 
     [SerializeField] private Character owner;
+
     
     public void LoadData(Vector3 _moveDir, float _moveSpeed, float _damage, Character _owner)
     {
@@ -21,8 +23,13 @@ public class BulletBase : GameUnit
         damage = _damage;
         timerLive = 0f;
         owner = _owner;
-
+        SetSize(_owner.GetStat().Size);
         tf.rotation = Quaternion.LookRotation(moveDir);
+    }
+
+    public void SetSize(float size)
+    {
+        tf.localScale = defaultScale*size;
     }
 
     public void OnDespawn()

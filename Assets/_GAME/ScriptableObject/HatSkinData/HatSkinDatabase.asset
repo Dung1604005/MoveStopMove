@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HatSkinDatabase
   listHatdata:
   - {fileID: 11400000, guid: b7ed6a340ad32164e916e91f06c5ff72, type: 2}
+  - {fileID: 11400000, guid: 9183cc6447ded55438b7ef2e166dff7c, type: 2}
+  - {fileID: 11400000, guid: f478ff6cea9004b42841eb94ac89b6a7, type: 2}
+  - {fileID: 11400000, guid: ef452b5958ce96f46a6fc0efca2a38a5, type: 2}

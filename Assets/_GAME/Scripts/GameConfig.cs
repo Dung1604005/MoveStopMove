@@ -25,7 +25,9 @@ public static class GameConfig
 
     public const float EXP_GAIN_PER_LEVEL = 67f;
 
-    public const float SIZE_GROWTHRATE = 0.3f;
+    public const float SIZE_GROWTHRATE = 0.5f;
+
+    public const float HEALTH_GROWTH = 15f;
 
     public const float RANGE_GROWTH = 1.4f;
 

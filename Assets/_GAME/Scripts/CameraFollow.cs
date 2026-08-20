@@ -33,9 +33,9 @@ public class CameraFollow : MonoBehaviour
         tf.rotation = Quaternion.Euler(rotationEuler);
     }
 
-    public void UpOffset()
+    public void ChangeOffSet(float range)
     {
-        targetOffsetPlayer += growthLvUpCamera;
+        targetOffsetPlayer = offSetPlayer * (range/5f);
     }
 
     void Awake()
@@ -53,7 +53,7 @@ public class CameraFollow : MonoBehaviour
         }
         
 
-        if((targetOffsetPlayer- offSet).sqrMagnitude > 0.1f)
+        if((targetOffsetPlayer- offSet).sqrMagnitude > 0.001f)
         {
             offSet = Vector3.Lerp(offSet, targetOffsetPlayer, speed*Time.deltaTime);
         }

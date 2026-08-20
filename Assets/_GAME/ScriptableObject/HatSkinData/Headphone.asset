@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 091aa48f5195c624a8383cccc6f2f6e7, type: 3}
+  m_Name: Headphone
+  m_EditorClassIdentifier: Assembly-CSharp::HatSkinDataSO
+  skinId: 8
+  skinType: 1
+  rangeBuff: 1
+  atkSpdBuff: 0.5
+  speedBuff: 0
+  spawnPos: {x: 0, y: -0.056, z: 0}
+  hatPrefab: {fileID: 8939094098366772067, guid: d378d71cb988502448309369048e2cc3, type: 3}
+  hatType: 1

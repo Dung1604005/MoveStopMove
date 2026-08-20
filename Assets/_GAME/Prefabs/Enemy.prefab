@@ -88,7 +88,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &6372549575159081235
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -186,8 +186,7 @@ GameObject:
   - component: {fileID: 8638295179606187267}
   - component: {fileID: 7328687537609653106}
   - component: {fileID: 8722949741741401077}
-  - component: {fileID: 7038542101118552800}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: DetectCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,26 +247,6 @@ MonoBehaviour:
   inTargetStateTF: {fileID: 4921419137491738490}
   decalProjector: {fileID: 0}
   isInTargetState: 0
---- !u!114 &7038542101118552800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6719556645868908399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifier
-  m_SerializedVersion: 0
-  m_OverrideArea: 0
-  m_Area: 0
-  m_OverrideGenerateLinks: 0
-  m_GenerateLinks: 0
-  m_IgnoreFromBuild: 1
-  m_ApplyToChildren: 1
-  m_AffectedAgents: ffffffff
 --- !u!1 &8317805127209065462
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,6 +1218,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
   m_PrefabInstance: {fileID: 5958329835103348610}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1869621104464569578 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3800467336962686104, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+  m_PrefabInstance: {fileID: 5958329835103348610}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2418943709996203659 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
@@ -1274,7 +1258,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e33d06fd4fc61c49833e39d402c9a5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterVisual
+  stat: {fileID: 7345714401820425648}
   tf: {fileID: 1714333946078809240}
+  pantRenderer: {fileID: 3033111514638906379}
+  currentPant: 6
+  hatSkinHolder: {fileID: 1869621104464569578}
+  hatPrefab: {fileID: 0}
+  currentHat: 3
 --- !u!137 &3033111514638906379 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -529177695146175607, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}

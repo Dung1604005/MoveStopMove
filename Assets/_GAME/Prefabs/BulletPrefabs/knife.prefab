@@ -29,7 +29,7 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6160818159784225119}
   m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
@@ -119,8 +119,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.79938, y: 0, z: -5.06955}
-  m_LocalScale: {x: 41.690052, y: 41.69006, z: 41.69006}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 55, y: 55, z: 55}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2588768429262836522}
   m_Father: {fileID: 0}
@@ -139,11 +139,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletBase
   PoolType: 0
   tf: {fileID: 6160818159784225119}
+  defaultScale: {x: 55, y: 55, z: 55}
   moveDir: {x: 0, y: 0, z: 0}
   moveSpeed: 0
   damage: 0
   liveTime: 1
   timerLive: 0
+  owner: {fileID: 0}
 --- !u!65 &3878633444265966004
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -163,5 +165,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.014042247, y: 0.0025744066, z: 0.03299339}
-  m_Center: {x: -0.00030719873, y: 0.00045092945, z: -0.0012929887}
+  m_Size: {x: 0.005170546, y: 0.0025744066, z: 0.024176216}
+  m_Center: {x: 0.000078524085, y: 0.00045092945, z: -0.0001919241}

@@ -12,5 +12,11 @@ public class GameUnit : MonoBehaviour
 
 public enum PoolType{
     BulletPool,
-    CharacterPool
+    CharacterPool,
+
+    LevelUpBooserPool,
+
+    HealBoosterPool,
+
+    RangeBuffBoosterPool
 }
