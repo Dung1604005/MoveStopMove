@@ -21,7 +21,8 @@ public class BoosterBase : GameUnit
 
             ApplyBuff(character);
 
-            SimplePool.Despawn(this);
+            MapManager.Instance.BoosterManager.DespawnBooster(this);
+            MapManager.Instance.BoosterManager.SpawnBooster();
         }
     }
 

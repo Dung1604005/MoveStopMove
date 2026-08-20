@@ -37,7 +37,8 @@ public class CharacterStat : MonoBehaviour
 
     public void SetSize(float _size)
     {
-        size = _size;
+        size = Mathf.Min(_size, GameConfig.MAX_SIZE);
+
         character.GetVisual().SetSize(size);
     }
 

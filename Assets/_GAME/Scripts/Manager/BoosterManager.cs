@@ -15,7 +15,8 @@ public class BoosterManager : MonoBehaviour
 
    public void OnInit()
     {
-        listBooster = new List<BoosterBase>();
+        ClearAllBooster();
+        InitAllBooster();
     }
 
     public BoosterBase GetNearestBooster(Vector3 position)
@@ -42,12 +43,13 @@ public class BoosterManager : MonoBehaviour
 
     public void SpawnBooster()
     {
+        
         if (MapManager.Instance.GetRandomNavMeshPoint(GetRandomSpawnCenter().position, spawnRad,  out Vector3 spawnPosition))
         {
             spawnPosition.y += 1.2f;
 
             BoosterBase booster = SimplePool.Spawn<BoosterBase>(boosterPrefabData.GetRandomBooster().PoolType, spawnPosition, Quaternion.identity);
-
+            listBooster.Add(booster);
         }
     }
 
@@ -55,5 +57,21 @@ public class BoosterManager : MonoBehaviour
     {
 
         SimplePool.Despawn(booster);
+    }
+
+    public void InitAllBooster()
+    {
+        for(int i = 0;i < maxBooster; i++)
+        {
+            SpawnBooster();
+        }
+    }
+
+    public void ClearAllBooster()
+    {
+        for(int i = listBooster.Count - 1; i >= 0; i--)
+        {
+            DespawnBooster(listBooster[i]);
+        }
     }
 }

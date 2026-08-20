@@ -9860,6 +9860,7 @@ GameObject:
   - component: {fileID: 7100307458469465002}
   - component: {fileID: 191015767737183809}
   - component: {fileID: 1024577478133162495}
+  - component: {fileID: 3788004463997709520}
   m_Layer: 0
   m_Name: BoosterLevelUp
   m_TagString: Untagged
@@ -14781,6 +14782,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelUpBooster
   PoolType: 2
   tf: {fileID: 5395115609667863067}
+  boosterType: 0
+--- !u!135 &3788004463997709520
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554161510813989851}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.18
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5677899356290411384
 GameObject:
   m_ObjectHideFlags: 0

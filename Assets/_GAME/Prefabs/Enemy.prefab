@@ -292,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c1eb6df8ddd3f48b52e1a61dfca99a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RotateObject
+  tf: {fileID: 4921419137491738490}
   rotateByZ: 1
   rotateSpeed: 10
 --- !u!212 &8280829564097624760

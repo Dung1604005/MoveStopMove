@@ -33,6 +33,8 @@ public static class GameConfig
 
     public const float ATK_GROWTH = 5f;
 
+    public const float MAX_SIZE = 3f;
+
 
     
 

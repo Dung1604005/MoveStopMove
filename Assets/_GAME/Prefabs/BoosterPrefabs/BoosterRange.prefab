@@ -4918,6 +4918,7 @@ GameObject:
   - component: {fileID: 1264968193669397684}
   - component: {fileID: 6256706796736286090}
   - component: {fileID: 4817999283799301473}
+  - component: {fileID: 7659271215501119400}
   m_Layer: 0
   m_Name: BoosterRange
   m_TagString: Untagged
@@ -9839,7 +9840,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RangeBuffBooster
   PoolType: 4
   tf: {fileID: 7552738537826492988}
+  boosterType: 2
   rangeBuff: 1
+--- !u!135 &7659271215501119400
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420318329024688084}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.18
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6518839073956456164
 GameObject:
   m_ObjectHideFlags: 0
