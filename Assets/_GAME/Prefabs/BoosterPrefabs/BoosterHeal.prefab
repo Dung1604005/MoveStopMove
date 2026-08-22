@@ -19686,7 +19686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab64b1a90d0c7e479491363ffa3f189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealBooster
-  PoolType: 0
+  PoolType: 3
   tf: {fileID: 3934838392584986962}
   boosterType: 1
   healAmount: 25

@@ -14,29 +14,25 @@ public static class PatrolState
 
         if(randomWay == 1)
         {
-            if(MapManager.Instance.BoosterManager == null)
+            if(LevelManager.Instance.GetMapManager().GetBoosterManager().GetNearestBooster(e.TF.position) == null)
             {
-                Debug.Log("ENEMY tF NULL");
-            }
-            if(MapManager.Instance.BoosterManager.GetNearestBooster(e.TF.position) == null)
-            {
-                e.SetDestination(MapManager.Instance.GetPlayerPosition());
+                e.SetDestination(LevelManager.Instance.GetPlayerPosition());
             }
             else
             {
-                e.SetDestination(MapManager.Instance.BoosterManager.GetNearestBooster(e.TF.position).TF.position);
+                e.SetDestination(LevelManager.Instance.GetMapManager().GetBoosterManager().GetNearestBooster(e.TF.position).TF.position);
             }
         }
         //Cach 2: di chuyen den player
         else if(randomWay == 2)
         {
-            e.SetDestination(MapManager.Instance.GetPlayerPosition());
+            e.SetDestination(LevelManager.Instance.GetPlayerPosition());
         }
 
         //Cach 3: di chuyen den bot khac
         else
         {
-            e.SetDestination(EnemyManager.Instance.GetRandomEnemy().TF.position);
+            e.SetDestination(LevelManager.Instance.GetEnemyManager().GetRandomEnemy().TF.position);
         }
 
 

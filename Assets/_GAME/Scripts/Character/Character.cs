@@ -16,9 +16,6 @@ public class Character : GameUnit
 
     [SerializeField] protected CharacterEffect characterEffect;
 
-    [SerializeField] protected Renderer pantRenderer;
-
-    [SerializeField] protected PantType currentPant;
 
     [SerializeField] protected float rotationSpeed;
 

@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 
 public class BoosterManager : MonoBehaviour
 {
+   [SerializeField] private MapManager mapManager;
    [SerializeField] private int maxBooster;
 
    [SerializeField] private float spawnRad;
@@ -48,7 +49,7 @@ public class BoosterManager : MonoBehaviour
     public void SpawnBooster()
     {
         
-        if (MapManager.Instance.GetRandomNavMeshPoint(GetRandomSpawnCenter().position, spawnRad,  out Vector3 spawnPosition))
+        if (mapManager.GetRandomNavMeshPoint(GetRandomSpawnCenter().position, 0f,spawnRad,  out Vector3 spawnPosition))
         {
             spawnPosition.y += 1.2f;
 

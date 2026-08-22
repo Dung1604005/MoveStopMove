@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 723546836855892150}
   - component: {fileID: 1958731866427459270}
   - component: {fileID: 7638506046812031913}
+  - component: {fileID: 4371235380854186003}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Character
@@ -131,8 +132,7 @@ MonoBehaviour:
   combat: {fileID: 5519082307235443383}
   characterDetector: {fileID: 8722949741741401077}
   characterVisual: {fileID: 6767719632863886582}
-  pantRenderer: {fileID: 3033111514638906379}
-  currentPant: 0
+  characterEffect: {fileID: 4371235380854186003}
   rotationSpeed: 5
   isPlayer: 0
   equipedSkins: []
@@ -175,6 +175,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyState
   currentState: 0
   enemy: {fileID: 723546836855892150}
+--- !u!114 &4371235380854186003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561139424037761768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b223b4fbfac4414d93a9b90f11e70dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterEffect
+  listVfx:
+  - {fileID: 4390994728944136156}
+  - {fileID: 3574463748672351887}
 --- !u!1 &6719556645868908399
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +199,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8638295179606187267}
-  - component: {fileID: 7328687537609653106}
   - component: {fileID: 8722949741741401077}
   m_Layer: 9
   m_Name: DetectCollider
@@ -208,27 +222,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5551547261549889527}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!135 &7328687537609653106
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6719556645868908399}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8722949741741401077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +240,7 @@ MonoBehaviour:
   inTargetStateTF: {fileID: 4921419137491738490}
   decalProjector: {fileID: 0}
   isInTargetState: 0
+  intervalTime: 0.1
 --- !u!1 &8317805127209065462
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,6 +1192,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -4216859302048453862, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7946391465677793675}
     - targetCorrespondingSourceObject: {fileID: -3220319501169496967, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
       insertIndex: 0
       addedObject: {fileID: 4271041716552296394}
@@ -1276,3 +1273,119 @@ Animator:
   m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
   m_PrefabInstance: {fileID: 5958329835103348610}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7158930209483115983
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1714333946078809240}
+    m_Modifications:
+    - target: {fileID: 945441423336301636, guid: 6cb237663b4002643a282e15232791b2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 945441423336301636, guid: 6cb237663b4002643a282e15232791b2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 945441423336301636, guid: 6cb237663b4002643a282e15232791b2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 945441423336301636, guid: 6cb237663b4002643a282e15232791b2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 945441423336301636, guid: 6cb237663b4002643a282e15232791b2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 945441423336301636, guid: 6cb237663b4002643a282e15232791b2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 945441423336301636, guid: 6cb237663b4002643a282e15232791b2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 945441423336301636, guid: 6cb237663b4002643a282e15232791b2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 945441423336301636, guid: 6cb237663b4002643a282e15232791b2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 945441423336301636, guid: 6cb237663b4002643a282e15232791b2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795032129542957295, guid: 6cb237663b4002643a282e15232791b2, type: 3}
+      propertyPath: m_Name
+      value: Effect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 946227328319568323, guid: 6cb237663b4002643a282e15232791b2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4390994728944136156}
+    - targetCorrespondingSourceObject: {fileID: 3813724708898177825, guid: 6cb237663b4002643a282e15232791b2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3574463748672351887}
+  m_SourcePrefab: {fileID: 100100000, guid: 6cb237663b4002643a282e15232791b2, type: 3}
+--- !u!4 &6314198881553921340 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3817129941963471091, guid: 6cb237663b4002643a282e15232791b2, type: 3}
+  m_PrefabInstance: {fileID: 7158930209483115983}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6319873480339508974 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3813724708898177825, guid: 6cb237663b4002643a282e15232791b2, type: 3}
+  m_PrefabInstance: {fileID: 7158930209483115983}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3574463748672351887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6319873480339508974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f20227bb1e7364d9f4eb9499f3bb5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EffectVFX
+  tf: {fileID: 6314198881553921340}
+  effectTime: 0.5
+--- !u!4 &7946391465677793675 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 945441423336301636, guid: 6cb237663b4002643a282e15232791b2, type: 3}
+  m_PrefabInstance: {fileID: 7158930209483115983}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7958458981678201846 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 948994394709554745, guid: 6cb237663b4002643a282e15232791b2, type: 3}
+  m_PrefabInstance: {fileID: 7158930209483115983}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7960127345464767500 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 946227328319568323, guid: 6cb237663b4002643a282e15232791b2, type: 3}
+  m_PrefabInstance: {fileID: 7158930209483115983}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4390994728944136156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7960127345464767500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f20227bb1e7364d9f4eb9499f3bb5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EffectVFX
+  tf: {fileID: 7958458981678201846}
+  effectTime: 0.5

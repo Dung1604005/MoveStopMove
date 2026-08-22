@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2466bf8825fb39642b6d8618f49c1e8a, type: 3}
+  m_Name: MapSanBayData
+  m_EditorClassIdentifier: Assembly-CSharp::MapData
+  PrefabMap: {fileID: 2202830295228828894, guid: 61b14b4073d16cc4f9d92b558b6f486c, type: 3}
+  SpawnPos: {x: 0, y: 0, z: 0}
+  NavMeshData: {fileID: 23800000, guid: 9de32e0f851682d47afa7b302dd6867e, type: 2}

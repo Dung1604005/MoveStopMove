@@ -33,6 +33,11 @@ public class CharacterStat : MonoBehaviour
     {
         rangeAtk = _rangeAtk;
         character.GetDetector().SetSizeRange(rangeAtk);
+
+        if (character.IsPlayer)
+        {
+            GameManager.Instance.MainCameraFollow.ChangeOffSet(rangeAtk);
+        }
     }
 
     public void SetSize(float _size)
@@ -82,7 +87,14 @@ public class CharacterStat : MonoBehaviour
     }
     public void OnDespawn()
     {
-        character.OnDespawn();
+        if (character.IsPlayer)
+        {
+            
+        }
+        else
+        {
+            EnemyManager.Instance.DeSpawnEnemy(character as Enemy);
+        }
     }
     public void OnHit(float damage, Character attacker)
     {
@@ -115,6 +127,8 @@ public class CharacterStat : MonoBehaviour
 
     public void LevelUp()
     {
+        if(IsDead)return;
+        character.GetEffect().SetActiveVFX(CharacterVFXType.LEVEL_UP, true);
         SetLevel(level + 1);
 
         SetAtk(atk + GameConfig.ATK_GROWTH);
@@ -126,15 +140,12 @@ public class CharacterStat : MonoBehaviour
         SetHealthBase(healthBase + GameConfig.HEALTH_GROWTH);
 
         //Hoi day mau
-        Heal(9999f);
-        if (character.IsPlayer)
-        {
-            GameManager.Instance.MainCameraFollow.ChangeOffSet(rangeAtk);
-        }
+        currentHealth = healthBase;
     }
 
     public void Heal(float healthHeal)
     {
+        if(IsDead)return;
         character.GetEffect().SetActiveVFX(CharacterVFXType.HEAL, true);
         currentHealth = Mathf.Min(currentHealth + healthHeal, healthBase);
     }

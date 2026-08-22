@@ -13,10 +13,16 @@ public class CharacterDetector : MonoBehaviour
 
     [SerializeField] private bool isInTargetState;
 
+    [SerializeField] private float intervalTime;
+
+    private LayerMask layerCharacter;
+
+    private float timer = 0f;
+
 
     public void OnInit()
     {
-        
+        layerCharacter = LayerMask.GetMask(GameConfig.CHARACTER_LAYER);
         SetActiveInTargetState(false);
     }
 
@@ -36,27 +42,29 @@ public class CharacterDetector : MonoBehaviour
         inTargetStateTF.gameObject.SetActive(active);
         isInTargetState = active;
     }
-
-    public void OnTriggerEnter(Collider collider)
+    public void ScanTarget()
     {
-        if (collider.CompareTag(GameConfig.CHARACTER_TAG))
-        {
-            Character target = ColliderCache<Character>.GetComponent(collider);
+        Collider[] charColArr = Physics.OverlapSphere(tf.position, stat.RangeAtk, layerCharacter);
 
-            if(target == null)
-            {
-                Debug.Log("TARGET NULL");
-            }
+        for(int i = 0; i < charColArr.Length; i++)
+        {
+            Character target = ColliderCache<Character>.GetComponent(charColArr[i]);
+
             if (combat.IsTargetValid(target))
             {
                 combat.AddTarget(target);
             }
         }
-       
+
     }
 
     void Update()
     {
-        
+        timer += Time.deltaTime;
+        if(timer >= intervalTime)
+        {
+            timer = 0f;
+            ScanTarget();
+        }
     }
 }

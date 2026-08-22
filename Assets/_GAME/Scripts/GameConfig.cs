@@ -15,7 +15,11 @@ public static class GameConfig
 
     public const String CHARACTER_TAG = "Character";
 
+    public const String CHARACTER_LAYER = "Character";
+
     public const String OBSTACLE_TAG = "Obstacle";
+
+
 
     // Stat chung
 
@@ -25,7 +29,7 @@ public static class GameConfig
 
     public const float EXP_GAIN_PER_LEVEL = 67f;
 
-    public const float SIZE_GROWTHRATE = 0.5f;
+    public const float SIZE_GROWTHRATE = 0.25f;
 
     public const float HEALTH_GROWTH = 15f;
 
@@ -33,7 +37,7 @@ public static class GameConfig
 
     public const float ATK_GROWTH = 5f;
 
-    public const float MAX_SIZE = 3f;
+    public const float MAX_SIZE = 2f;
 
 
     

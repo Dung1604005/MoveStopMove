@@ -21,8 +21,8 @@ public class BoosterBase : GameUnit
 
             ApplyBuff(character);
 
-            MapManager.Instance.BoosterManager.DespawnBooster(this);
-            MapManager.Instance.BoosterManager.SpawnBooster();
+            LevelManager.Instance.GetMapManager().GetBoosterManager().DespawnBooster(this);
+            LevelManager.Instance.GetMapManager().GetBoosterManager().SpawnBooster();
         }
     }
 
