@@ -16,7 +16,6 @@ public class Character : GameUnit
 
     [SerializeField] protected CharacterEffect characterEffect;
 
-
     [SerializeField] protected float rotationSpeed;
 
     [SerializeField] protected bool isPlayer;
@@ -51,7 +50,7 @@ public class Character : GameUnit
 
     public virtual void OnDespawn()
     {
-        //SimplePool.Despawn(this);
+        
     }
 
     public virtual bool IsStop()
@@ -106,7 +105,7 @@ public class Character : GameUnit
 
     protected virtual void Awake()
     {
-        OnInit();
+        
     }
 
     protected virtual void Update()

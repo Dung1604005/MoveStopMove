@@ -17,19 +17,16 @@ public class LevelManager : Singleton<LevelManager>
     {
         return player.TF.position;
     }
-
-
+    
     public MapManager GetMapManager()
     {
         return mapManager;
     }
 
-
     public EnemyManager GetEnemyManager()
     {
         return enemyManager;
     }
-
     public void LoadLevelData(LevelData levelData)
     {
         this.levelData = levelData;
@@ -54,6 +51,7 @@ public class LevelManager : Singleton<LevelManager>
         LoadLevelData(levelData);
         SetCurrentAlive(levelData.TotalCharacter);
         mapManager.OnInit();
+        player.OnInit();
         enemyManager.OnInit();
     }
 

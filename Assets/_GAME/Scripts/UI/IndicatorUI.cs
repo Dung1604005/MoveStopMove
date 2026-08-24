@@ -12,7 +12,7 @@ public class IndicatorUI : GameUnit
 
     public void OnInit()
     {
-        uiCamera = GameManager.Instance.UICamera;
+        uiCamera = GameManager.Instance.GetUICameraFollow().GetCam();
     }
 
     public void OnDespawn()

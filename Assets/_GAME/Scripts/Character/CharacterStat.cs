@@ -5,18 +5,14 @@ using UnityEngine;
 public class CharacterStat : MonoBehaviour
 {
     [SerializeField] private Character character;
+    [SerializeField] private String nameCharacter;
     [SerializeField] private float healthBase;
-
     [SerializeField] private float currentExp;
-
     [SerializeField] private float currentHealth;
     [SerializeField] private float speed;
     [SerializeField] private int level;
-
     [SerializeField] private float size;
-
     [SerializeField] private float atkSpd;
-
     [SerializeField] private float rangeAtk;
 
     [SerializeField] private float atk;
@@ -29,14 +25,18 @@ public class CharacterStat : MonoBehaviour
 
     public void SetAtkSpd(float _atkSpd) { atkSpd = _atkSpd; }
 
+    public void SetName(String _name){nameCharacter = _name;}
+
     public void SetRangeAtk(float _rangeAtk)
     {
-        rangeAtk = _rangeAtk;
+        rangeAtk = Mathf.Min(GameConfig.MAX_RANGE, _rangeAtk);
         character.GetDetector().SetSizeRange(rangeAtk);
 
+        //TODO: Cho cai nay ra cho khac
         if (character.IsPlayer)
         {
-            GameManager.Instance.MainCameraFollow.ChangeOffSet(rangeAtk);
+            GameManager.Instance.GetMainCameraFollow().ChangeOffSet(rangeAtk);
+            GameManager.Instance.GetUICameraFollow().ChangeOffSet(rangeAtk);
         }
     }
 
@@ -131,6 +131,8 @@ public class CharacterStat : MonoBehaviour
         if(IsDead)return;
         character.GetEffect().SetActiveVFX(CharacterVFXType.LEVEL_UP, true);
         SetLevel(level + 1);
+
+        character.GetVisual().SetLevelText(level);
 
         SetAtk(atk + GameConfig.ATK_GROWTH);
 

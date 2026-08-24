@@ -39,6 +39,10 @@ public static class GameConfig
 
     public const float MAX_SIZE = 2f;
 
+    public const float MAX_RANGE = 10f;
+
+
+
 
     
 

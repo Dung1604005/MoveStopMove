@@ -1,20 +1,18 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class BoosterManager : MonoBehaviour
 {
-   [SerializeField] private MapManager mapManager;
-   [SerializeField] private int maxBooster;
-
-   [SerializeField] private float spawnRad;
-
-   [SerializeField] private List<Transform> spawnCenterList;
-   [SerializeField] private BoosterPrefabData boosterPrefabData;
-   [SerializeField] private List<BoosterBase> listBooster;
-
-
-   public void OnInit()
+    [SerializeField] private MapManager mapManager;
+    [SerializeField] private int maxBooster;
+    [SerializeField] private float spawnRad;
+    [SerializeField] private float delaySpawn;
+    [SerializeField] private List<Transform> spawnCenterList;
+    [SerializeField] private BoosterPrefabData boosterPrefabData;
+    [SerializeField] private List<BoosterBase> listBooster;
+    public void OnInit()
     {
         ClearAllBooster();
         InitAllBooster();
@@ -25,13 +23,13 @@ public class BoosterManager : MonoBehaviour
         float minDis = 10000000000f;
 
         BoosterBase result = null;
-        for(int i = 0; i < listBooster.Count; i++)
+        for (int i = 0; i < listBooster.Count; i++)
         {
-            if(listBooster[i] == null)
+            if (listBooster[i] == null)
             {
                 Debug.Log("BOOSTER " + i + "IS NULL");
             }
-            if((listBooster[i].TF.position - position).sqrMagnitude <= minDis)
+            if ((listBooster[i].TF.position - position).sqrMagnitude <= minDis)
             {
                 result = listBooster[i];
                 minDis = (listBooster[i].TF.position - position).sqrMagnitude;
@@ -46,27 +44,34 @@ public class BoosterManager : MonoBehaviour
         return spawnCenterList[randomVal];
     }
 
-    public void SpawnBooster()
+    public void SpawnBooster(bool delay = false)
     {
-        
-        if (mapManager.GetRandomNavMeshPoint(GetRandomSpawnCenter().position, 0f,spawnRad,  out Vector3 spawnPosition))
+        if (!delay)
         {
-            spawnPosition.y += 1.2f;
+            if (mapManager.GetRandomNavMeshPoint(GetRandomSpawnCenter().position, 0f, spawnRad, out Vector3 spawnPosition))
+            {
+                spawnPosition.y += 1.2f;
 
-            BoosterBase booster = SimplePool.Spawn<BoosterBase>(boosterPrefabData.GetRandomBooster().PoolType, spawnPosition, Quaternion.identity);
-            listBooster.Add(booster);
+                BoosterBase booster = SimplePool.Spawn<BoosterBase>(boosterPrefabData.GetRandomBooster().PoolType, spawnPosition, Quaternion.identity);
+                listBooster.Add(booster);
+            }
+        }
+        else
+        {
+            Invoke(nameof(SpawnBooster), delaySpawn);
         }
     }
 
+
     public void DespawnBooster(BoosterBase booster)
     {
-
+        listBooster.Remove(booster);
         SimplePool.Despawn(booster);
     }
 
     public void InitAllBooster()
     {
-        for(int i = 0;i < maxBooster; i++)
+        for (int i = 0; i < maxBooster; i++)
         {
             SpawnBooster();
         }
@@ -74,7 +79,7 @@ public class BoosterManager : MonoBehaviour
 
     public void ClearAllBooster()
     {
-        for(int i = listBooster.Count - 1; i >= 0; i--)
+        for (int i = listBooster.Count - 1; i >= 0; i--)
         {
             DespawnBooster(listBooster[i]);
         }

@@ -11,12 +11,9 @@ public class EnemyManager : Singleton<EnemyManager>
     [SerializeField] private float maxRangeSpawn;
 
     [SerializeField] private float minRangeSpawn;
-
-
     public void OnInit()
     {
         ClearAllEnemy();
-
         for(int i = 0 ; i < maxEnemy; i++)
         {
             GenerateEnemy();
@@ -32,6 +29,7 @@ public class EnemyManager : Singleton<EnemyManager>
         {
             
             Enemy enemy = SimplePool.Spawn<Enemy>(PoolType.CharacterPool, spawnPos, Quaternion.identity);
+            enemy.OnInit();
             IndicatorUI indicatorUI = SimplePool.Spawn<IndicatorUI>(PoolType.Indicator, Vector3.zero, Quaternion.identity);
 
             enemy.SetIndicator(indicatorUI);

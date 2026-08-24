@@ -12,7 +12,7 @@ public static class PatrolState
         int randomWay = Random.Range(0, 3);
         //Cach 1: Di nhat booster gan nhat
 
-        if(randomWay == 1)
+        if(randomWay == 0)
         {
             if(LevelManager.Instance.GetMapManager().GetBoosterManager().GetNearestBooster(e.TF.position) == null)
             {
@@ -24,7 +24,7 @@ public static class PatrolState
             }
         }
         //Cach 2: di chuyen den player
-        else if(randomWay == 2)
+        else if(randomWay == 1)
         {
             e.SetDestination(LevelManager.Instance.GetPlayerPosition());
         }
@@ -34,13 +34,11 @@ public static class PatrolState
         {
             e.SetDestination(LevelManager.Instance.GetEnemyManager().GetRandomEnemy().TF.position);
         }
-
-
-        
     }
 
     public static void OnExecute(Enemy e)
     {
+        
         if (e.GetCombat().HaveTarget)
         {
             e.ChangeState(EnemyStateType.IDLESTATE);

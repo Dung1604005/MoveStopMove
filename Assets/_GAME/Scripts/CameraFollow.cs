@@ -21,7 +21,6 @@ public class CameraFollow : MonoBehaviour
 
     [SerializeField] private Vector3 targetOffsetPlayer;
 
-
     public void OnInit()
     {
         offSet = offSetPlayer;
@@ -29,6 +28,11 @@ public class CameraFollow : MonoBehaviour
         target = tfPlayer;
         cam.fieldOfView = 60f;
         tf.rotation = Quaternion.Euler(rotationEuler);
+    }
+
+    public Camera GetCam()
+    {
+        return cam;
     }
 
     public void ChangeOffSet(float range)

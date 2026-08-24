@@ -20,6 +20,7 @@ public class Enemy : Character
     {
         base.OnDespawn();
         SetActiveAgent(false);
+        SimplePool.Despawn(this);
     }
 
     public void SetIndicator(IndicatorUI _indicator)
@@ -59,7 +60,9 @@ public class Enemy : Character
 
     public override bool IsStop()
     {
-        return (tf.position - destination).sqrMagnitude < 1f;
+        Vector3 distanc = tf.position - destination;
+        distanc.y = 0f;
+        return distanc.sqrMagnitude < 1f;
     }
 
     public override void Move()

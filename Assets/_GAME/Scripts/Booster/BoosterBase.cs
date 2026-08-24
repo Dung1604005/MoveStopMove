@@ -22,7 +22,7 @@ public class BoosterBase : GameUnit
             ApplyBuff(character);
 
             LevelManager.Instance.GetMapManager().GetBoosterManager().DespawnBooster(this);
-            LevelManager.Instance.GetMapManager().GetBoosterManager().SpawnBooster();
+            LevelManager.Instance.GetMapManager().GetBoosterManager().SpawnBooster(true);
         }
     }
 
