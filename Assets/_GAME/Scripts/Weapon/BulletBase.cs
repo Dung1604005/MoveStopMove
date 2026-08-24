@@ -37,7 +37,7 @@ public class BulletBase : GameUnit
         SimplePool.Despawn(this);
     }
 
-    public void Move()
+    public virtual void Move()
     {
        
         tf.position = Vector3.MoveTowards(tf.position, tf.position + moveDir, moveSpeed*Time.fixedDeltaTime);

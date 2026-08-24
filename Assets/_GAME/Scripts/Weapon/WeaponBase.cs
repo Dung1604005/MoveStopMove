@@ -6,8 +6,6 @@ public class WeaponBase : GameUnit
 
     [SerializeField] private WeaponDataSO weaponDataSO;
 
-    [SerializeField] private Transform posSpawnTf;
-
     [SerializeField] private Transform visualTf;
 
     public virtual void OnInit()

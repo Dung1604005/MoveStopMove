@@ -5,8 +5,6 @@ public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Vector3 offSetPlayer;
 
-    [SerializeField] private Vector3 growthLvUpCamera;
-
     [SerializeField] private Vector3 rotationEuler;
 
     [SerializeField] private Camera cam;

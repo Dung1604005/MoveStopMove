@@ -1,9 +1,14 @@
+using System.Numerics;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "WeaponDataSO", menuName = "Scriptable Objects/WeaponDataSO")]
 public class WeaponDataSO : ScriptableObject
 {
     [SerializeField] private int weaponId;
+
+    [SerializeField] private UnityEngine.Vector3 spawnPos;
+
+    [SerializeField] private WeaponBase weaponPrefab;
 
     [SerializeField] private float rangeBuff;
 
@@ -23,6 +28,8 @@ public class WeaponDataSO : ScriptableObject
     public float Cooldown => cooldown;
 
     public float MoveSpeedBullet => moveSpeedBullet;
+
+    public UnityEngine.Vector3 SpawnPos => spawnPos;
 
     public void ApplyBuff(CharacterStat stat)
     {

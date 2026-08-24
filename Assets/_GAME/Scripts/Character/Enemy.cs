@@ -9,6 +9,8 @@ public class Enemy : Character
 
     [SerializeField] private Vector3 destination;
 
+    [SerializeField] private IndicatorUI indicator;
+
     public override void OnInit()
     {
         base.OnInit();
@@ -18,6 +20,16 @@ public class Enemy : Character
     {
         base.OnDespawn();
         SetActiveAgent(false);
+    }
+
+    public void SetIndicator(IndicatorUI _indicator)
+    {
+        indicator = _indicator;
+    }
+
+    public IndicatorUI GetIndicator()
+    {
+        return indicator;
     }
 
     public EnemyState GetEnemyState()

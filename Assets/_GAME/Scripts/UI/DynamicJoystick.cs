@@ -1,0 +1,71 @@
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.Layouts;
+using UnityEngine.InputSystem.OnScreen;
+
+public class DynamicJoyStick : OnScreenControl, IPointerDownHandler, IDragHandler, IPointerUpHandler
+{
+    [Header("UI REF")]
+
+    [SerializeField] private RectTransform joystick;
+
+    [SerializeField] private RectTransform handle;
+
+    [Header("THONG SO")]
+
+    [SerializeField] private float moveRanger;
+
+    [InputControl(layout = "Vector2")]
+
+    [SerializeField] private string controlPath;
+
+    protected override string controlPathInternal { 
+        get => controlPath
+    ; set => controlPath = value; }
+
+
+    void Awake()
+    {
+        SetActive(false);
+    }
+
+    public void SetActive(bool active)
+    {
+        joystick.gameObject.SetActive(active);
+    }
+
+    public void OnPointerDown(PointerEventData pointerEventData)
+    {
+       
+        SetActive(true);
+
+        
+        handle.anchoredPosition = Vector2.zero;
+
+        SendValueToControl(Vector2.zero);
+
+    }
+
+    public void OnDrag(PointerEventData pointerEventData)
+    {
+        
+        Vector2 delta = (Vector2)pointerEventData.position - (Vector2)joystick.position;
+
+        
+        if(delta.sqrMagnitude > moveRanger * moveRanger)
+        {
+            delta = delta.normalized*moveRanger;
+        }
+
+        handle.anchoredPosition = delta;
+        SendValueToControl((delta/moveRanger).normalized);
+    }
+
+    public void OnPointerUp(PointerEventData pointerEventData)
+    {
+        SetActive(false);
+
+        
+        SendValueToControl(Vector2.zero);
+    }
+}

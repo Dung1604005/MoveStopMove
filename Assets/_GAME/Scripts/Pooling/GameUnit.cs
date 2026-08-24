@@ -17,6 +17,8 @@ public enum PoolType{
     //BoosterPool
     LevelUpBooserPool,
     HealBoosterPool,
-    RangeBuffBoosterPool
-    //VFX Pool
+    RangeBuffBoosterPool,
+    //UI Pool
+
+    Indicator
 }

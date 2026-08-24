@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5bb6135916f04f74baaf604028aca6ae, type: 3}
-  m_Name: KnifeDataSO
+  m_Name: ShieldData
   m_EditorClassIdentifier: Assembly-CSharp::WeaponDataSO
-  weaponId: 0
-  spawnPos: {x: -0.2479997, y: 0.16400021, z: 0.056999963}
-  weaponPrefab: {fileID: 2827623331471553403, guid: 67bd31b4e38d24240ad71d99190e0a75, type: 3}
+  weaponId: 1
+  spawnPos: {x: 0.02, y: 0.076, z: 0.03}
+  weaponPrefab: {fileID: 0}
   rangeBuff: 0
-  cooldown: 1
-  atkBuff: 15
-  moveSpeedBullet: 12
+  cooldown: 1.5
+  atkBuff: 25
+  moveSpeedBullet: 10

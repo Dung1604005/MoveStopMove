@@ -32,6 +32,11 @@ public class EnemyManager : Singleton<EnemyManager>
         {
             
             Enemy enemy = SimplePool.Spawn<Enemy>(PoolType.CharacterPool, spawnPos, Quaternion.identity);
+            IndicatorUI indicatorUI = SimplePool.Spawn<IndicatorUI>(PoolType.Indicator, Vector3.zero, Quaternion.identity);
+
+            enemy.SetIndicator(indicatorUI);
+            indicatorUI.OnInit();
+            indicatorUI.SetTarget(enemy.TF);
             listEnemy.Add(enemy);
         }
         
@@ -54,19 +59,15 @@ public class EnemyManager : Singleton<EnemyManager>
 
     public void DeSpawnEnemy(Enemy enemy)
     {
-        Debug.Log("DEPSPAWN ENEMY");
         listEnemy.Remove(enemy);
+        enemy.GetIndicator().OnDespawn();
         enemy.OnDespawn();
         LevelManager.Instance.SetCurrentAlive(LevelManager.Instance.CurrentAlive - 1);
-        if(CanSpawnEnemy())
-        {
-            GenerateEnemy();
-        }
     }
 
     public void ClearAllEnemy()
     {
-        for(int i= 0; i < listEnemy.Count; i++)
+        for(int i= listEnemy.Count - 1; i >= 0; i--)
         {
             listEnemy[i].OnDespawn();
         }

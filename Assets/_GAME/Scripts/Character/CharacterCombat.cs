@@ -114,7 +114,7 @@ public class CharacterCombat : MonoBehaviour
 
     public void StartAttack()
     {
-        if (IsCurrentTargetValid && !IsCurrentTargetNull)
+        if (IsCurrentTargetValid && !IsCurrentTargetNull && character != null)
         {
             weapon.SetActiveVisual(false);
             weapon.StartAttack(character.CaculateDir(currentTarget.TF));

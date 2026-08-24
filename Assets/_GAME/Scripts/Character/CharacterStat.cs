@@ -94,6 +94,7 @@ public class CharacterStat : MonoBehaviour
         else
         {
             EnemyManager.Instance.DeSpawnEnemy(character as Enemy);
+            EnemyManager.Instance.GenerateEnemy();
         }
     }
     public void OnHit(float damage, Character attacker)
