@@ -12,4 +12,10 @@ public class WeaponDatabase : ScriptableObject
     {
         return listWeaponData[weaponId];
     }
+
+    public WeaponBase GetRandomWeaponPrefab()
+    {
+        int randomWeapon = Random.Range(0, listWeaponData.Count);
+        return listWeaponData[randomWeapon].GetWeaponPrefab();
+    }
 }

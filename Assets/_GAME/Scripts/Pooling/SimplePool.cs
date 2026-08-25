@@ -1,126 +1,125 @@
 using System.Collections.Generic;
-using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 
 public static class SimplePool
 {
-    private static Dictionary<PoolType, Pool> poolInstance = new Dictionary<PoolType, Pool>();
+    private static Dictionary<int, Pool> poolInstance = new Dictionary<int, Pool>();
 
-    //Khoi tao pool moi
-    public static void PreLoad(GameUnit prefab, int amount, Transform parent)
+    public static void PreLoad<T>(T prefab, int amount, Transform parent = null) where T : GameUnit
     {
-        if(prefab == null)
-        {
-            Debug.LogError("PREFAB IS EMPTY");
-            return;
-        }
+        if (prefab == null) return;
 
-        if (!poolInstance.ContainsKey(prefab.PoolType) || poolInstance[prefab.PoolType] == null)
+        int key = prefab.gameObject.GetInstanceID();
+        if (!poolInstance.ContainsKey(key))
         {
             Pool pool = new Pool();
             pool.PreLoad(prefab, amount, parent);
-            poolInstance[prefab.PoolType] = pool;
+            poolInstance.Add(key, pool);
         }
-        
     }
 
-    //lay phan tu
-
-    public static T Spawn<T>(PoolType poolType, Vector3 pos, Quaternion rot) where T: GameUnit
+    public static T Spawn<T>(T prefab, Vector3 pos, Quaternion rot, Transform parent = null) where T : GameUnit
     {
-        if (!poolInstance.ContainsKey(poolType))
-        {
-            Debug.LogError(poolType + " IS NOT PRELOAD");
-            return null;
-        }
-        return poolInstance[poolType].Spawn(pos, rot) as T;
-    }
+        if (prefab == null) return null;
 
-    //Tra phan tu
+        int key = prefab.gameObject.GetInstanceID();
+        if (!poolInstance.TryGetValue(key, out Pool pool))
+        {
+            pool = new Pool();
+            pool.PreLoad(prefab, 0, parent);
+            poolInstance.Add(key, pool);
+        }
+
+        return pool.Spawn(pos, rot) as T;
+    }
 
     public static void Despawn(GameUnit gameUnit)
     {
-        if (!poolInstance.ContainsKey(gameUnit.PoolType))
+        if (gameUnit == null) return;
+
+        if (poolInstance.TryGetValue(gameUnit.PoolID, out Pool pool))
         {
-            Debug.LogError(gameUnit.PoolType + " IS NOT PRELOAD");
-            return ;
+            pool.Despawn(gameUnit);
         }
-        poolInstance[gameUnit.PoolType].Despawn(gameUnit);
+        else
+        {
+            GameObject.Destroy(gameUnit.gameObject);
+        }
     }
 
-    //Thu thap phan tu
-    public static void Collect(PoolType poolType)
+    public static void Collect(GameUnit prefab)
     {
-         if (!poolInstance.ContainsKey(poolType))
-        {
-            Debug.LogError(poolType + " IS NOT PRELOAD");
-            return ;
-        }
-        poolInstance[poolType].Collect();
-    }
+        if (prefab == null) return;
 
-    public static void CollectAll()
-    {
-        foreach(Pool pool in poolInstance.Values)
+        int key = prefab.gameObject.GetInstanceID();
+        if (poolInstance.TryGetValue(key, out Pool pool))
         {
             pool.Collect();
         }
     }
 
-    //Destroy 1 pool
-
-    public static void Release(PoolType poolType)
+    public static void CollectAll()
     {
-        if (!poolInstance.ContainsKey(poolType))
+        foreach (Pool pool in poolInstance.Values)
         {
-            Debug.LogError(poolType + " IS NOT PRELOAD");
-            return ;
+            pool.Collect();
         }
-        poolInstance[poolType].Release();
+    }
+
+    public static void Release(GameUnit prefab)
+    {
+        if (prefab == null) return;
+
+        int key = prefab.gameObject.GetInstanceID();
+        if (poolInstance.TryGetValue(key, out Pool pool))
+        {
+            pool.Release();
+            poolInstance.Remove(key);
+        }
     }
 
     public static void ReleaseAll()
     {
-          foreach(Pool pool in poolInstance.Values)
+        foreach (Pool pool in poolInstance.Values)
         {
             pool.Release();
         }
+        poolInstance.Clear();
     }
 }
 
 public class Pool
 {
-    Transform parent;
+    private Transform parent;
+    private GameUnit prefab;
+    private int prefabID;
 
-    GameUnit prefab;
+    private Queue<GameUnit> inactives = new Queue<GameUnit>();
+    private List<GameUnit> actives = new List<GameUnit>();
 
-    //list unit chua duoc su dung
-    Queue<GameUnit> inactives = new Queue<GameUnit>();
-
-    //list unit dang duoc su dung
-    List<GameUnit> actives = new List<GameUnit>();
-
-    //Khoi tao pool
-
-    public void PreLoad(GameUnit prefab, int amount, Transform parent)
+    public void PreLoad(GameUnit prefab, int amount, Transform parent = null)
     {
         this.prefab = prefab;
         this.parent = parent;
-        for(int i = 0; i < amount; i++)
+        this.prefabID = prefab.gameObject.GetInstanceID();
+
+        for (int i = 0; i < amount; i++)
         {
-            Despawn(Spawn(Vector3.zero, Quaternion.identity));
+            GameUnit unit = GameObject.Instantiate(prefab, parent);
+            unit.PoolID = prefabID;
+            unit.gameObject.SetActive(false);
+            inactives.Enqueue(unit);
         }
     }
-
-    //Lay phan tu tu pool
 
     public GameUnit Spawn(Vector3 pos, Quaternion rot)
     {
         GameUnit unit;
 
-        if(inactives.Count <= 0)
+        if (inactives.Count <= 0)
         {
             unit = GameObject.Instantiate(prefab, parent);
+            unit.PoolID = prefabID;
         }
         else
         {
@@ -133,8 +132,6 @@ public class Pool
         return unit;
     }
 
-    //Tra phan tu ve pool
-
     public void Despawn(GameUnit gameUnit)
     {
         if (gameUnit != null && gameUnit.gameObject.activeSelf)
@@ -142,29 +139,27 @@ public class Pool
             actives.Remove(gameUnit);
             inactives.Enqueue(gameUnit);
             gameUnit.gameObject.SetActive(false);
-            
         }
     }
 
-    //Thu thap tat ca phan tu dang dung ve pool
-
     public void Collect()
     {
-        while(actives.Count > 0)
+        while (actives.Count > 0)
         {
             Despawn(actives[0]);
         }
     }
 
-    //Destroy toan bo unit
-
     public void Release()
     {
         Collect();
-        while(inactives.Count > 0)
+        while (inactives.Count > 0)
         {
-            GameObject.Destroy(inactives.Dequeue().gameObject);
-
+            GameUnit unit = inactives.Dequeue();
+            if (unit != null)
+            {
+                GameObject.Destroy(unit.gameObject);
+            }
         }
         inactives.Clear();
     }

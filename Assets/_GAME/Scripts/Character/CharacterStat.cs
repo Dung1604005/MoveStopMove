@@ -119,10 +119,13 @@ public class CharacterStat : MonoBehaviour
             EnemyManager.Instance.GenerateEnemy();
         }
     }
-    public void OnHit(float damage, Character attacker)
+    public void OnHit(float damage, Character attacker, Vector3 hitPosition)
     {
         if (IsDead || attacker.GetStat().IsDead) return;
         currentHealth = Mathf.Max(0f, currentHealth - damage);
+
+        character.GetEffect().SetActiveVFX(CharacterVFXType.HIT, true);
+        character.GetEffect().SetSpawnVFX(CharacterVFXType.HIT, hitPosition);
         if (IsDead)
         {
             OnDead(attacker);

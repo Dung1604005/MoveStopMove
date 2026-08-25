@@ -45,12 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c01a4c7cf8f41148b3f228e87690c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponBase
-  PoolType: 0
   tf: {fileID: 8090620813924277864}
   owner: {fileID: 0}
   weaponDataSO: {fileID: 11400000, guid: 48ecb66d9cd171c47b60c92ec5e64ebb, type: 2}
-  posSpawnTf: {fileID: 8090620813924277864}
   visualTf: {fileID: 3232285944705204016}
+  bulletPrefab: {fileID: 8488309676311254789, guid: 3b7db874374fa5b428150224fe7b7336, type: 3}
 --- !u!1001 &3121517417597589723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,6 +125,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b9817f4d893d6e04ab0e9dd21386bffe, type: 3}
       propertyPath: m_Name
       value: knife (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b9817f4d893d6e04ab0e9dd21386bffe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

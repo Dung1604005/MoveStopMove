@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class BoosterManager : MonoBehaviour
 {
@@ -13,6 +11,7 @@ public class BoosterManager : MonoBehaviour
     [SerializeField] private List<Transform> spawnCenterList;
     [SerializeField] private BoosterPrefabData boosterPrefabData;
     [SerializeField] private List<BoosterBase> listBooster;
+
     public void OnInit()
     {
         ClearAllBooster();
@@ -53,22 +52,21 @@ public class BoosterManager : MonoBehaviour
             {
                 spawnPosition.y += 1.2f;
 
-                BoosterBase booster = SimplePool.Spawn<BoosterBase>(boosterPrefabData.GetRandomBooster().PoolType, spawnPosition, Quaternion.identity);
+                BoosterBase booster = SimplePool.Spawn(boosterPrefabData.GetRandomBooster(), spawnPosition, Quaternion.identity);
                 listBooster.Add(booster);
             }
         }
         else
         {
-            DelaySpawn(delaySpawn);
+            StartCoroutine(DelaySpawn(delaySpawn));
         }
     }
+
     private IEnumerator DelaySpawn(float time)
     {
         yield return new WaitForSeconds(time);
         SpawnBooster(false);
-
     }
-
 
     public void DespawnBooster(BoosterBase booster)
     {

@@ -7,6 +7,8 @@ public class CharacterCombat : MonoBehaviour
     [SerializeField] protected Character character;
     [SerializeField] protected WeaponBase weapon;
 
+    [SerializeField] protected Transform weaponHolder;
+
     [SerializeField] protected List<Character> targetList;
 
     [SerializeField] protected Character currentTarget;
@@ -26,6 +28,16 @@ public class CharacterCombat : MonoBehaviour
         timerCoolDown = 0f;
         targetList = new List<Character>();
         weapon.OnInit();
+    }
+    public void SetWeapon(WeaponBase weaponBase)
+    {
+        this.weapon = SpawnWeapon(weaponBase);
+        weapon.SetOwner(character);
+    }
+
+    public WeaponBase SpawnWeapon(WeaponBase weaponBase)
+    {
+        return Instantiate(weaponBase, weaponHolder);
     }
 
     public Character GetNearestTarget()

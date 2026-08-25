@@ -7,8 +7,12 @@ public class DataManager : Singleton<DataManager>
 
     [SerializeField] private Material fadeMat;
 
+    [SerializeField] private WeaponDatabase weaponDatabase;
+
     public Material FadeMat => fadeMat;
     public SkinDatabase SkinDatabase => skinDatabase;
 
     public ColorDataSO ColorDataSO => colorDataSO;
+
+    public WeaponDatabase WeaponDatabase =>weaponDatabase;
 }

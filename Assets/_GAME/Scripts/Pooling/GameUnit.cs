@@ -2,23 +2,19 @@ using UnityEngine;
 
 public class GameUnit : MonoBehaviour
 {
-    public PoolType PoolType;
+    [SerializeField] protected Transform tf;
 
-    [SerializeField]protected Transform tf;
+    public Transform TF => tf != null ? tf : (tf = transform);
 
-    public Transform TF => tf;
-}
+    public int PoolID { get; set; }
 
+    public virtual void OnSpawn()
+    {
 
-public enum PoolType{
-    BulletPool,
-    CharacterPool,
+    }
 
-    //BoosterPool
-    LevelUpBooserPool,
-    HealBoosterPool,
-    RangeBuffBoosterPool,
-    //UI Pool
+    public virtual void OnDespawn()
+    {
 
-    Indicator
+    }
 }

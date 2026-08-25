@@ -6,11 +6,16 @@ public class EffectVFX : MonoBehaviour
 
     [SerializeField] private float effectTime;
 
+
     private float timer = 0f;
 
     public void SetActive(bool active)
     {
         tf.gameObject.SetActive(active);
+    }
+    public void SetPosition(Vector3 position)
+    {
+        tf.position = position;
     }
 
     public void OnInit()

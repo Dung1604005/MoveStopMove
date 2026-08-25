@@ -32,7 +32,7 @@ public class BulletBase : GameUnit
         tf.localScale = defaultScale*size;
     }
 
-    public void OnDespawn()
+    public override void OnDespawn()
     {
         SimplePool.Despawn(this);
     }
@@ -42,6 +42,11 @@ public class BulletBase : GameUnit
        
         tf.position = Vector3.MoveTowards(tf.position, tf.position + moveDir, moveSpeed*Time.fixedDeltaTime);
         
+    }
+
+    public virtual void StopMove()
+    {
+        moveDir = Vector3.zero;
     }
 
     void FixedUpdate()
@@ -64,6 +69,7 @@ public class BulletBase : GameUnit
 
     public void OnTriggerEnter(Collider collider)
     {
+        Vector3 hitPoint = collider.ClosestPoint(tf.position);
         if (collider.CompareTag(GameConfig.CHARACTER_TAG))
         {
             Character character = ColliderCache<Character>.GetComponent(collider);
@@ -72,11 +78,11 @@ public class BulletBase : GameUnit
                 return;
             }
             OnDespawn();
-            character?.GetStat()?.OnHit(damage,owner );
+            character?.GetStat()?.OnHit(damage,owner,hitPoint);
         }
         else if(collider.CompareTag(GameConfig.OBSTACLE_TAG))
         {
-            OnDespawn();
+            StopMove();
         }
     }
 }

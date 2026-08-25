@@ -54,6 +54,7 @@ public class LevelManager : Singleton<LevelManager>
         LoadLevelData(levelData);
         SetCurrentAlive(levelData.TotalCharacter);
         mapManager.OnInit();
+        player.GetCombat().SetWeapon(DataManager.Instance.WeaponDatabase.GetRandomWeaponPrefab());
         player.OnInit();
         enemyManager.OnInit();
     }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponDataSO
   weaponId: 1
   spawnPos: {x: 0.02, y: 0.076, z: 0.03}
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 1969741655406246029, guid: 06b2b45ad7520394192ca6daa38c985f, type: 3}
   rangeBuff: 0
   cooldown: 1.5
   atkBuff: 25

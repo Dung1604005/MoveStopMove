@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class CharacterEffect : MonoBehaviour
+public class CharacterEffect : GameUnit
 {
    [SerializeField] private List<EffectVFX> listVfx = new List<EffectVFX>();
 
@@ -18,6 +18,11 @@ public class CharacterEffect : MonoBehaviour
         }
     }
 
+    public void SetSpawnVFX(CharacterVFXType characterVFXType, Vector3 position)
+    {
+        listVfx[(int)characterVFXType].SetPosition(position);
+    }
+
     public void TurnOffAllEffect()
     {
         foreach(EffectVFX effectVFX in listVfx)
@@ -31,5 +36,6 @@ public class CharacterEffect : MonoBehaviour
 public enum CharacterVFXType
 {
     HEAL,
-    LEVEL_UP
+    LEVEL_UP,
+    HIT
 }

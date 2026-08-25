@@ -45,11 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c01a4c7cf8f41148b3f228e87690c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponBase
-  PoolType: 0
   tf: {fileID: 9154582482110052329}
   owner: {fileID: 0}
-  weaponDataSO: {fileID: 0}
+  weaponDataSO: {fileID: 11400000, guid: 213529cb3e984554fb98cd807cd269a5, type: 2}
   visualTf: {fileID: 1241267542914231241}
+  bulletPrefab: {fileID: 5502956313106883647, guid: f25487ca8e9860040aca29c7a915bbe9, type: 3}
 --- !u!1001 &6071813882740359379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117,6 +117,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 737898d9667e13b42b113e02760da33a, type: 3}
       propertyPath: m_Name
       value: Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 737898d9667e13b42b113e02760da33a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

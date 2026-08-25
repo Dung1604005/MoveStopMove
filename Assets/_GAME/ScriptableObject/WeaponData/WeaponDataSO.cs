@@ -31,10 +31,8 @@ public class WeaponDataSO : ScriptableObject
 
     public UnityEngine.Vector3 SpawnPos => spawnPos;
 
-    public void ApplyBuff(CharacterStat stat)
+    public WeaponBase GetWeaponPrefab()
     {
-        stat.SetRangeAtk(stat.RangeAtk + rangeBuff);
-
-        stat.SetAtk(stat.Atk + atkBuff);
+        return weaponPrefab;
     }
 }

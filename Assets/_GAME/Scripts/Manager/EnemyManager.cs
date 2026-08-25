@@ -1,9 +1,13 @@
+using System;
 using System.Collections.Generic;
-
 using UnityEngine;
 
 public class EnemyManager : Singleton<EnemyManager>
 {
+    [SerializeField] private Enemy enemyPrefab;
+
+    [SerializeField] private IndicatorUI indicatorUIPrefab;
+
     [SerializeField] private List<Enemy> listEnemy = new List<Enemy>();
 
     [SerializeField] private int maxEnemy;
@@ -11,6 +15,7 @@ public class EnemyManager : Singleton<EnemyManager>
     [SerializeField] private float maxRangeSpawn;
 
     [SerializeField] private float minRangeSpawn;
+
     public void OnInit()
     {
         ClearAllEnemy();
@@ -27,10 +32,10 @@ public class EnemyManager : Singleton<EnemyManager>
         
         if(LevelManager.Instance.GetMapManager().GetRandomNavMeshPoint(playerPos, minRangeSpawn, maxRangeSpawn,out Vector3 spawnPos))
         {
-            
-            Enemy enemy = SimplePool.Spawn<Enemy>(PoolType.CharacterPool, spawnPos, Quaternion.identity);
-            IndicatorUI indicatorUI = SimplePool.Spawn<IndicatorUI>(PoolType.Indicator, Vector3.zero, Quaternion.identity);
-            int randomLevel = Random.Range(LevelManager.Instance.GetPlayerLevel() - 1, LevelManager.Instance.GetPlayerLevel() + 2);
+            Enemy enemy = SimplePool.Spawn(enemyPrefab, spawnPos, Quaternion.identity);
+            IndicatorUI indicatorUI = SimplePool.Spawn(indicatorUIPrefab, Vector3.zero, Quaternion.identity);
+            int randomLevel = Math.Max(1, UnityEngine.Random.Range(LevelManager.Instance.GetPlayerLevel() - 1, LevelManager.Instance.GetPlayerLevel() + 2));
+            enemy.GetCombat().SetWeapon(DataManager.Instance.WeaponDatabase.GetRandomWeaponPrefab());
             enemy.OnInit();
             enemy.GetStat().JumpToLevel(randomLevel);
             enemy.SetIndicator(indicatorUI);
@@ -38,12 +43,11 @@ public class EnemyManager : Singleton<EnemyManager>
             indicatorUI.OnInit();
             listEnemy.Add(enemy);
         }
-        
     }
 
     public Enemy GetRandomEnemy(Enemy excludeEnemy = null)
     {
-        int randomEnemy = Random.Range(0, listEnemy.Count);
+        int randomEnemy = UnityEngine.Random.Range(0, listEnemy.Count);
         if(listEnemy[randomEnemy] == excludeEnemy)
         {
             randomEnemy = (randomEnemy + 1) % listEnemy.Count;
