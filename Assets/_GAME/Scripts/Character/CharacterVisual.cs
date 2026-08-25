@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
+
 using TMPro;
+using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.UI;
 
 public class CharacterVisual : MonoBehaviour
 {
@@ -10,6 +13,8 @@ public class CharacterVisual : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI levelTxt;
     [SerializeField] private TextMeshProUGUI nameTxt;
+
+    [SerializeField] private Image  levelImage;
     [SerializeField] private RotationConstraint rotationConstraint;
     [SerializeField] private Transform tf;
     [SerializeField] protected Renderer pantRenderer;
@@ -17,13 +22,18 @@ public class CharacterVisual : MonoBehaviour
     [SerializeField] protected Transform hatSkinHolder;
     [SerializeField] protected GameUnit hatPrefab;
     [SerializeField] protected DetailSkinType currentHat;
+
+    [SerializeField] protected ColorType colorType;
+
+    [SerializeField] protected Renderer skinCharacterRenderer;
+
+    public ColorType ColorType => colorType;
+    
     public void OnInit()
     {
         EquipHat(DataManager.Instance.SkinDatabase.GetRandomHat());
-
+        ChangeColor(DataManager.Instance.ColorDataSO.GetRandomColor());
         EquipPant(DataManager.Instance.SkinDatabase.GetRandomPant());
-
-        Debug.Log(rotationConstraint.sourceCount);
         if (rotationConstraint.sourceCount == 0)
         {
             
@@ -40,6 +50,13 @@ public class CharacterVisual : MonoBehaviour
     public void SetSize(float size)
     {
         tf.localScale = Vector3.one * size;
+    }
+
+    public void ChangeColor(ColorType _colorType)
+    {
+        colorType = _colorType;
+        skinCharacterRenderer.material = DataManager.Instance.ColorDataSO.GetColorMat(colorType);
+        SetLevelImage(DataManager.Instance.ColorDataSO.GetColor(colorType));
     }
 
     public void ChangePantVisual(DetailSkinType pantType)
@@ -69,7 +86,6 @@ public class CharacterVisual : MonoBehaviour
     {
         currentHat = hatType;
         ApplyChangeStatSkin(DataManager.Instance.SkinDatabase.GetSkinData<HatSkinDataSO>(hatType));
-
         ChangeHatVisual(hatType);
     }
 
@@ -88,6 +104,11 @@ public class CharacterVisual : MonoBehaviour
     public void SetLevelText(int _level)
     {
         levelTxt.text = _level.ToString();
+    }
+
+    public void SetLevelImage(Color _color)
+    {
+        levelImage.color = _color;
     }
 
 

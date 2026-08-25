@@ -96,8 +96,10 @@ public class Character : GameUnit
 
     public void ChangeAnim(String animName)
     {
-        anim.ResetTrigger(currentAnim);
-
+        if (!string.IsNullOrEmpty(currentAnim))
+        {
+            anim.ResetTrigger(currentAnim);
+        }
         currentAnim = animName;
 
         anim.SetTrigger(animName);

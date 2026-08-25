@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -58,8 +59,14 @@ public class BoosterManager : MonoBehaviour
         }
         else
         {
-            Invoke(nameof(SpawnBooster), delaySpawn);
+            DelaySpawn(delaySpawn);
         }
+    }
+    private IEnumerator DelaySpawn(float time)
+    {
+        yield return new WaitForSeconds(time);
+        SpawnBooster(false);
+
     }
 
 

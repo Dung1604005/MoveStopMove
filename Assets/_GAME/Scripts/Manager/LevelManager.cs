@@ -17,7 +17,10 @@ public class LevelManager : Singleton<LevelManager>
     {
         return player.TF.position;
     }
-    
+    public int GetPlayerLevel()
+    {
+        return player.GetStat().Level;
+    }
     public MapManager GetMapManager()
     {
         return mapManager;

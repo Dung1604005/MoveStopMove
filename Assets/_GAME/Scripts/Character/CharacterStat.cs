@@ -1,5 +1,5 @@
 using System;
-using Unity.VisualScripting;
+
 using UnityEngine;
 
 public class CharacterStat : MonoBehaviour
@@ -9,12 +9,20 @@ public class CharacterStat : MonoBehaviour
     [SerializeField] private float healthBase;
     [SerializeField] private float currentExp;
     [SerializeField] private float currentHealth;
+
+    [SerializeField] private float speedBase;
     [SerializeField] private float speed;
     [SerializeField] private int level;
-    [SerializeField] private float size;
-    [SerializeField] private float atkSpd;
-    [SerializeField] private float rangeAtk;
 
+    [SerializeField] private float sizeBase;
+    [SerializeField] private float size;
+
+    [SerializeField] private float atkSpdBase;
+    [SerializeField] private float atkSpd;
+
+    [SerializeField] private float rangeAtkBase;
+    [SerializeField] private float rangeAtk;
+    [SerializeField] private float atkBase;
     [SerializeField] private float atk;
 
     public float GetCurrentHealth() { return currentHealth; }
@@ -25,7 +33,10 @@ public class CharacterStat : MonoBehaviour
 
     public void SetAtkSpd(float _atkSpd) { atkSpd = _atkSpd; }
 
-    public void SetName(String _name){nameCharacter = _name;}
+    public void SetName(String _name){
+        nameCharacter = _name;
+        character.GetVisual().SetNameText(nameCharacter);
+    }
 
     public void SetRangeAtk(float _rangeAtk)
     {
@@ -71,12 +82,23 @@ public class CharacterStat : MonoBehaviour
     {
         level = 1;
         size = 1;
-        // speed = 0f;
-        // atkSpd = 0f;
-        // atk = 0f;
-        // rangeAtk = 0f;
+        if(!character.IsPlayer)SetRandomName();
+
+        speed = speedBase;
+        atkSpd = atkSpdBase;
+        atk = atkBase;
+        rangeAtk = rangeAtkBase;
         currentExp = 0f;
         currentHealth = healthBase;
+    }
+
+    public void SetRandomName()
+    {
+        int randomVal = UnityEngine.Random.Range(0, GameConfig.LIST_NAME.Length);
+
+        SetName(GameConfig.LIST_NAME[randomVal]);
+
+        
     }
 
     public void OnDead(Character attacker)
@@ -126,22 +148,30 @@ public class CharacterStat : MonoBehaviour
         }
     }
 
-    public void LevelUp()
+    public void JumpToLevel(int targetLevel)
     {
         if(IsDead)return;
-        character.GetEffect().SetActiveVFX(CharacterVFXType.LEVEL_UP, true);
+        int timeLevelUp = targetLevel - level;
+        for(int i = 0; i < timeLevelUp; i++)
+        {
+            LevelUp(false);
+        }
+
+    }
+
+    public void LevelUp(bool withEffect = true)
+    {
+        if(IsDead)return;
+        if (withEffect)
+        {
+            character.GetEffect().SetActiveVFX(CharacterVFXType.LEVEL_UP, true);
+        }
         SetLevel(level + 1);
-
         character.GetVisual().SetLevelText(level);
-
         SetAtk(atk + GameConfig.ATK_GROWTH);
-
         SetRangeAtk(rangeAtk + GameConfig.RANGE_GROWTH);
-
         SetSize(size + GameConfig.SIZE_GROWTHRATE);
-
         SetHealthBase(healthBase + GameConfig.HEALTH_GROWTH);
-
         //Hoi day mau
         currentHealth = healthBase;
     }

@@ -19,7 +19,9 @@ public static class GameConfig
 
     public const String OBSTACLE_TAG = "Obstacle";
 
+    public const String OBSTACLe_LAYER = "Obstacle";
 
+    public static readonly String[] LIST_NAME = {"Dung", "Tan", "Huy", "Chuong", "Giang", "Hao", "Khanh", "Anh", "Quan", "Dat"};
 
     // Stat chung
 

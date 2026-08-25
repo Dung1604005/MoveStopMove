@@ -58,11 +58,16 @@ MonoBehaviour:
   healthBase: 100
   currentExp: 0
   currentHealth: 0
+  speedBase: 5
   speed: 5
   level: 1
+  sizeBase: 1
   size: 1
+  atkSpdBase: 0.8
   atkSpd: 0.8
+  rangeAtkBase: 5
   rangeAtk: 5
+  atkBase: 50
   atk: 50
 --- !u!54 &5805938455908214105
 Rigidbody:
@@ -1263,6 +1268,7 @@ MonoBehaviour:
   stat: {fileID: 7345714401820425648}
   levelTxt: {fileID: 5068063532090955205}
   nameTxt: {fileID: 6644917299449042672}
+  levelImage: {fileID: 4156516743471539327}
   rotationConstraint: {fileID: 5099771167912826028}
   tf: {fileID: 1714333946078809240}
   pantRenderer: {fileID: 3033111514638906379}
@@ -1270,9 +1276,16 @@ MonoBehaviour:
   hatSkinHolder: {fileID: 1869621104464569578}
   hatPrefab: {fileID: 0}
   currentHat: 3
+  colorType: 0
+  skinCharacterRenderer: {fileID: 6194379492710183272}
 --- !u!137 &3033111514638906379 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -529177695146175607, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+  m_PrefabInstance: {fileID: 5958329835103348610}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &6194379492710183272 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8699012472884554006, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
   m_PrefabInstance: {fileID: 5958329835103348610}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &8737135446523339234 stripped
@@ -1474,6 +1487,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8768464811333890914, guid: 5a8a500fe836bb445a7335f85558668d, type: 3}
   m_PrefabInstance: {fileID: 8810844363799442720}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4156516743471539327 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4893303591912149343, guid: 5a8a500fe836bb445a7335f85558668d, type: 3}
+  m_PrefabInstance: {fileID: 8810844363799442720}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!114 &5068063532090955205 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4328813193521537253, guid: 5a8a500fe836bb445a7335f85558668d, type: 3}

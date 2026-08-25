@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f75c0fad86d2684a83d44f5f5230df6, type: 3}
+  m_Name: ColorDataSO
+  m_EditorClassIdentifier: Assembly-CSharp::ColorDataSO
+  listColorMat:
+  - {fileID: 2100000, guid: ee3f4c001f09642429a66ac79f0554c0, type: 2}
+  - {fileID: 2100000, guid: 34c897441e7dc7d48865cbf47e76aa4d, type: 2}
+  - {fileID: 2100000, guid: 1288dccdf0e3c1040b0eecc149dee295, type: 2}
+  - {fileID: 2100000, guid: 3c62ddcc41fdab24cac235e6e82411c2, type: 2}
+  - {fileID: 2100000, guid: e7bdf9f2e0b175b4b9aae5c815907f75, type: 2}
+  - {fileID: 2100000, guid: ca66a29cb482f9c4fa465f8d3b71824d, type: 2}
+  - {fileID: 2100000, guid: de63890129379cd468218de3fcee284e, type: 2}
+  - {fileID: 2100000, guid: e7613ba3d81f477418e5fe1eaccaf8cb, type: 2}
+  listColor:
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0.95686275, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0.043137256, b: 1, a: 1}
+  - {r: 0, g: 1, b: 0.019607844, a: 1}
+  - {r: 0.7176471, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0.5411765, b: 0, a: 1}
+  - {r: 1, g: 0.7529412, b: 0.79607844, a: 1}

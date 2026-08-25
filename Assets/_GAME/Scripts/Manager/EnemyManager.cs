@@ -29,12 +29,13 @@ public class EnemyManager : Singleton<EnemyManager>
         {
             
             Enemy enemy = SimplePool.Spawn<Enemy>(PoolType.CharacterPool, spawnPos, Quaternion.identity);
-            enemy.OnInit();
             IndicatorUI indicatorUI = SimplePool.Spawn<IndicatorUI>(PoolType.Indicator, Vector3.zero, Quaternion.identity);
-
+            int randomLevel = Random.Range(LevelManager.Instance.GetPlayerLevel() - 1, LevelManager.Instance.GetPlayerLevel() + 2);
+            enemy.OnInit();
+            enemy.GetStat().JumpToLevel(randomLevel);
             enemy.SetIndicator(indicatorUI);
+            indicatorUI.SetInfor(enemy.GetStat().Level, enemy.GetVisual().ColorType, enemy.TF);
             indicatorUI.OnInit();
-            indicatorUI.SetTarget(enemy.TF);
             listEnemy.Add(enemy);
         }
         

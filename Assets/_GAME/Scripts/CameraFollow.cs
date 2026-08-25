@@ -37,6 +37,7 @@ public class CameraFollow : MonoBehaviour
 
     public void ChangeOffSet(float range)
     {
+        
         targetOffsetPlayer = offSetPlayer * (range/5f);
     }
 

@@ -17,12 +17,15 @@ public class CharacterDetector : MonoBehaviour
 
     private LayerMask layerCharacter;
 
+    private LayerMask layerObstacle;
+
     private float timer = 0f;
 
 
     public void OnInit()
     {
         layerCharacter = LayerMask.GetMask(GameConfig.CHARACTER_LAYER);
+        layerObstacle = LayerMask.GetMask(GameConfig.OBSTACLe_LAYER);
         SetActiveInTargetState(false);
     }
 
@@ -42,7 +45,7 @@ public class CharacterDetector : MonoBehaviour
         inTargetStateTF.gameObject.SetActive(active);
         isInTargetState = active;
     }
-    public void ScanTarget()
+    public void ScanTargetCharacter()
     {
         Collider[] charColArr = Physics.OverlapSphere(tf.position, stat.RangeAtk, layerCharacter);
 
@@ -55,8 +58,18 @@ public class CharacterDetector : MonoBehaviour
                 combat.AddTarget(target);
             }
         }
-
     }
+    public void ScanTargetObstacle()
+    {
+        Collider[] obstacleColArr = Physics.OverlapSphere(tf.position, stat.RangeAtk, layerObstacle);
+
+        for(int i = 0; i < obstacleColArr.Length; i++)
+        {
+            ObstacleVisble obstacleVisble = ColliderCache<ObstacleVisble>.GetComponent(obstacleColArr[i]);
+            obstacleVisble.TurnInvisble();
+        }
+    }
+
 
     void Update()
     {
@@ -64,7 +77,7 @@ public class CharacterDetector : MonoBehaviour
         if(timer >= intervalTime)
         {
             timer = 0f;
-            ScanTarget();
+            ScanTargetCharacter();
         }
     }
 }
