@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 2300000}
   - component: {fileID: 4476529906867116525}
   - component: {fileID: -248922505195904831}
-  m_Layer: 0
+  - component: {fileID: 5293429052764116018}
+  m_Layer: 10
   m_Name: Airport_Building04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,3 +134,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 16.640404, y: 13.530586, z: 44.670254}
   m_Center: {x: 0, y: 6.747341, z: -0.0000019073486}
+--- !u!114 &5293429052764116018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26dfecb5d6e4c80449357bc5e00b715a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleVisble
+  tf: {fileID: 400000}
+  baseMat: {fileID: 2100000, guid: f9063a172dec5824f87a148932421f2d, type: 2}
+  listRenderer:
+  - {fileID: 2300000}

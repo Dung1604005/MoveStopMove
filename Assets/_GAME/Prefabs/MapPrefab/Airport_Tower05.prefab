@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 2300000}
   - component: {fileID: 7870890586867949134}
   - component: {fileID: 541043904522800820}
-  m_Layer: 0
+  - component: {fileID: 4936832471335570754}
+  m_Layer: 10
   m_Name: Airport_Tower05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,3 +134,19 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &4936832471335570754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26dfecb5d6e4c80449357bc5e00b715a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleVisble
+  tf: {fileID: 400000}
+  baseMat: {fileID: 2100000, guid: f9063a172dec5824f87a148932421f2d, type: 2}
+  listRenderer:
+  - {fileID: 2300000}

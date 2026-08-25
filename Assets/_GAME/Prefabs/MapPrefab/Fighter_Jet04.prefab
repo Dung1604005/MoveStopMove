@@ -644,7 +644,8 @@ GameObject:
   - component: {fileID: 4955832928902575591}
   - component: {fileID: 4773811218837374026}
   - component: {fileID: 6007672129960453008}
-  m_Layer: 0
+  - component: {fileID: 1814275308209732944}
+  m_Layer: 10
   m_Name: Fighter_Jet04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -792,3 +793,26 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &1814275308209732944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26dfecb5d6e4c80449357bc5e00b715a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleVisble
+  tf: {fileID: 400014}
+  baseMat: {fileID: 2100000, guid: f9063a172dec5824f87a148932421f2d, type: 2}
+  listRenderer:
+  - {fileID: 2300014}
+  - {fileID: 2300012}
+  - {fileID: 2300010}
+  - {fileID: 2300008}
+  - {fileID: 2300006}
+  - {fileID: 2300004}
+  - {fileID: 2300002}
+  - {fileID: 2300000}

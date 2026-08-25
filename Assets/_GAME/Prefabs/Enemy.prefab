@@ -242,12 +242,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterDetector
   tf: {fileID: 8638295179606187267}
-  combat: {fileID: 5519082307235443383}
-  stat: {fileID: 7345714401820425648}
+  character: {fileID: 723546836855892150}
   inTargetStateTF: {fileID: 4921419137491738490}
   decalProjector: {fileID: 0}
   isInTargetState: 0
   intervalTime: 0.1
+  listObstacle: []
 --- !u!1 &8317805127209065462
 GameObject:
   m_ObjectHideFlags: 0

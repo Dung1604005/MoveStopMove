@@ -1184,63 +1184,6 @@ MonoBehaviour:
   - prefab: {fileID: 409740533316278495, guid: 81aaa84f00f45e842b2b288717d42e8a, type: 3}
     parent: {fileID: 721202244}
     amount: 10
---- !u!1001 &303628941
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6785556903914225954, guid: 61b14b4073d16cc4f9d92b558b6f486c, type: 3}
-      propertyPath: m_Name
-      value: Map
-      objectReference: {fileID: 0}
-    - target: {fileID: 8833481851325185992, guid: 61b14b4073d16cc4f9d92b558b6f486c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8833481851325185992, guid: 61b14b4073d16cc4f9d92b558b6f486c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8833481851325185992, guid: 61b14b4073d16cc4f9d92b558b6f486c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8833481851325185992, guid: 61b14b4073d16cc4f9d92b558b6f486c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8833481851325185992, guid: 61b14b4073d16cc4f9d92b558b6f486c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8833481851325185992, guid: 61b14b4073d16cc4f9d92b558b6f486c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8833481851325185992, guid: 61b14b4073d16cc4f9d92b558b6f486c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8833481851325185992, guid: 61b14b4073d16cc4f9d92b558b6f486c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8833481851325185992, guid: 61b14b4073d16cc4f9d92b558b6f486c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8833481851325185992, guid: 61b14b4073d16cc4f9d92b558b6f486c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 61b14b4073d16cc4f9d92b558b6f486c, type: 3}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2392,12 +2335,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterDetector
   tf: {fileID: 1561110922}
-  combat: {fileID: 2053026830}
-  stat: {fileID: 1156770239}
+  character: {fileID: 1156770238}
   inTargetStateTF: {fileID: 1401233916}
   decalProjector: {fileID: 415885721}
   isInTargetState: 0
   intervalTime: 0.1
+  listObstacle: []
 --- !u!114 &1561110926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2622,6 +2565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DataManager
   colorDataSO: {fileID: 11400000, guid: 4bfd206027633b04e8d1b857db79a65b, type: 2}
   skinDatabase: {fileID: 11400000, guid: 799a24fe07a7f5f4d819d1a42b54ba45, type: 2}
+  fadeMat: {fileID: 2100000, guid: 2693ebf9895473d47aa26e5a90ec9610, type: 2}
 --- !u!1 &2053026829 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
@@ -2905,4 +2849,3 @@ SceneRoots:
   - {fileID: 369627378}
   - {fileID: 1893282232}
   - {fileID: 255014494}
-  - {fileID: 303628941}
