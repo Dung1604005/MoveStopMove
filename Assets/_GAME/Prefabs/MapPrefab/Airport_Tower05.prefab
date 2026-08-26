@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4936832471335570754}
   m_Layer: 10
   m_Name: Airport_Tower05
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

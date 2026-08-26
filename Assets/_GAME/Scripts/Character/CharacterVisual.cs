@@ -55,7 +55,7 @@ public class CharacterVisual : MonoBehaviour
     public void ChangeColor(ColorType _colorType)
     {
         colorType = _colorType;
-        skinCharacterRenderer.material = DataManager.Instance.ColorDataSO.GetColorMat(colorType);
+        skinCharacterRenderer.sharedMaterial = DataManager.Instance.ColorDataSO.GetColorMat(colorType);
         SetLevelImage(DataManager.Instance.ColorDataSO.GetColor(colorType));
     }
 

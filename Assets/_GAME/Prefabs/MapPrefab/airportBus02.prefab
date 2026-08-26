@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 4969127769263409322}
   m_Layer: 10
   m_Name: airportBus02
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

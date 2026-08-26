@@ -89,7 +89,7 @@ public class CharacterDetector : MonoBehaviour
     }
     public bool IsObstacleInRange(Transform tf)
     {
-        return  character.CaculateSquaredDistance(tf) <= character.GetStat().RangeAtk * character.GetStat().RangeAtk + 5f;
+        return  character.CaculateSquaredDistance(tf) <= character.GetStat().RangeAtk * character.GetStat().RangeAtk;
     }
     public void ClearAllObstacle()
     {

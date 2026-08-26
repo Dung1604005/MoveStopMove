@@ -42,12 +42,9 @@ public class CharacterStat : MonoBehaviour
     {
         rangeAtk = Mathf.Min(GameConfig.MAX_RANGE, _rangeAtk);
         character.GetDetector().SetSizeRange(rangeAtk);
-
-        //TODO: Cho cai nay ra cho khac
         if (character.IsPlayer)
         {
-            GameManager.Instance.GetMainCameraFollow().ChangeOffSet(rangeAtk);
-            GameManager.Instance.GetUICameraFollow().ChangeOffSet(rangeAtk);
+            HandleRangeChanged(rangeAtk);
         }
     }
 
@@ -99,6 +96,11 @@ public class CharacterStat : MonoBehaviour
         SetName(GameConfig.LIST_NAME[randomVal]);
 
         
+    }
+    private void HandleRangeChanged(float newRange)
+    {
+        GameManager.Instance.GetMainCameraFollow().ChangeOffSet(newRange);
+        GameManager.Instance.GetUICameraFollow().ChangeOffSet(newRange);
     }
 
     public void OnDead(Character attacker)

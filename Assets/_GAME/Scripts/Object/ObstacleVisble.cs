@@ -23,7 +23,7 @@ public class ObstacleVisble : MonoBehaviour
         isHide = true;
         for(int i = 0; i < listRenderer.Count; i++)
         {
-            listRenderer[i].material = DataManager.Instance.FadeMat;
+            listRenderer[i].sharedMaterial = DataManager.Instance.FadeMat;
         }
     }
     public void TurnVisble()
@@ -31,7 +31,7 @@ public class ObstacleVisble : MonoBehaviour
         isHide = false;
         for(int i = 0; i < listRenderer.Count; i++)
         {
-            listRenderer[i].material = baseMat;
+            listRenderer[i].sharedMaterial = baseMat;
         }
     }
 
