@@ -19,3 +19,7 @@ MonoBehaviour:
   cooldown: 1
   atkBuff: 15
   moveSpeedBullet: 12
+  listSkinData:
+  - {fileID: 11400000, guid: 28ff49903df96244caa6f39eda836eb4, type: 2}
+  - {fileID: 11400000, guid: 00b9bc2e31dc3544fb6769b58b72fd2c, type: 2}
+  - {fileID: 11400000, guid: e2b32878ffb087a4d881e6125de77fdc, type: 2}

@@ -9,6 +9,8 @@ public class DataManager : Singleton<DataManager>
 
     [SerializeField] private WeaponDatabase weaponDatabase;
 
+    [SerializeField] private PlayerDataController playerDataController;
+
     public Material FadeMat => fadeMat;
     public SkinDatabase SkinDatabase => skinDatabase;
 

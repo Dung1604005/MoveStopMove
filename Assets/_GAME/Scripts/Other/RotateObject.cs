@@ -3,7 +3,8 @@ using UnityEngine;
 public class RotateObject : MonoBehaviour
 {
     [SerializeField] private Transform tf;
-    [SerializeField] private bool rotateByZ;
+
+    [SerializeField] private Vector3 rotateDirect;
 
     [SerializeField] private float rotateSpeed;
 
@@ -11,6 +12,8 @@ public class RotateObject : MonoBehaviour
 
     void Update()
     {
-        tf.Rotate(0, 0, rotateSpeed * Time.deltaTime);
+        tf.Rotate(rotateDirect.x*rotateSpeed*Time.deltaTime,
+         rotateDirect.y*rotateSpeed*Time.deltaTime,
+          rotateDirect.z*rotateSpeed*Time.deltaTime);
     }
 }

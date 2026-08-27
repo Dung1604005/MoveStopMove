@@ -1,16 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "WeaponDatabase", menuName = "Scriptable Objects/WeaponDatabase")]
+[CreateAssetMenu(fileName = "WeaponDatabase", menuName = "Scriptable Objects/Weapon/WeaponDatabase")]
 public class WeaponDatabase : ScriptableObject
 {
     [SerializeField] private List<WeaponDataSO> listWeaponData = new List<WeaponDataSO>();
 
 
 
-    public WeaponDataSO GetWeaponData(int weaponId)
+    public WeaponDataSO GetWeaponData(WeaponType weaponType)
     {
-        return listWeaponData[weaponId];
+        return listWeaponData[(int)weaponType];
     }
 
     public WeaponBase GetRandomWeaponPrefab()
