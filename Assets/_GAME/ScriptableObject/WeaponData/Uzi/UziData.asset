@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bb6135916f04f74baaf604028aca6ae, type: 3}
+  m_Name: UziData
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponDataSO
+  weaponType: 4
+  nameWeapon: Uzi
+  spawnPos: {x: 0.048, y: 0.1, z: 0.063}
+  weaponPrefab: {fileID: 2477238411479570587, guid: f96e132228e400b4aaa38248b7b9f3a6, type: 3}
+  rangeBuff: 0.3
+  cooldown: 1
+  atkBuff: 25
+  moveSpeedBullet: 30
+  listSkinData:
+  - {fileID: 11400000, guid: e899e04eba6b8cb40befcde674437df2, type: 2}
+  - {fileID: 11400000, guid: 434c4c2ac8353794790f4f06a5a99423, type: 2}
+  - {fileID: 11400000, guid: a8d8bf710e39f58419b8b1d59c09f1c1, type: 2}
+  modelSkinPrefab: {fileID: 4796742641939903533, guid: c92c32751102cc144a5ecd731a1c544c, type: 3}

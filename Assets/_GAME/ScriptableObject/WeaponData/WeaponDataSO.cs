@@ -69,5 +69,7 @@ public enum WeaponType
 
     AXE_1 = 3,
 
+    UZI= 4,
+
     NONE = 99
 }

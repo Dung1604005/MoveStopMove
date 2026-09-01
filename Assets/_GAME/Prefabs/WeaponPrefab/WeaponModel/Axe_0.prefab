@@ -107,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RotateObject
   tf: {fileID: 3192770678030389349}
   rotateDirect: {x: 0, y: 1, z: 0}
-  rotateSpeed: 25
+  rotateSpeed: 35
 --- !u!4 &3192770678030389349 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 62d979226a46ecb419156cafbd131370, type: 3}
