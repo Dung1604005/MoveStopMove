@@ -6,7 +6,10 @@ public class WeaponDatabase : ScriptableObject
 {
     [SerializeField] private List<WeaponDataSO> listWeaponData = new List<WeaponDataSO>();
 
-
+    public int GetCountWeapon()
+    {
+        return listWeaponData.Count;
+    }
 
     public WeaponDataSO GetWeaponData(WeaponType weaponType)
     {

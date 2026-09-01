@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bb6135916f04f74baaf604028aca6ae, type: 3}
   m_Name: ShieldData
   m_EditorClassIdentifier: Assembly-CSharp::WeaponDataSO
-  weaponId: 1
+  weaponType: 1
+  nameWeapon: Shield
   spawnPos: {x: 0.02, y: 0.076, z: 0.03}
   weaponPrefab: {fileID: 1969741655406246029, guid: 06b2b45ad7520394192ca6daa38c985f, type: 3}
   rangeBuff: 0
   cooldown: 1.5
   atkBuff: 25
   moveSpeedBullet: 10
+  listSkinData:
+  - {fileID: 11400000, guid: eca4dc9890d290d4d9acf56d1a533ee4, type: 2}
+  modelSkinPrefab: {fileID: 1582735120011532731, guid: 266ee408cd8633a4385757981a3649f1, type: 3}

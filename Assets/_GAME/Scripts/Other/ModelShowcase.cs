@@ -10,13 +10,20 @@ public class ModelShowcase : MonoBehaviour
 
     [SerializeField] private WeaponType currentWeaponType;
 
-    public void ChangeWeaponModel(WeaponDataSO weaponDataSO)
+    public void ChangeWeaponModel(WeaponType weaponType)
     {
+        WeaponDataSO weaponDataSO = DataManager.Instance.WeaponDatabase.GetWeaponData(weaponType);
         DespawnWeaponModel();
-        if(weaponDataSO.WeaponType != currentWeaponType)
+        if(weaponType != currentWeaponType)
         {
+            currentWeaponType = weaponType;
             SpawnWeaponModel(weaponDataSO.GetModelWeaponPrefab());
         }
+    }
+
+    public void ChangeWeaponSkin(WeaponSkinData weaponSkinData)
+    {
+        weaponSkinPrefab.ChangeSkin(weaponSkinData);
     }
 
     public void DespawnWeaponModel()

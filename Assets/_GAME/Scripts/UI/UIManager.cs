@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class UIManager : Singleton<UIManager>
@@ -14,6 +15,7 @@ public class UIManager : Singleton<UIManager>
         // Load UI prefab from resources
         UICanvas[] prefabs = Resources.LoadAll<UICanvas>("UI/");
 
+        
         for(int i = 0; i < prefabs.Length; i++)
         {
             canvasPrefabs.Add(prefabs[i].GetType(), prefabs[i] );

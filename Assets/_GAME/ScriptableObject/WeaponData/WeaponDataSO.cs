@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine;
 public class WeaponDataSO : ScriptableObject
 {
     [SerializeField] private WeaponType weaponType;
+
+    [SerializeField] private String nameWeapon;
     [SerializeField] private UnityEngine.Vector3 spawnPos;
 
     [SerializeField] private WeaponBase weaponPrefab;
@@ -23,6 +26,8 @@ public class WeaponDataSO : ScriptableObject
     [SerializeField] private WeaponSkin modelSkinPrefab;
     public WeaponType WeaponType => weaponType;
 
+    public String NameWeapon => nameWeapon;
+
     public float RangeBuff => rangeBuff;
 
 
@@ -39,9 +44,14 @@ public class WeaponDataSO : ScriptableObject
         return weaponPrefab;
     }
 
-    public List<WeaponSkinData> GetWeaponSkinData()
+    public WeaponSkinData GetWeaponSkinData(int skinId )
     {
-        return listSkinData;
+        return listSkinData[skinId];
+    }
+
+    public int GetTotalSkin()
+    {
+        return listSkinData.Count;
     }
 
     public WeaponSkin GetModelWeaponPrefab()
@@ -55,9 +65,9 @@ public enum WeaponType
 {
     KNIFE = 0,
     SHIELD = 1,
-    AXE_01 = 2,
+    AXE_0 = 2,
 
-    AXE_02 = 3,
+    AXE_1 = 3,
 
     NONE = 99
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8090620813924277864}
   - component: {fileID: 2827623331471553403}
+  - component: {fileID: 3363702931272828095}
   m_Layer: 0
   m_Name: Weapon-Knife
   m_TagString: Untagged
@@ -50,6 +51,19 @@ MonoBehaviour:
   weaponDataSO: {fileID: 11400000, guid: 48ecb66d9cd171c47b60c92ec5e64ebb, type: 2}
   visualTf: {fileID: 3232285944705204016}
   bulletPrefab: {fileID: 8488309676311254789, guid: 3b7db874374fa5b428150224fe7b7336, type: 3}
+--- !u!114 &3363702931272828095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9164342571624796316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6848de95df829fc4782966567a5b1466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponSkin
+  renderer: {fileID: 4364073991262684255}
 --- !u!1001 &3121517417597589723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -138,5 +152,10 @@ PrefabInstance:
 --- !u!4 &3232285944705204016 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b9817f4d893d6e04ab0e9dd21386bffe, type: 3}
+  m_PrefabInstance: {fileID: 3121517417597589723}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4364073991262684255 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: b9817f4d893d6e04ab0e9dd21386bffe, type: 3}
   m_PrefabInstance: {fileID: 3121517417597589723}
   m_PrefabAsset: {fileID: 0}

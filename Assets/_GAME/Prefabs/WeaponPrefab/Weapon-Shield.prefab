@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9154582482110052329}
   - component: {fileID: 1969741655406246029}
+  - component: {fileID: 3505825112522559745}
   m_Layer: 0
   m_Name: Weapon-Shield
   m_TagString: Untagged
@@ -50,6 +51,19 @@ MonoBehaviour:
   weaponDataSO: {fileID: 11400000, guid: 213529cb3e984554fb98cd807cd269a5, type: 2}
   visualTf: {fileID: 1241267542914231241}
   bulletPrefab: {fileID: 5502956313106883647, guid: f25487ca8e9860040aca29c7a915bbe9, type: 3}
+--- !u!114 &3505825112522559745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5061374763820960276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6848de95df829fc4782966567a5b1466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponSkin
+  renderer: {fileID: 4566176771193122054}
 --- !u!1001 &6071813882740359379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -130,5 +144,10 @@ PrefabInstance:
 --- !u!4 &1241267542914231241 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 737898d9667e13b42b113e02760da33a, type: 3}
+  m_PrefabInstance: {fileID: 6071813882740359379}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4566176771193122054 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 737898d9667e13b42b113e02760da33a, type: 3}
   m_PrefabInstance: {fileID: 6071813882740359379}
   m_PrefabAsset: {fileID: 0}

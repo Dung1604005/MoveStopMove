@@ -112,7 +112,7 @@ public class Character : GameUnit
 
     protected virtual void Update()
     {
-        if(stat.IsDead) return;
+        if(stat.IsDead || GameManager.Instance.GetCurrentGameState() != GameState.PLAYING) return;
 
         combat.CombatUpdate();
     }
