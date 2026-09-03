@@ -42,7 +42,7 @@ public class UISkinSlot : MonoBehaviour
         }
         else if(parentCanvas is CanvasSkin)
         {
-            
+            UIManager.Instance.GetUI<CanvasSkin>().SetCurrentSkin(skinId);
         }
     }
 

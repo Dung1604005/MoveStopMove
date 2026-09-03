@@ -17,4 +17,9 @@ public class HatDatabase : ScriptableObject
         int randomVal = Random.Range(0, listHat.Count);
         return (HatType)randomVal;
     }
+
+    public int GetTotalNumberHat()
+    {
+        return listHat.Count;
+    }
 }

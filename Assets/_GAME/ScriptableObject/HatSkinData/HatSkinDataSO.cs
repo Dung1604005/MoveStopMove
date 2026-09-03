@@ -10,6 +10,7 @@ public class HatSkinDataSO : SkinDataSO
     [SerializeField] private HatType hatType;
 
 
+
     public Vector3 SpawnPos => spawnPos;
 
     public GameUnit HatPrefab => hatPrefab;

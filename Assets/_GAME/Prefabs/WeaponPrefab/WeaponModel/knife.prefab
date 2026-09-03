@@ -13,6 +13,10 @@ PrefabInstance:
       value: knife
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: ecd6cb62ed8350e498f9e25d15d9caa3, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ecd6cb62ed8350e498f9e25d15d9caa3, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}

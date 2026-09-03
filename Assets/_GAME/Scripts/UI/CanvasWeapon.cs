@@ -30,9 +30,6 @@ public class CanvasWeapon : UICanvas
         base.SetUp();
         GameManager.Instance.GetModelShowcase().SetActiveCharacterModel(false);
         SetUpWeaponInfo(WeaponType.KNIFE);
-        
-        
-        
     }
 
     public void ClearSkinSlots()
@@ -99,7 +96,7 @@ public class CanvasWeapon : UICanvas
         int lastEquipedSkin = currentSkinId;
         if(lastEquipedSkin >= 0)
         {
-            Debug.Log(lastEquipedSkin);
+            
             skinSlots[lastEquipedSkin].SetActiveSelectedEffect(false);
         }
         currentSkinId = skinId;

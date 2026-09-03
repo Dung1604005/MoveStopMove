@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3004626099595665411}
   - component: {fileID: 866817563469578916}
   - component: {fileID: 450105864165864538}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: uzi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 4747753630482374621}
   - component: {fileID: 4796742641939903533}
   - component: {fileID: 6012388907348255286}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Uzi
   m_TagString: Untagged
   m_Icon: {fileID: 0}

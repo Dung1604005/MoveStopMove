@@ -17,6 +17,11 @@ public class PantDatabase : ScriptableObject
         int randomVal = Random.Range(0, listPant.Count);
         return (PantType)randomVal;
     }
+
+    public int GetTotalNumberPant()
+    {
+        return listPant.Count;
+    }
 }
 public enum PantType
 {

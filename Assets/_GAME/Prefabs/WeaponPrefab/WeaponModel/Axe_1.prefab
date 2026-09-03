@@ -65,6 +65,10 @@ PrefabInstance:
       value: Axe_1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5468664f0bd8ce142add6858bef44f76, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5468664f0bd8ce142add6858bef44f76, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}

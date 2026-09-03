@@ -7,4 +7,11 @@ public class CanvasMainMenu : UICanvas
     {
         UIManager.Instance.OpenUI<CanvasWeapon>();
     }
+
+    public void OnButtonSkin()
+    {
+        UIManager.Instance.CloseUIDirectly<CanvasMainMenu>();
+
+        UIManager.Instance.OpenUI<CanvasSkin>();
+    }
 }
