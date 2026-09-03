@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -8,6 +9,12 @@ public class CanvasSkin : UICanvas
     [SerializeField] private UISkinSlot skinSlotPrefab;
     [SerializeField] private SkinType currentSkinType;
     [SerializeField] private List<SkinTabGroup> skinTabs = new List<SkinTabGroup>();
+
+    [SerializeField] private TextMeshProUGUI nameTxt;
+
+    [SerializeField] private TextMeshProUGUI statDestxt;
+
+    [SerializeField] private GameObject buyButton;
     private Dictionary<SkinType, SkinTabGroup> tabLookup;
 
     private void Awake()
@@ -138,6 +145,16 @@ public class CanvasSkin : UICanvas
         tabLookup[currentSkinType].SetActiveSkinTab(true);
 
         SetUpSkin();
+    }
+
+    public void OnBuyButton()
+    {
+        
+    }
+
+    public void OnBackButton()
+    {
+        
     }
 }
 [Serializable]

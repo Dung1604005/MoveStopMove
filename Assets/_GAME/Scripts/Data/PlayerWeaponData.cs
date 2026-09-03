@@ -7,5 +7,5 @@ using UnityEngine;
 public struct WeaponDataSave
 {
     public int WeaponId;
-    public int[] ListSkinData;
+    public int[] ListUnlockedSkin;
 }

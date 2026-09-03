@@ -61,6 +61,6 @@ public class LevelManager : Singleton<LevelManager>
 
     void Awake()
     {
-        //OnInit();
+        OnInit();
     }
 }

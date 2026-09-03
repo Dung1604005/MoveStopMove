@@ -21,6 +21,28 @@ public abstract class SkinDataSO : ScriptableObject
         return skinPortrait;
     }
 
+    public String GetAllStatDescription()
+    {
+        String result = "";
+        result = result + GetStatDescription(rangeBuff, "Range Atk");
+
+        result = result + GetStatDescription(atkSpdBuff, "Atk Spd");
+
+        result = result + GetStatDescription(speedBuff, "Speed");
+        return result;
+    }
+
+    public String GetStatDescription(float stat, String nameStat)
+    {
+        String result = "";
+        if(stat > 0.01f)
+        {
+            result = nameStat + " + " + stat.ToString()+"\n";
+        }
+
+        return result;
+    }
+
     
 
 

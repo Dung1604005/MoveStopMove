@@ -1497,7 +1497,7 @@ MonoBehaviour:
   mainCameraFollow: {fileID: 330585548}
   uiCameraFollow: {fileID: 1176667923}
   modelShowcase: {fileID: 538742904}
-  currentGameState: 0
+  currentGameState: 1
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,5 +9,13 @@ public struct PlayerData
     public int GoldAmount;
     public WeaponDataSave[] ListWeaponDataSave;
 
+    public int[] ListUnlockedPant;
+
+    public int[] ListUnlockedHat;
+
+    public int CurrentPant;
+
+    public int CurrentHat;
+
 
 }
