@@ -11,6 +11,8 @@ public class UISkinSlot : MonoBehaviour
 
     [SerializeField] private GameObject selectedEffect;
 
+    [SerializeField] private GameObject lockedEffect;
+
     [SerializeField] private UICanvas parentCanvas;
 
     public void SetParentCanvas(UICanvas uICanvas)
@@ -31,6 +33,11 @@ public class UISkinSlot : MonoBehaviour
     public void SetActiveSelectedEffect(bool active)
     {
         selectedEffect.SetActive(active);
+    }
+
+    public void SetActiveLockedEffect(bool active)
+    {
+        lockedEffect.SetActive(active);
     }
 
 

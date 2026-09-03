@@ -3672,6 +3672,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1930537633}
   - component: {fileID: 1930537634}
+  - component: {fileID: 1930537635}
   m_Layer: 0
   m_Name: DataManager
   m_TagString: Untagged
@@ -3711,7 +3712,28 @@ MonoBehaviour:
   hatDatabase: {fileID: 11400000, guid: f60c4d806999f8d4ab3c64a1443c0667, type: 2}
   fadeMat: {fileID: 2100000, guid: 85f0daa22d0c4c54bb631b228e33039d, type: 2}
   weaponDatabase: {fileID: 11400000, guid: bcea90446fa3dfd42bbbf8816d8d42c9, type: 2}
-  playerDataController: {fileID: 0}
+  playerDataController: {fileID: 1930537635}
+--- !u!114 &1930537635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930537632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d9fe6a8b170bf478be1e07e3c797bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDataController
+  playerData:
+    NamePlayer: Dung
+    RankLevel: 0
+    GoldAmount: 0
+    ListWeaponDataSave: []
+    ListUnlockedPant: 00000000
+    ListUnlockedHat: 00000000010000000200000003000000
+    CurrentPant: 0
+    CurrentHat: 0
 --- !u!1 &2041887160
 GameObject:
   m_ObjectHideFlags: 0
@@ -3828,7 +3850,7 @@ Camera:
   m_Depth: -2
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 2049
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: fe0fefff0327a9d4fa26af9b45a79967, type: 2}
   m_TargetDisplay: 0

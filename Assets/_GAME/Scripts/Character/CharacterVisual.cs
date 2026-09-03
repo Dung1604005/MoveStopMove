@@ -66,7 +66,10 @@ public class CharacterVisual : MonoBehaviour
     }
     public void ChangeHatVisual(HatType hatType)
     {
-        Destroy(hatPrefab?.gameObject);
+        if(hatPrefab != null && hatPrefab.gameObject != null)
+        {
+            Destroy(hatPrefab.gameObject);
+        }
         if (hatType != HatType.NONE)
         {
             HatSkinDataSO hatSkinData = DataManager.Instance.HatDatabase.GetHatData(hatType);

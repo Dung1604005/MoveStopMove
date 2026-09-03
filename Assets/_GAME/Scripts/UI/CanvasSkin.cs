@@ -64,7 +64,7 @@ public class CanvasSkin : UICanvas
         tab.slots.Clear();
         tab.currentSelectedId = -1;
     }
-    private void CreateSlots(SkinType type, int totalCount, Func<int, Sprite> getSpriteFunc)
+    private void CreateSlots(SkinType type, int totalCount, Func<int, Sprite> getSpriteFunc, int[] unlockedSkins)
     {
         SkinTabGroup tab = tabLookup[type];
 
@@ -75,7 +75,12 @@ public class CanvasSkin : UICanvas
             UISkinSlot slot = Instantiate(skinSlotPrefab, tab.holder);
             slot.SetUpInfo(i, getSpriteFunc(i));
             slot.SetParentCanvas(this);
+            slot.SetActiveLockedEffect(true);
             tab.slots.Add(slot);
+        }
+        for(int i = 0; i < unlockedSkins.Length; i++)
+        {
+            tab.slots[unlockedSkins[i]].SetActiveLockedEffect(false);
         }
     }
     public void SetUpSkin()
@@ -94,13 +99,15 @@ public class CanvasSkin : UICanvas
     public void SetUpPantSlots()
     {
         var pantDB = DataManager.Instance.PantDatabase;
-        CreateSlots(SkinType.PANT, pantDB.GetTotalNumberPant(), i => pantDB.GetPantData((PantType)i).GetSprite());
+        CreateSlots(SkinType.PANT, pantDB.GetTotalNumberPant(), i => pantDB.GetPantData((PantType)i).GetSprite(),
+        DataManager.Instance.PlayerDataController.GetArrUnlockedPant());
     }
 
     public void SetUpHatSlots()
     {
         var hatDB = DataManager.Instance.HatDatabase;
-        CreateSlots(SkinType.HAT, hatDB.GetTotalNumberHat(), i => hatDB.GetHatData((HatType)i).GetSprite());
+        CreateSlots(SkinType.HAT, hatDB.GetTotalNumberHat(), i => hatDB.GetHatData((HatType)i).GetSprite(),
+         DataManager.Instance.PlayerDataController.GetArrUnlockedHat());
     }
     public void SetCurrentSkin(int skinId)
     {
@@ -147,6 +154,17 @@ public class CanvasSkin : UICanvas
         SetUpSkin();
     }
 
+    public void SetSkinNameText(String _nameSkin)
+    {
+        nameTxt.text = _nameSkin;
+
+    }
+
+    public void SetStatDescription(String description)
+    {
+        statDestxt.text = description;
+    }
+
     public void OnBuyButton()
     {
         
@@ -154,7 +172,7 @@ public class CanvasSkin : UICanvas
 
     public void OnBackButton()
     {
-        
+        UIManager.Instance.CloseUIDirectly<CanvasSkin>();
     }
 }
 [Serializable]
@@ -163,11 +181,15 @@ public class SkinTabGroup
     public Transform tf;
     public SkinType skinType;
     public Transform holder;
+
+    public ButtonTabSkin buttonTabSkin;
     public List<UISkinSlot> slots = new List<UISkinSlot>();
     public int currentSelectedId = -1;
 
     public void SetActiveSkinTab(bool active)
     {
         tf.gameObject.SetActive(active);
+
+        buttonTabSkin.SetActiveButton(active);
     }
 }

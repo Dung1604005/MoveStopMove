@@ -21,4 +21,6 @@ public class DataManager : Singleton<DataManager>
     public PantDatabase PantDatabase => pantDatabase;
 
     public HatDatabase HatDatabase => hatDatabase;
+
+    public PlayerDataController PlayerDataController => playerDataController;
 }

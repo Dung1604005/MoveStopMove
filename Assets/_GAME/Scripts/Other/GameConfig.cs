@@ -23,6 +23,10 @@ public static class GameConfig
 
     public static readonly String[] LIST_NAME = {"Dung", "Tan", "Huy", "Chuong", "Giang", "Hao", "Khanh", "Anh", "Quan", "Dat"};
 
+    //Data save
+
+    public const String PLAYERDATA_KEY = "Playerdata";
+
     // Stat chung
 
     public const float BASE_EXP = 100f;

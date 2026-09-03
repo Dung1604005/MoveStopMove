@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091aa48f5195c624a8383cccc6f2f6e7, type: 3}
   m_Name: Headphone
   m_EditorClassIdentifier: Assembly-CSharp::HatSkinDataSO
-  skinId: 8
-  skinType: 1
   rangeBuff: 1
   atkSpdBuff: 0.5
   speedBuff: 0
+  skinPortrait: {fileID: 21300000, guid: e904af287a3ed34438ceda1a93336276, type: 3}
   spawnPos: {x: 0, y: -0.056, z: 0}
   hatPrefab: {fileID: 8939094098366772067, guid: d378d71cb988502448309369048e2cc3, type: 3}
   hatType: 1

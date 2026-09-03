@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using UnityEditor.Playables;
 using UnityEngine;
 
 public class PlayerDataController : MonoBehaviour
@@ -18,28 +20,30 @@ public class PlayerDataController : MonoBehaviour
 
     public HatType GetCurrentHat() {return (HatType)playerData.CurrentHat;}
 
-    public List<PantType> GetListUnlockedPant()
+    public int[] GetArrUnlockedPant()
     {
-        List<PantType> listUnlockedPant = new List<PantType>();
-
-        for(int i = 0 ; i < playerData.ListUnlockedPant.Length; i++)
-        {
-            listUnlockedPant.Add((PantType)playerData.ListUnlockedPant[i]);
-        }
-
-        return listUnlockedPant;
+    
+        return playerData.ListUnlockedPant;
     }
 
-    public List<HatType> GetListUnlockedHat()
+   public int[] GetArrUnlockedHat()
     {
-        List<HatType> listUnlockedHat = new List<HatType>();
+    
+        return playerData.ListUnlockedHat;
+    }
 
-        for(int i = 0 ; i < playerData.ListUnlockedHat.Length; i++)
-        {
-            listUnlockedHat.Add((HatType)playerData.ListUnlockedHat[i]);
-        }
+    public void SaveData()
+    {
+        String jsonText = JsonUtility.ToJson(playerData);
 
-        return listUnlockedHat;
+        PlayerPrefs.SetString(GameConfig.PLAYERDATA_KEY, jsonText);
+        PlayerPrefs.Save();
+    }
+
+    public void LoadData()
+    {
+        String jsonText = PlayerPrefs.GetString(GameConfig.PLAYERDATA_KEY);
+        playerData = JsonUtility.FromJson<PlayerData>(jsonText);
     }
 
 
