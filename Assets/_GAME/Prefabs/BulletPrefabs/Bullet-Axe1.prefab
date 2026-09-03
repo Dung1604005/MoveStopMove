@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7341964146631711686}
   - component: {fileID: 8140063517278987882}
   - component: {fileID: 7364828545121614497}
-  - component: {fileID: 4588911535591859411}
+  - component: {fileID: 1097301513216034295}
   m_Layer: 0
   m_Name: Bullet-Axe1
   m_TagString: Untagged
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c1eb6df8ddd3f48b52e1a61dfca99a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RotateObject
-  tf: {fileID: 7341964146631711686}
+  tf: {fileID: 2985938046072929576}
   rotateDirect: {x: 0, y: 0, z: 1}
   rotateSpeed: 50
 --- !u!114 &7364828545121614497
@@ -70,7 +70,7 @@ MonoBehaviour:
   liveTime: 2
   timerLive: 0
   owner: {fileID: 0}
---- !u!65 &4588911535591859411
+--- !u!65 &1097301513216034295
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,8 +89,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9155563, y: 0.68971753, z: 1}
-  m_Center: {x: -0.042221844, y: 0.094995186, z: 0}
+  m_Size: {x: 0.55593115, y: 1, z: 0.121298134}
+  m_Center: {x: 0.017818779, y: 0, z: -0.010977939}
 --- !u!1 &4979126867527099390
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,13 +119,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4979126867527099390}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000054016702, y: -0.000000009313225, z: -0.8531529, w: 0.521661}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 32.947144, y: 32.94714, z: 32.94713}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7341964146631711686}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -117.113}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2547643726811830910
 MeshFilter:
   m_ObjectHideFlags: 0

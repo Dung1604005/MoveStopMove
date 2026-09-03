@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bb6135916f04f74baaf604028aca6ae, type: 3}
+  m_Name: HammerData
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponDataSO
+  weaponType: 5
+  nameWeapon: Hammer
+  spawnPos: {x: -0.1292, y: 0.148, z: 0.0174}
+  weaponPrefab: {fileID: 5976094085731162235, guid: a032204df8ff57940b48144c8b2e01f1, type: 3}
+  rangeBuff: 0
+  cooldown: 2.75
+  atkBuff: 67
+  moveSpeedBullet: 8
+  listSkinData:
+  - {fileID: 11400000, guid: cd84bac4d8960a348a96afcf2d58916c, type: 2}
+  - {fileID: 11400000, guid: 029f0b12f7a8c8e47a8fa2bfc86d47dd, type: 2}
+  - {fileID: 11400000, guid: 72e4e20269fa4134f8345cc84ccd54ea, type: 2}
+  modelSkinPrefab: {fileID: 3784579806792914481, guid: 97fc32c8afca2e14c84da26439768ff2, type: 3}
