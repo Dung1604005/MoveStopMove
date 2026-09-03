@@ -18,10 +18,10 @@ public class CharacterVisual : MonoBehaviour
     [SerializeField] private RotationConstraint rotationConstraint;
     [SerializeField] private Transform tf;
     [SerializeField] protected Renderer pantRenderer;
-    [SerializeField] protected DetailSkinType currentPant;
+    [SerializeField] protected PantType currentPant;
     [SerializeField] protected Transform hatSkinHolder;
     [SerializeField] protected GameUnit hatPrefab;
-    [SerializeField] protected DetailSkinType currentHat;
+    [SerializeField] protected HatType currentHat;
 
     [SerializeField] protected ColorType colorType;
 
@@ -31,9 +31,9 @@ public class CharacterVisual : MonoBehaviour
     
     public void OnInit()
     {
-        EquipHat(DataManager.Instance.SkinDatabase.GetRandomHat());
+        EquipHat(DataManager.Instance.HatDatabase.GetRandomHat());
         ChangeColor(DataManager.Instance.ColorDataSO.GetRandomColor());
-        EquipPant(DataManager.Instance.SkinDatabase.GetRandomPant());
+        EquipPant(DataManager.Instance.PantDatabase.GetRandomPant());
         if (rotationConstraint.sourceCount == 0)
         {
             
@@ -59,17 +59,17 @@ public class CharacterVisual : MonoBehaviour
         SetLevelImage(DataManager.Instance.ColorDataSO.GetColor(colorType));
     }
 
-    public void ChangePantVisual(DetailSkinType pantType)
+    public void ChangePantVisual(PantType pantType)
     {
-        PantSkinDataSO pantData = DataManager.Instance.SkinDatabase.GetSkinData<PantSkinDataSO>(pantType);
+        PantSkinDataSO pantData = DataManager.Instance.PantDatabase.GetPantData(pantType);
         pantRenderer.sharedMaterial = pantData.GetPantMat();
     }
-    public void ChangeHatVisual(DetailSkinType hatType)
+    public void ChangeHatVisual(HatType hatType)
     {
         Destroy(hatPrefab?.gameObject);
-        if (hatType != DetailSkinType.HAT_NONE)
+        if (hatType != HatType.NONE)
         {
-            HatSkinDataSO hatSkinData = DataManager.Instance.SkinDatabase.GetSkinData<HatSkinDataSO>(hatType);
+            HatSkinDataSO hatSkinData = DataManager.Instance.HatDatabase.GetHatData(hatType);
             hatPrefab = Instantiate(hatSkinData.HatPrefab, hatSkinHolder.position + hatSkinData.SpawnPos, hatSkinHolder.rotation, hatSkinHolder);
         }
     }
@@ -82,17 +82,17 @@ public class CharacterVisual : MonoBehaviour
         stat.SetSpeed(stat.Speed + skinDataSO.SpeedBuff);
     }
 
-    public void EquipHat(DetailSkinType hatType)
+    public void EquipHat(HatType hatType)
     {
         currentHat = hatType;
-        ApplyChangeStatSkin(DataManager.Instance.SkinDatabase.GetSkinData<HatSkinDataSO>(hatType));
+        ApplyChangeStatSkin(DataManager.Instance.HatDatabase.GetHatData(hatType));
         ChangeHatVisual(hatType);
     }
 
-    public void EquipPant(DetailSkinType pantType)
+    public void EquipPant(PantType pantType)
     {
         currentPant = pantType;
-        ApplyChangeStatSkin(DataManager.Instance.SkinDatabase.GetSkinData<PantSkinDataSO>(pantType));
+        ApplyChangeStatSkin(DataManager.Instance.PantDatabase.GetPantData(pantType));
         ChangePantVisual(pantType);
     }
 

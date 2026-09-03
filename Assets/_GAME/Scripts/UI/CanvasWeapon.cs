@@ -28,7 +28,9 @@ public class CanvasWeapon : UICanvas
     public override void SetUp()
     {
         base.SetUp();
+        GameManager.Instance.GetModelShowcase().SetActiveCharacterModel(false);
         SetUpWeaponInfo(WeaponType.KNIFE);
+        
         
         
     }
@@ -50,7 +52,8 @@ public class CanvasWeapon : UICanvas
         {
             UISkinSlot uISkinSlot = Instantiate(skinSlotPrefab, skinSlotHolder);
 
-            uISkinSlot.SetUpInfo(weaponDataSO.GetWeaponSkinData(i));
+            uISkinSlot.SetUpInfo(i, weaponDataSO.GetWeaponSkinData(i).GetSpriteUI());
+            uISkinSlot.SetParentCanvas(this);
 
             skinSlots.Add(uISkinSlot);
         }

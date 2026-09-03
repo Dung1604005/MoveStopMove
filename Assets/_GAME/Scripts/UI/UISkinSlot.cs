@@ -11,11 +11,16 @@ public class UISkinSlot : MonoBehaviour
 
     [SerializeField] private GameObject selectedEffect;
 
+    [SerializeField] private UICanvas parentCanvas;
 
-    public void SetUpInfo(WeaponSkinData weaponSkinData)
+    public void SetParentCanvas(UICanvas uICanvas)
     {
-        skinId = weaponSkinData.SkinId;
-        SetSkinPortrait(weaponSkinData.GetSpriteUI());
+        parentCanvas = uICanvas;
+    }
+    public void SetUpInfo(int _skinId, Sprite spriteUI)
+    {
+        skinId = _skinId;
+        SetSkinPortrait(spriteUI);
     }
 
     public void SetSkinPortrait(Sprite _sprite)
@@ -31,7 +36,14 @@ public class UISkinSlot : MonoBehaviour
 
     public void OnPointerClick(BaseEventData baseEventData)
     {
-        UIManager.Instance.GetUI<CanvasWeapon>().SetCurrentSkinEquiped(skinId);
+        if(parentCanvas is CanvasWeapon)
+        {
+            UIManager.Instance.GetUI<CanvasWeapon>().SetCurrentSkinEquiped(skinId);
+        }
+        else if(parentCanvas is CanvasSkin)
+        {
+            
+        }
     }
 
 }

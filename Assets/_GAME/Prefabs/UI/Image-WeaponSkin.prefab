@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 8160941644724696342}
   - component: {fileID: 2973252138696368114}
   m_Layer: 5
-  m_Name: Image-Skin1
+  m_Name: Image-WeaponSkin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

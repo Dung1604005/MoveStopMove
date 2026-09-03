@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e188c96090c7a4caec4be65e2167ad, type: 3}
   m_Name: PantCoMy
   m_EditorClassIdentifier: Assembly-CSharp::PantSkinDataSO
-  skinId: 2
-  skinType: 0
   rangeBuff: 0.1
   atkSpdBuff: 0.1
   speedBuff: 0.1
   pantType: 2
   pantMat: {fileID: 2100000, guid: 60bfd192642ce4844923cb797ac0b91c, type: 2}
+  skinPortrait: {fileID: 21300000, guid: 6bbe56dbc78212c4d974aa5161f37a2e, type: 3}

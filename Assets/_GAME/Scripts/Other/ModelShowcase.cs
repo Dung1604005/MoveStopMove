@@ -10,6 +10,8 @@ public class ModelShowcase : MonoBehaviour
 
     [SerializeField] private WeaponType currentWeaponType;
 
+    [SerializeField] private CharacterVisual characterModel;
+
     public void ChangeWeaponModel(WeaponType weaponType)
     {
         WeaponDataSO weaponDataSO = DataManager.Instance.WeaponDatabase.GetWeaponData(weaponType);
@@ -36,5 +38,20 @@ public class ModelShowcase : MonoBehaviour
     public void SpawnWeaponModel(WeaponSkin prefab)
     {
         weaponSkinPrefab = Instantiate(prefab, weaponHolder);
+    }
+
+    public void SetActiveCharacterModel(bool active)
+    {
+        characterModel.gameObject.SetActive(active);
+    }
+
+    public void ChangePantModel(PantType pantType)
+    {
+        characterModel.ChangePantVisual(pantType);
+    }
+
+    public void ChangeHatModel(HatType hatType)
+    {
+        characterModel.ChangeHatVisual(hatType); 
     }
 }
