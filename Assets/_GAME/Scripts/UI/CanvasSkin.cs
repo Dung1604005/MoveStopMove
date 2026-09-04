@@ -17,7 +17,11 @@ public class CanvasSkin : UICanvas
 
     [SerializeField] private TextMeshProUGUI statDestxt;
 
+    [SerializeField] private TextMeshProUGUI goldTxt;
+
     [SerializeField] private GameObject buyButton;
+    
+    
     private Dictionary<SkinType, SkinTabGroup> tabLookup;
     private void OnInit()
     {
@@ -34,6 +38,7 @@ public class CanvasSkin : UICanvas
     {
         base.SetUp();
         OnInit();
+        SetGoldText(DataManager.Instance.PlayerDataController.GetCurrentGold());
         GameManager.Instance.GetModelShowcase().SetActiveCharacterModel(true);
         ChangeSkinType(0);
     }
@@ -49,6 +54,14 @@ public class CanvasSkin : UICanvas
         foreach (var tab in skinTabs)
         {
             ClearTabSlots(tab);
+        }
+    }
+
+    public void ReloadAllSlots()
+    {
+        foreach (var tab in skinTabs)
+        {
+            tab.ReloadTab();
         }
     }
 
@@ -94,15 +107,18 @@ public class CanvasSkin : UICanvas
 
     public void SetUpSkinStat()
     {
-        
-        if(tabLookup[currentSkinType].currentSelectedId == -1)return;
+        int skinId = tabLookup[currentSkinType].currentSelectedId;
+        if(skinId == -1)return;
 
-        SkinDataSO skinDataSO = DataManager.Instance.GetSkinDatabase(currentSkinType).GetSkinData(tabLookup[currentSkinType].currentSelectedId);
-
-       
+        SkinDataSO skinDataSO = DataManager.Instance.GetSkinDatabase(currentSkinType).GetSkinData(skinId);
         SetSkinNameText(skinDataSO.GetNameSkin());
 
         SetStatDescription(skinDataSO.GetAllStatDescription());
+
+        if(!DataManager.Instance.PlayerDataController.IsThisSkinUnlocked(currentSkinType, skinId))
+        {
+            SetPriceText(DataManager.Instance.GetSkinDatabase(currentSkinType).GetSkinData(skinId).Price);
+        }
     }
 
     public void SetUpSkinSlots(SkinType skinType)
@@ -117,28 +133,19 @@ public class CanvasSkin : UICanvas
         priceTxt.text = price.ToString();
     }
 
+    public void SetGoldText(int gold)
+    {
+        goldTxt.text = gold.ToString();
+    }
+
     public void SetCurrentSkin(int skinId)
     {
         SkinTabGroup tab = tabLookup[currentSkinType];
-        if (tab.currentSelectedId == skinId) return;
-
-        if (tab.currentSelectedId >= 0 && tab.currentSelectedId < tab.slots.Count)
-        {
-            tab.slots[tab.currentSelectedId].SetActiveSelectedEffect(false);
-        }
-
+        if (tab.currentSelectedId == skinId || skinId < 0) return;
         tab.currentSelectedId = skinId;
-        if (tab.currentSelectedId >= 0 && tab.currentSelectedId < tab.slots.Count)
-        {
-            tab.slots[tab.currentSelectedId].SetActiveSelectedEffect(true);
-        }
-
+        DataManager.Instance.PlayerDataController.UpdateCurrentSkinChoosed(tab.skinType, skinId);
         ApplySkinModel(currentSkinType, skinId);
         SetUpSkinStat();
-        if(!DataManager.Instance.PlayerDataController.IsThisSkinUnlocked(currentSkinType, skinId))
-        {
-            SetPriceText(DataManager.Instance.GetSkinDatabase(currentSkinType).GetSkinData(skinId).Price);
-        }
     }
 
     private void ApplySkinModel(SkinType type, int skinId)
@@ -179,29 +186,17 @@ public class CanvasSkin : UICanvas
 
     public void OnBuyButton()
     {
-        
+        int price = DataManager.Instance.GetSkinDatabase(currentSkinType).GetSkinData(tabLookup[currentSkinType].currentSelectedId).Price;
+        if (DataManager.Instance.PlayerDataController.CanAfford(price))
+        {
+            DataManager.Instance.PlayerDataController.UnlockSkin(currentSkinType, tabLookup[currentSkinType].currentSelectedId);
+            DataManager.Instance.PlayerDataController.ChangeGold(-price);
+        }
     }
 
     public void OnBackButton()
     {
         UIManager.Instance.CloseUIDirectly<CanvasSkin>();
-    }
-}
-[Serializable]
-public class SkinTabGroup
-{
-    public Transform tf;
-    public SkinType skinType;
-    public Transform holder;
-
-    public ButtonTabSkin buttonTabSkin;
-    public List<UISkinSlot> slots = new List<UISkinSlot>();
-    public int currentSelectedId = -1;
-
-    public void SetActiveSkinTab(bool active)
-    {
-        tf.gameObject.SetActive(active);
-
-        buttonTabSkin.SetActiveButton(active);
+        UIManager.Instance.OpenUI<CanvasMainMenu>();
     }
 }

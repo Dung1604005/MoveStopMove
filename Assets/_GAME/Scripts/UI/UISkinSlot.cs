@@ -1,4 +1,5 @@
 
+using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -38,6 +39,13 @@ public class UISkinSlot : MonoBehaviour
     public void SetActiveLockedEffect(bool active)
     {
         lockedEffect.SetActive(active);
+    }
+
+    public void Reload(SkinType skinType)
+    {
+        SetActiveLockedEffect(!DataManager.Instance.PlayerDataController.IsThisSkinUnlocked(skinType, skinId));
+
+        SetActiveSelectedEffect(DataManager.Instance.PlayerDataController.IsThisSkinIdChoosed(skinType, skinId));
     }
 
 

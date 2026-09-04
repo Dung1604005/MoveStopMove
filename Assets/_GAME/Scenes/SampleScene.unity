@@ -3727,16 +3727,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDataController
   playerData:
-    NamePlayer: Dung
-    RankLevel: 0
-    GoldAmount: 0
+    NamePlayer: You
+    RankLevel: 1
+    GoldAmount: 100
     ListWeaponDataSave: []
     ListUnlockedSkinDataSave:
     - SkinType: 0
       ListUnlockedSkin: 00000000
     - SkinType: 1
-      ListUnlockedSkin: 000000000100000002000000
-    CurrentEquipedSkin: 0000000001000000
+      ListUnlockedSkin: 00000000
+    CurrentEquipedSkin: 0000000000000000
 --- !u!1 &2041887160
 GameObject:
   m_ObjectHideFlags: 0

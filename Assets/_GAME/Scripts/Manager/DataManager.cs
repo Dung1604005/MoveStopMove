@@ -29,6 +29,8 @@ public class DataManager : Singleton<DataManager>
         {
             dictSkinDatabase.Add(skinDatabase.GetSkinType(), skinDatabase);
         }
+
+        playerDataController.LoadData();
     }
 
     public SkinDatabase GetSkinDatabase(SkinType skinType)

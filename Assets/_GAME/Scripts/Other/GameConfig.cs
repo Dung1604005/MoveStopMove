@@ -26,6 +26,7 @@ public static class GameConfig
     //Data save
 
     public const String PLAYERDATA_KEY = "Playerdata";
+    
 
     // Stat chung
 
@@ -46,6 +47,10 @@ public static class GameConfig
     public const float MAX_SIZE = 2f;
 
     public const float MAX_RANGE = 10f;
+    //Other
+
+
+    public const int TOTAL_SKINTYPE = 2;
 
 
 
