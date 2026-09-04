@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6800db82c6136c245b5f92a09175265d, type: 3}
+  m_Script: {fileID: 11500000, guid: e1f8635fd51744a4aa1902eecdb73a1c, type: 3}
   m_Name: PantDatabase
-  m_EditorClassIdentifier: Assembly-CSharp::PantDatabase
-  listPant:
+  m_EditorClassIdentifier: Assembly-CSharp::SkinDatabase
+  skinType: 0
+  listSkin:
   - {fileID: 11400000, guid: 558cefc9d8aa15343be1d1d42dcd9dd4, type: 2}
   - {fileID: 11400000, guid: 45ded6efef5fe8f4288ff5298ab293c9, type: 2}
   - {fileID: 11400000, guid: ff0273c9cd6b3934ba4bc4ecfbde2c34, type: 2}

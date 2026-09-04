@@ -32,9 +32,15 @@ public class GameManager : Singleton<GameManager>
         return currentGameState;
     }
 
+    public void OnInit()
+    {
+        DataManager.Instance.OnInit();
+        UIManager.Instance.OpenUI<CanvasMainMenu>();
+    }
+
     void Awake()
     {
-        UIManager.Instance.OpenUI<CanvasMainMenu>();
+        OnInit();
     }
 }
 

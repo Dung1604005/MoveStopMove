@@ -3708,8 +3708,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DataManager
   colorDataSO: {fileID: 11400000, guid: 4bfd206027633b04e8d1b857db79a65b, type: 2}
-  pantDatabase: {fileID: 11400000, guid: e07fedee106dd8145be27eacfe8d6dbb, type: 2}
-  hatDatabase: {fileID: 11400000, guid: f60c4d806999f8d4ab3c64a1443c0667, type: 2}
+  listSkinDatabase:
+  - {fileID: 11400000, guid: baf8ee0c39bd2b548b8470583c0e83f9, type: 2}
+  - {fileID: 11400000, guid: f60c4d806999f8d4ab3c64a1443c0667, type: 2}
   fadeMat: {fileID: 2100000, guid: 85f0daa22d0c4c54bb631b228e33039d, type: 2}
   weaponDatabase: {fileID: 11400000, guid: bcea90446fa3dfd42bbbf8816d8d42c9, type: 2}
   playerDataController: {fileID: 1930537635}
@@ -3730,10 +3731,12 @@ MonoBehaviour:
     RankLevel: 0
     GoldAmount: 0
     ListWeaponDataSave: []
-    ListUnlockedPant: 00000000
-    ListUnlockedHat: 00000000010000000200000003000000
-    CurrentPant: 0
-    CurrentHat: 0
+    ListUnlockedSkinDataSave:
+    - SkinType: 0
+      ListUnlockedSkin: 00000000
+    - SkinType: 1
+      ListUnlockedSkin: 000000000100000002000000
+    CurrentEquipedSkin: 0000000001000000
 --- !u!1 &2041887160
 GameObject:
   m_ObjectHideFlags: 0

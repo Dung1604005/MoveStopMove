@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a693b1be95a95c94a97b27b678fd27d9, type: 3}
+  m_Script: {fileID: 11500000, guid: e1f8635fd51744a4aa1902eecdb73a1c, type: 3}
   m_Name: HatDatabase
-  m_EditorClassIdentifier: Assembly-CSharp::HatDatabase
-  listHat:
+  m_EditorClassIdentifier: Assembly-CSharp::SkinDatabase
+  skinType: 1
+  listSkin:
   - {fileID: 11400000, guid: ef452b5958ce96f46a6fc0efca2a38a5, type: 2}
   - {fileID: 11400000, guid: b7ed6a340ad32164e916e91f06c5ff72, type: 2}
   - {fileID: 11400000, guid: 9183cc6447ded55438b7ef2e166dff7c, type: 2}

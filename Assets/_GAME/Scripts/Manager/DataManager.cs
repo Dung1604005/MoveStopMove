@@ -1,10 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DataManager : Singleton<DataManager>
 {
     [SerializeField] private ColorDataSO colorDataSO;
-    [SerializeField] private PantDatabase pantDatabase;
-    [SerializeField] private HatDatabase hatDatabase;
+    [SerializeField] private List<SkinDatabase> listSkinDatabase;
 
     [SerializeField] private Material fadeMat;
 
@@ -18,9 +18,21 @@ public class DataManager : Singleton<DataManager>
 
     public WeaponDatabase WeaponDatabase =>weaponDatabase;
 
-    public PantDatabase PantDatabase => pantDatabase;
-
-    public HatDatabase HatDatabase => hatDatabase;
-
     public PlayerDataController PlayerDataController => playerDataController;
+
+    private Dictionary<SkinType, SkinDatabase> dictSkinDatabase;
+
+    public void OnInit()
+    {
+        dictSkinDatabase = new Dictionary<SkinType, SkinDatabase>();
+        foreach(SkinDatabase skinDatabase in listSkinDatabase)
+        {
+            dictSkinDatabase.Add(skinDatabase.GetSkinType(), skinDatabase);
+        }
+    }
+
+    public SkinDatabase GetSkinDatabase(SkinType skinType)
+    {
+        return dictSkinDatabase[skinType];
+    }
 }

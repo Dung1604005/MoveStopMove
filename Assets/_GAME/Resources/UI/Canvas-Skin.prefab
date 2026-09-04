@@ -1861,9 +1861,10 @@ MonoBehaviour:
     buttonTabSkin: {fileID: 1158332621824534992}
     slots: []
     currentSelectedId: 0
-  nameTxt: {fileID: 0}
-  statDestxt: {fileID: 0}
-  buyButton: {fileID: 0}
+  nameTxt: {fileID: 4072931072580746915}
+  priceTxt: {fileID: 5125818714895039021}
+  statDestxt: {fileID: 6922079072988977530}
+  buyButton: {fileID: 8916722184206481331}
 --- !u!1 &3682213305880505537
 GameObject:
   m_ObjectHideFlags: 0

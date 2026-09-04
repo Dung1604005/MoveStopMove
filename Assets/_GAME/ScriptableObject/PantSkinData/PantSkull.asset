@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e188c96090c7a4caec4be65e2167ad, type: 3}
   m_Name: PantSkull
   m_EditorClassIdentifier: Assembly-CSharp::PantSkinDataSO
+  nameSkin: Skull
   rangeBuff: 0
   atkSpdBuff: 0.5
   speedBuff: 0
+  skinPortrait: {fileID: 21300000, guid: 9db79c15751263542852adeaf1326e2b, type: 3}
+  price: 69
   pantType: 4
   pantMat: {fileID: 2100000, guid: fcd614e241f08684d9b93edc29b71c5f, type: 2}
-  skinPortrait: {fileID: 21300000, guid: 9db79c15751263542852adeaf1326e2b, type: 3}

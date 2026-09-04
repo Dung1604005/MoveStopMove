@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,28 +13,27 @@ public class CanvasSkin : UICanvas
 
     [SerializeField] private TextMeshProUGUI nameTxt;
 
+    [SerializeField] private TextMeshProUGUI priceTxt;
+
     [SerializeField] private TextMeshProUGUI statDestxt;
 
     [SerializeField] private GameObject buyButton;
     private Dictionary<SkinType, SkinTabGroup> tabLookup;
-
-    private void Awake()
-    {
-        OnInit();
-    }
-
     private void OnInit()
     {
         tabLookup = new Dictionary<SkinType, SkinTabGroup>();
         foreach (var tab in skinTabs)
         {
             tabLookup[tab.skinType] = tab;
+            tab.currentSelectedId = DataManager.Instance.PlayerDataController.GetCurrentEquipedSkin(tab.skinType);
+            ApplySkinModel(tab.skinType, tab.currentSelectedId);
         }
     }
 
     public override void SetUp()
     {
         base.SetUp();
+        OnInit();
         GameManager.Instance.GetModelShowcase().SetActiveCharacterModel(true);
         ChangeSkinType(0);
     }
@@ -62,7 +62,6 @@ public class CanvasSkin : UICanvas
             }
         }
         tab.slots.Clear();
-        tab.currentSelectedId = -1;
     }
     private void CreateSlots(SkinType type, int totalCount, Func<int, Sprite> getSpriteFunc, int[] unlockedSkins)
     {
@@ -82,33 +81,42 @@ public class CanvasSkin : UICanvas
         {
             tab.slots[unlockedSkins[i]].SetActiveLockedEffect(false);
         }
-    }
-    public void SetUpSkin()
-    {
-         switch (currentSkinType)
+        if (tab.currentSelectedId >= 0 && tab.currentSelectedId < tab.slots.Count)
         {
-            case SkinType.PANT:
-                SetUpPantSlots();
-                break;
-            case SkinType.HAT:
-                SetUpHatSlots();
-                break;
+            tab.slots[tab.currentSelectedId].SetActiveSelectedEffect(true);
         }
+        SetUpSkinStat();
+    }
+    public void SetUpSkinVisual()
+    {
+        SetUpSkinSlots(currentSkinType);
     }
 
-    public void SetUpPantSlots()
+    public void SetUpSkinStat()
     {
-        var pantDB = DataManager.Instance.PantDatabase;
-        CreateSlots(SkinType.PANT, pantDB.GetTotalNumberPant(), i => pantDB.GetPantData((PantType)i).GetSprite(),
-        DataManager.Instance.PlayerDataController.GetArrUnlockedPant());
+        
+        if(tabLookup[currentSkinType].currentSelectedId == -1)return;
+
+        SkinDataSO skinDataSO = DataManager.Instance.GetSkinDatabase(currentSkinType).GetSkinData(tabLookup[currentSkinType].currentSelectedId);
+
+       
+        SetSkinNameText(skinDataSO.GetNameSkin());
+
+        SetStatDescription(skinDataSO.GetAllStatDescription());
     }
 
-    public void SetUpHatSlots()
+    public void SetUpSkinSlots(SkinType skinType)
     {
-        var hatDB = DataManager.Instance.HatDatabase;
-        CreateSlots(SkinType.HAT, hatDB.GetTotalNumberHat(), i => hatDB.GetHatData((HatType)i).GetSprite(),
-         DataManager.Instance.PlayerDataController.GetArrUnlockedHat());
+        var skinDb = DataManager.Instance.GetSkinDatabase(skinType);
+        CreateSlots(skinType, skinDb.GetTotalNumberSkin(), i => skinDb.GetSkinData(i).GetSprite(),
+        DataManager.Instance.PlayerDataController.GetArrUnlockedSkin(skinType));
     }
+
+    public void SetPriceText(int price)
+    {
+        priceTxt.text = price.ToString();
+    }
+
     public void SetCurrentSkin(int skinId)
     {
         SkinTabGroup tab = tabLookup[currentSkinType];
@@ -126,6 +134,11 @@ public class CanvasSkin : UICanvas
         }
 
         ApplySkinModel(currentSkinType, skinId);
+        SetUpSkinStat();
+        if(!DataManager.Instance.PlayerDataController.IsThisSkinUnlocked(currentSkinType, skinId))
+        {
+            SetPriceText(DataManager.Instance.GetSkinDatabase(currentSkinType).GetSkinData(skinId).Price);
+        }
     }
 
     private void ApplySkinModel(SkinType type, int skinId)
@@ -151,13 +164,12 @@ public class CanvasSkin : UICanvas
 
         tabLookup[currentSkinType].SetActiveSkinTab(true);
 
-        SetUpSkin();
+        SetUpSkinVisual();
     }
 
     public void SetSkinNameText(String _nameSkin)
     {
         nameTxt.text = _nameSkin;
-
     }
 
     public void SetStatDescription(String description)

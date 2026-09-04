@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 public abstract class SkinDataSO : ScriptableObject
 {
+    [SerializeField] private String nameSkin;
     [SerializeField] private float rangeBuff;
 
     [SerializeField] private float atkSpdBuff;
@@ -10,15 +11,24 @@ public abstract class SkinDataSO : ScriptableObject
 
     [SerializeField] private Sprite skinPortrait;
 
+    [SerializeField] private int price;
+
 
     public float RangeBuff => rangeBuff;
 
     public float AtkSpdBuff => atkSpdBuff;
 
     public float SpeedBuff => speedBuff;
+
+    public int Price => price;
     public Sprite GetSprite()
     {
         return skinPortrait;
+    }
+
+     public String GetNameSkin()
+    {
+        return nameSkin;
     }
 
     public String GetAllStatDescription()

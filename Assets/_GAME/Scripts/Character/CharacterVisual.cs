@@ -31,9 +31,9 @@ public class CharacterVisual : MonoBehaviour
     
     public void OnInit()
     {
-        EquipHat(DataManager.Instance.HatDatabase.GetRandomHat());
+        EquipHat((HatType)DataManager.Instance.GetSkinDatabase(SkinType.HAT).GetRandomSkin());
         ChangeColor(DataManager.Instance.ColorDataSO.GetRandomColor());
-        EquipPant(DataManager.Instance.PantDatabase.GetRandomPant());
+        EquipPant((PantType)DataManager.Instance.GetSkinDatabase(SkinType.PANT).GetRandomSkin());
         if (rotationConstraint.sourceCount == 0)
         {
             
@@ -61,7 +61,7 @@ public class CharacterVisual : MonoBehaviour
 
     public void ChangePantVisual(PantType pantType)
     {
-        PantSkinDataSO pantData = DataManager.Instance.PantDatabase.GetPantData(pantType);
+        PantSkinDataSO pantData = (PantSkinDataSO)DataManager.Instance.GetSkinDatabase(SkinType.PANT).GetSkinData((int)pantType);
         pantRenderer.sharedMaterial = pantData.GetPantMat();
     }
     public void ChangeHatVisual(HatType hatType)
@@ -72,7 +72,7 @@ public class CharacterVisual : MonoBehaviour
         }
         if (hatType != HatType.NONE)
         {
-            HatSkinDataSO hatSkinData = DataManager.Instance.HatDatabase.GetHatData(hatType);
+            HatSkinDataSO hatSkinData = (HatSkinDataSO)DataManager.Instance.GetSkinDatabase(SkinType.HAT).GetSkinData((int)hatType);
             hatPrefab = Instantiate(hatSkinData.HatPrefab, hatSkinHolder.position + hatSkinData.SpawnPos, hatSkinHolder.rotation, hatSkinHolder);
         }
     }
@@ -88,14 +88,14 @@ public class CharacterVisual : MonoBehaviour
     public void EquipHat(HatType hatType)
     {
         currentHat = hatType;
-        ApplyChangeStatSkin(DataManager.Instance.HatDatabase.GetHatData(hatType));
+        ApplyChangeStatSkin(DataManager.Instance.GetSkinDatabase(SkinType.HAT).GetSkinData((int)hatType));
         ChangeHatVisual(hatType);
     }
 
     public void EquipPant(PantType pantType)
     {
         currentPant = pantType;
-        ApplyChangeStatSkin(DataManager.Instance.PantDatabase.GetPantData(pantType));
+        ApplyChangeStatSkin(DataManager.Instance.GetSkinDatabase(SkinType.PANT).GetSkinData((int)pantType));
         ChangePantVisual(pantType);
     }
 

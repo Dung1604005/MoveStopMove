@@ -16,21 +16,30 @@ public class PlayerDataController : MonoBehaviour
 
     public void UpdateNamePlayer(string _name){playerData.NamePlayer = _name;}
 
-    public PantType GetCurrentPant(){return (PantType)playerData.CurrentPant ;}
+    public int GetCurrentEquipedSkin(SkinType skinType) {return playerData.CurrentEquipedSkin[(int)skinType];}
 
-    public HatType GetCurrentHat() {return (HatType)playerData.CurrentHat;}
-
-    public int[] GetArrUnlockedPant()
+    public int[] GetArrUnlockedSkin(SkinType skinType)
     {
     
-        return playerData.ListUnlockedPant;
+        return playerData.ListUnlockedSkinDataSave[(int)skinType].ListUnlockedSkin;
     }
 
-   public int[] GetArrUnlockedHat()
+    public bool IsThisSkinUnlocked(SkinType skinType, int skinId)
     {
-    
-        return playerData.ListUnlockedHat;
+        bool result = false;
+        int[] listUnlockedSkin = playerData.ListUnlockedSkinDataSave[(int)skinType].ListUnlockedSkin;
+        for(int i = 0; i < listUnlockedSkin.Length; i++)
+        {
+            if(listUnlockedSkin[i] == skinId)
+            {
+                result = true;
+                break;
+            }
+        }
+
+        return result;
     }
+
 
     public void SaveData()
     {

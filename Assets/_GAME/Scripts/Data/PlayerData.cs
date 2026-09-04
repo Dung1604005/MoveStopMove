@@ -9,13 +9,19 @@ public struct PlayerData
     public int GoldAmount;
     public WeaponDataSave[] ListWeaponDataSave;
 
-    public int[] ListUnlockedPant;
+    public UnlockedSkinData[] ListUnlockedSkinDataSave;
 
-    public int[] ListUnlockedHat;
-
-    public int CurrentPant;
-
-    public int CurrentHat;
+    public int[] CurrentEquipedSkin;
 
 
+}
+
+
+[Serializable]
+
+public struct UnlockedSkinData
+{
+    public int SkinType;
+
+    public int[] ListUnlockedSkin;
 }

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e188c96090c7a4caec4be65e2167ad, type: 3}
   m_Name: PantChambi
   m_EditorClassIdentifier: Assembly-CSharp::PantSkinDataSO
+  nameSkin: Cham Bi
   rangeBuff: 0
   atkSpdBuff: 0.1
   speedBuff: 0.5
+  skinPortrait: {fileID: 21300000, guid: 2931e5bbc08b8324e81733f2d0af1053, type: 3}
+  price: 67
   pantType: 1
   pantMat: {fileID: 2100000, guid: 3d826ef6df74a38499269e2e449fa25e, type: 2}
-  skinPortrait: {fileID: 21300000, guid: 2931e5bbc08b8324e81733f2d0af1053, type: 3}

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e188c96090c7a4caec4be65e2167ad, type: 3}
   m_Name: PantPokemon
   m_EditorClassIdentifier: Assembly-CSharp::PantSkinDataSO
+  nameSkin: Pokemon
   rangeBuff: 0.1
   atkSpdBuff: 0.1
   speedBuff: 0.1
+  skinPortrait: {fileID: 21300000, guid: a34e682fc3ccd3f499d2c3be6e275faf, type: 3}
+  price: 250
   pantType: 6
   pantMat: {fileID: 2100000, guid: 8178bf6c84c6965458541cc70942dccc, type: 2}
-  skinPortrait: {fileID: 21300000, guid: a34e682fc3ccd3f499d2c3be6e275faf, type: 3}

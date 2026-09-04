@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e188c96090c7a4caec4be65e2167ad, type: 3}
   m_Name: PantDabao
   m_EditorClassIdentifier: Assembly-CSharp::PantSkinDataSO
+  nameSkin: Da Bao
   rangeBuff: 0
   atkSpdBuff: 0
   speedBuff: 1
+  skinPortrait: {fileID: 21300000, guid: c02ff8a334fd6244ea5deb6ff2291627, type: 3}
+  price: 145
   pantType: 3
   pantMat: {fileID: 2100000, guid: a8ebaa0fdf2d8e044a301494be93a6e1, type: 2}
-  skinPortrait: {fileID: 21300000, guid: c02ff8a334fd6244ea5deb6ff2291627, type: 3}

@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091aa48f5195c624a8383cccc6f2f6e7, type: 3}
   m_Name: NoneHat
   m_EditorClassIdentifier: Assembly-CSharp::HatSkinDataSO
+  nameSkin: None
   rangeBuff: 0
   atkSpdBuff: 0
   speedBuff: 0
   skinPortrait: {fileID: 21300000, guid: f79d728d9e7cbb248ac1698a44c7855c, type: 3}
+  price: 0
   spawnPos: {x: 0, y: 0, z: 0}
   hatPrefab: {fileID: 0}
-  hatType: 3
+  hatType: 0
