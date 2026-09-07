@@ -48,6 +48,7 @@ public class LevelManager : Singleton<LevelManager>
     public void SetCurrentAlive(int _currentAlive)
     {
         currentAlive = _currentAlive;
+        UIManager.Instance.GetUI<CanvasGamePlay>().SetAliveText(currentAlive);
     }
    public void OnInit()
     {

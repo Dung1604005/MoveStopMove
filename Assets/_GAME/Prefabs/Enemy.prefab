@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   tf: {fileID: 5551547261549889527}
+  rb: {fileID: 5805938455908214105}
   stat: {fileID: 7345714401820425648}
   anim: {fileID: 8737135446523339234}
   combat: {fileID: 5519082307235443383}
@@ -140,7 +141,6 @@ MonoBehaviour:
   characterEffect: {fileID: 4371235380854186003}
   rotationSpeed: 5
   isPlayer: 0
-  equipedSkins: []
   agent: {fileID: 1958731866427459270}
   enemyState: {fileID: 7638506046812031913}
   destination: {x: 0, y: 0, z: 0}
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RotateObject
   tf: {fileID: 4921419137491738490}
-  rotateByZ: 1
+  rotateDirect: {x: 0, y: 0, z: 0}
   rotateSpeed: 10
 --- !u!212 &8280829564097624760
 SpriteRenderer:

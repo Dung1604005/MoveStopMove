@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Character : GameUnit
 {
+    [SerializeField] protected Rigidbody rb;
     [SerializeField] protected CharacterStat stat;
 
     [SerializeField] protected Animator anim;
@@ -38,7 +39,7 @@ public class Character : GameUnit
 
     public virtual void OnInit()
     {
-       
+        rb.useGravity = true;
         stat.OnInit();
         combat.OnInit();
         characterDetector.OnInit();
@@ -48,7 +49,7 @@ public class Character : GameUnit
 
     public virtual void OnDespawn()
     {
-        
+        rb.useGravity = false;
     }
 
     public virtual bool IsStop()

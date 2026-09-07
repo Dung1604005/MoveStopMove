@@ -29,6 +29,7 @@ public class CanvasMainMenu : UICanvas
 
     public void OnButtonPlayNormalMode()
     {
+        UIManager.Instance.CloseUIDirectly<CanvasMainMenu>();
         UIManager.Instance.OpenUI<CanvasLoading>(this);
     }
 }

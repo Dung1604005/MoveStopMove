@@ -3,9 +3,16 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private Vector3 offSetPlayer;
+    [Header("Play Config")]
+    [SerializeField] private Vector3 offSetPlay;
 
-    [SerializeField] private Vector3 rotationEuler;
+    [SerializeField] private Vector3 rotationEulerPlay;
+
+    [Header("MainMenu Config")]
+
+    [SerializeField] private Vector3 offSetMainMenu;
+
+    [SerializeField] private Vector3 rotationEulerMainMenu;
 
     [SerializeField] private Camera cam;
 
@@ -23,11 +30,11 @@ public class CameraFollow : MonoBehaviour
 
     public void OnInit()
     {
-        offSet = offSetPlayer;
-        targetOffsetPlayer = offSetPlayer;
+        offSet = offSetPlay;
+        targetOffsetPlayer = offSetPlay;
         target = tfPlayer;
         cam.fieldOfView = 60f;
-        tf.rotation = Quaternion.Euler(rotationEuler);
+        tf.rotation = Quaternion.Euler(rotationEulerPlay);
     }
 
     public Camera GetCam()
@@ -38,7 +45,7 @@ public class CameraFollow : MonoBehaviour
     public void ChangeOffSet(float range)
     {
         
-        targetOffsetPlayer = offSetPlayer * (range/5f);
+        targetOffsetPlayer = offSetPlay * (range/5f);
     }
 
     void Awake()

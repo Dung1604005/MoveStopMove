@@ -33,7 +33,7 @@ public class EnemyManager : Singleton<EnemyManager>
         if(LevelManager.Instance.GetMapManager().GetRandomNavMeshPoint(playerPos, minRangeSpawn, maxRangeSpawn,out Vector3 spawnPos))
         {
             Enemy enemy = SimplePool.Spawn(enemyPrefab, spawnPos, Quaternion.identity);
-            IndicatorUI indicatorUI = SimplePool.Spawn(indicatorUIPrefab, Vector3.zero, Quaternion.identity);
+            IndicatorUI indicatorUI = SimplePool.Spawn(indicatorUIPrefab, Vector3.zero, Quaternion.identity, UIManager.Instance.GetUI<CanvasGamePlay>().TF);
             int randomLevel = Math.Max(1, UnityEngine.Random.Range(LevelManager.Instance.GetPlayerLevel() - 1, LevelManager.Instance.GetPlayerLevel() + 2));
             enemy.GetCombat().SetWeapon(DataManager.Instance.WeaponDatabase.GetRandomWeaponPrefab());
             enemy.OnInit();
