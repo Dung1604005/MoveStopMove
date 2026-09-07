@@ -1437,10 +1437,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28cb476ca5b388f499fc1dff546b94bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
-  offSetPlay: {x: 0, y: 0, z: 0}
-  rotationEulerPlay: {x: 0, y: 0, z: 0}
-  offSetMainMenu: {x: 0, y: 0, z: 0}
-  rotationEulerMainMenu: {x: 0, y: 0, z: 0}
+  offSetPlay: {x: 0, y: 17, z: -9.65}
+  rotationEulerPlay: {x: 60, y: 0, z: 0}
+  offSetMainMenu: {x: 0, y: 4, z: -9}
+  rotationEulerMainMenu: {x: 20, y: 0, z: 0}
   cam: {fileID: 330585545}
   tfPlayer: {fileID: 1156770236}
   speed: 5
@@ -3194,10 +3194,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28cb476ca5b388f499fc1dff546b94bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
-  offSetPlay: {x: 0, y: 0, z: 0}
-  rotationEulerPlay: {x: 0, y: 0, z: 0}
-  offSetMainMenu: {x: 0, y: 0, z: 0}
-  rotationEulerMainMenu: {x: 0, y: 0, z: 0}
+  offSetPlay: {x: 0, y: 17, z: -9.65}
+  rotationEulerPlay: {x: 60, y: 0, z: 0}
+  offSetMainMenu: {x: 0, y: 4, z: -9}
+  rotationEulerMainMenu: {x: 20, y: 0, z: 0}
   cam: {fileID: 1176667926}
   tfPlayer: {fileID: 1156770236}
   speed: 5

@@ -99,8 +99,8 @@ public class CharacterStat : MonoBehaviour
     }
     private void HandleRangeChanged(float newRange)
     {
-        GameManager.Instance.GetMainCameraFollow().ChangeOffSet(newRange);
-        GameManager.Instance.GetUICameraFollow().ChangeOffSet(newRange);
+        GameManager.Instance.GetMainCameraFollow().ChangeOffSetByRange(newRange);
+        GameManager.Instance.GetUICameraFollow().ChangeOffSetByRange(newRange);
     }
 
     public void OnDead(Character attacker)

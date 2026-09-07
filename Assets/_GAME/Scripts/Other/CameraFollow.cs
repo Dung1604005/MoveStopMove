@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -24,14 +25,14 @@ public class CameraFollow : MonoBehaviour
 
     [SerializeField]private Transform target;
 
-    [SerializeField] private Vector3 offSet = Vector3.zero;
+    [SerializeField] private Vector3 offSet;
 
-    [SerializeField] private Vector3 targetOffsetPlayer;
+    [SerializeField] private Vector3 targetOffset;
+
+    [SerializeField] private Vector3 rotationEulerTarget;
 
     public void OnInit()
     {
-        offSet = offSetPlay;
-        targetOffsetPlayer = offSetPlay;
         target = tfPlayer;
         cam.fieldOfView = 60f;
         tf.rotation = Quaternion.Euler(rotationEulerPlay);
@@ -42,10 +43,35 @@ public class CameraFollow : MonoBehaviour
         return cam;
     }
 
-    public void ChangeOffSet(float range)
+    public void OnStartGame()
     {
-        
-        targetOffsetPlayer = offSetPlay * (range/5f);
+        SetTargetOffSet(offSetPlay);
+    }
+
+    public void OnMenuGame()
+    {
+        SetTargetOffSet(offSetMainMenu);
+    }
+
+    public void ChangeOffSetByRange(float range)
+    {
+        SetTargetOffSet(offSetPlay*(range/5f));
+    }
+    public void SmoothChangeOffSet()
+    {
+        if((targetOffset- offSet).sqrMagnitude > 0.001f)
+        {
+            offSet = Vector3.Lerp(offSet, targetOffset, speed*Time.deltaTime);
+        }
+    }
+
+    public void SmoothChangeRotation()
+    {
+        //tf.rotation = Quaternion.Slerp(tf.rotation, )
+    }
+    public void SetTargetOffSet(Vector3 _targetOffSet)
+    {
+        targetOffset = _targetOffSet;
     }
 
     void Awake()
@@ -61,12 +87,7 @@ public class CameraFollow : MonoBehaviour
         {
             return;
         }
-        
-
-        if((targetOffsetPlayer- offSet).sqrMagnitude > 0.001f)
-        {
-            offSet = Vector3.Lerp(offSet, targetOffsetPlayer, speed*Time.deltaTime);
-        }
+        SmoothChangeOffSet();
         tf.position = offSet + target.position;
         
     }
