@@ -29,7 +29,7 @@ public class CanvasSkin : UICanvas
         foreach (var tab in skinTabs)
         {
             tabLookup[tab.skinType] = tab;
-            tab.currentSelectedId = DataManager.Instance.PlayerDataController.GetCurrentEquipedSkin(tab.skinType);
+            tab.SetCurrentSelectedId(DataManager.Instance.PlayerDataController.GetCurrentEquipedSkin(tab.skinType));
             ApplySkinModel(tab.skinType, tab.currentSelectedId);
         }
     }
@@ -142,8 +142,13 @@ public class CanvasSkin : UICanvas
     {
         SkinTabGroup tab = tabLookup[currentSkinType];
         if (tab.currentSelectedId == skinId || skinId < 0) return;
-        tab.currentSelectedId = skinId;
-        DataManager.Instance.PlayerDataController.UpdateCurrentSkinChoosed(tab.skinType, skinId);
+        tab.SetCurrentSelectedId(skinId);
+        bool isUnlocked = DataManager.Instance.PlayerDataController.IsThisSkinUnlocked(tab.skinType, skinId);
+        SetActiveBuyFunc(!isUnlocked);
+        if (isUnlocked)
+        {
+            DataManager.Instance.PlayerDataController.UpdateCurrentSkinChoosed(tab.skinType, skinId);
+        }
         ApplySkinModel(currentSkinType, skinId);
         SetUpSkinStat();
     }
@@ -191,7 +196,14 @@ public class CanvasSkin : UICanvas
         {
             DataManager.Instance.PlayerDataController.UnlockSkin(currentSkinType, tabLookup[currentSkinType].currentSelectedId);
             DataManager.Instance.PlayerDataController.ChangeGold(-price);
+            SetActiveBuyFunc(false);
+            DataManager.Instance.PlayerDataController.UpdateCurrentSkinChoosed(tabLookup[currentSkinType].skinType, tabLookup[currentSkinType].currentSelectedId);
         }
+    }
+
+    public void SetActiveBuyFunc(bool active)
+    {
+        buyButton.SetActive(active);
     }
 
     public void OnBackButton()

@@ -26,4 +26,9 @@ public class CanvasMainMenu : UICanvas
 
         UIManager.Instance.OpenUI<CanvasSkin>();
     }
+
+    public void OnButtonPlayNormalMode()
+    {
+        UIManager.Instance.OpenUI<CanvasLoading>(this);
+    }
 }

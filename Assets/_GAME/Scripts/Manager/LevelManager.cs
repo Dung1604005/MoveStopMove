@@ -58,9 +58,4 @@ public class LevelManager : Singleton<LevelManager>
         player.OnInit();
         enemyManager.OnInit();
     }
-
-    void Awake()
-    {
-        //OnInit();
-    }
 }

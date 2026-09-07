@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Playables;
 using UnityEngine;
 
@@ -34,6 +35,8 @@ public class PlayerDataController : MonoBehaviour
     }
 
     public int GetCurrentEquipedSkin(SkinType skinType) { return playerData.CurrentEquipedSkin[(int)skinType]; }
+
+    public int GetCurrentEquipedSkinWeapon(WeaponType weaponType){return playerData.CurrentEquipedWeaponSkin[(int)weaponType];}
 
     public int[] GetArrUnlockedSkin(SkinType skinType)
     {
@@ -104,6 +107,52 @@ public class PlayerDataController : MonoBehaviour
 
         SaveData();
     }
+
+     public bool IsThisSkinWeaponUnlock(WeaponType weaponType, int skinId)
+    {
+        int[] listSkinWeaponUnlock = playerData.ListWeaponDataSave[(int)weaponType].ListUnlockedSkin;
+        for(int i = 0; i < listSkinWeaponUnlock.Length; i++)
+        {
+            if(listSkinWeaponUnlock[i] == skinId)
+            {
+                return true;
+            }
+        
+        }
+        return false;
+    }
+
+    public void AddNewSkinWeaponUnlock(WeaponType weaponType, int skinId)
+    {
+        if(IsThisSkinWeaponUnlock(weaponType, skinId))return;
+
+        int[] newListSkinWeaponUnlock = new int[playerData.ListWeaponDataSave[(int)weaponType].ListUnlockedSkin.Length + 1];
+
+        int[] oldListSkinWeaponUnlock = playerData.ListWeaponDataSave[(int)weaponType].ListUnlockedSkin;
+
+        
+        for(int i = 0; i < oldListSkinWeaponUnlock.Length; i++)
+        {
+            newListSkinWeaponUnlock[i] = oldListSkinWeaponUnlock[i];
+        }
+        newListSkinWeaponUnlock[newListSkinWeaponUnlock.Length - 1] = skinId;
+        playerData.ListWeaponDataSave[(int)weaponType].ListUnlockedSkin = newListSkinWeaponUnlock;
+        UIManager.Instance.GetUI<CanvasWeapon>().ReloadAllSkinSlot();
+        SaveData();
+    }
+
+    public bool IsThisSkinWeaponChoosed(WeaponType weaponType, int skinId)
+    {
+        return playerData.CurrentEquipedWeaponSkin[(int)weaponType] == skinId;
+    }
+
+    public void UpdateCurrentSkinWeaponChoosed(WeaponType weaponType, int skinId)
+    {
+        playerData.CurrentEquipedWeaponSkin[(int)weaponType] = skinId;
+        UIManager.Instance.GetUI<CanvasWeapon>().ReloadAllSkinSlot();
+        SaveData();
+    }
+
     [ContextMenu("CREATE NEW DATA")]
     public void CreateNewData()
     {
@@ -115,10 +164,18 @@ public class PlayerDataController : MonoBehaviour
         //TODO: NEW DATA FOR WEAPON
         playerData.ListUnlockedSkinDataSave = new UnlockedSkinData[GameConfig.TOTAL_SKINTYPE];
         playerData.CurrentEquipedSkin = new int[GameConfig.TOTAL_SKINTYPE];
+        playerData.ListWeaponDataSave = new WeaponDataSave[DataManager.Instance.GetTotalNumberWeapon()];
+        playerData.CurrentEquipedWeaponSkin = new int[DataManager.Instance.GetTotalNumberWeapon()];
         for (int i = 0; i < GameConfig.TOTAL_SKINTYPE; i++)
         {
             playerData.ListUnlockedSkinDataSave[i] = CreateNewUnlockedSkinData(i);
             playerData.CurrentEquipedSkin[i] = 0;
+        }
+
+        for(int i= 0; i < DataManager.Instance.GetTotalNumberWeapon(); i++)
+        {
+            playerData.ListWeaponDataSave[i]  = CreateNewWeaponDataSave(i);
+            playerData.CurrentEquipedWeaponSkin[i] = 0;
         }
         SaveData();
 
@@ -130,6 +187,16 @@ public class PlayerDataController : MonoBehaviour
         unlockedSkinData.ListUnlockedSkin = new int[1] { 0 };
 
         return unlockedSkinData;
+    }
+
+    public WeaponDataSave CreateNewWeaponDataSave(int weaponType)
+    {
+        WeaponDataSave weaponData;
+
+        weaponData.WeaponType = weaponType;
+        weaponData.ListUnlockedSkin = new int[1] {0};
+
+        return weaponData;
     }
 
     public void SaveData()

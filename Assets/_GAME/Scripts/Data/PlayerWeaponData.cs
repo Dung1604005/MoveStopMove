@@ -6,6 +6,6 @@ using UnityEngine;
 
 public struct WeaponDataSave
 {
-    public int WeaponId;
+    public int WeaponType;
     public int[] ListUnlockedSkin;
 }

@@ -20,8 +20,6 @@ public class Character : GameUnit
 
     [SerializeField] protected bool isPlayer;
 
-    [SerializeField] protected List<SkinDataSO> equipedSkins = new List<SkinDataSO>();
-
     private Quaternion targetRotation = Quaternion.identity;
 
     public CharacterStat GetStat() { return stat; }

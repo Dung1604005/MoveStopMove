@@ -13,6 +13,8 @@ public struct PlayerData
 
     public int[] CurrentEquipedSkin;
 
+    public int[] CurrentEquipedWeaponSkin;
+
 
 }
 

@@ -18,6 +18,14 @@ public class SkinTabGroup
         tf.gameObject.SetActive(active);
 
         buttonTabSkin.SetActiveButton(active);
+
+        SetCurrentSelectedId(DataManager.Instance.PlayerDataController.GetCurrentEquipedSkin(skinType));
+        
+    }
+
+    public void SetCurrentSelectedId(int id)
+    {
+        currentSelectedId = id;
     }
 
     public void ReloadTab()

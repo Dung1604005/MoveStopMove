@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponDataSO
   weaponType: 5
   nameWeapon: Hammer
-  spawnPos: {x: -0.1292, y: 0.148, z: 0.0174}
+  spawnPos: {x: -0.1662, y: 0.115, z: 0.0657}
   weaponPrefab: {fileID: 5976094085731162235, guid: a032204df8ff57940b48144c8b2e01f1, type: 3}
   rangeBuff: 0
   cooldown: 2.75

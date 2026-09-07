@@ -37,4 +37,9 @@ public class DataManager : Singleton<DataManager>
     {
         return dictSkinDatabase[skinType];
     }
+
+    public int GetTotalNumberWeapon()
+    {
+        return weaponDatabase.GetCountWeapon();
+    }
 }

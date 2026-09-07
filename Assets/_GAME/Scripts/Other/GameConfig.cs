@@ -51,10 +51,6 @@ public static class GameConfig
 
 
     public const int TOTAL_SKINTYPE = 2;
-
-
-
-
     
 
 }

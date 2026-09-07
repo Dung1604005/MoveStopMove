@@ -48,6 +48,14 @@ public class UISkinSlot : MonoBehaviour
         SetActiveSelectedEffect(DataManager.Instance.PlayerDataController.IsThisSkinIdChoosed(skinType, skinId));
     }
 
+    public void Reload(WeaponType weaponType)
+    {
+        SetActiveLockedEffect(!DataManager.Instance.PlayerDataController.IsThisSkinWeaponUnlock(weaponType, skinId));
+
+        
+        SetActiveSelectedEffect(DataManager.Instance.PlayerDataController.IsThisSkinWeaponChoosed(weaponType, skinId));
+    }
+
 
     public void OnPointerClick(BaseEventData baseEventData)
     {

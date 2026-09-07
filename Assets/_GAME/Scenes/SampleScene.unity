@@ -3540,8 +3540,8 @@ MonoBehaviour:
   indicatorUIPrefab: {fileID: 409740533316278495, guid: 81aaa84f00f45e842b2b288717d42e8a, type: 3}
   listEnemy: []
   maxEnemy: 10
-  maxRangeSpawn: 25
-  minRangeSpawn: 15
+  maxRangeSpawn: 50
+  minRangeSpawn: 25
 --- !u!4 &1790316228
 Transform:
   m_ObjectHideFlags: 0
@@ -3730,13 +3730,26 @@ MonoBehaviour:
     NamePlayer: You
     RankLevel: 1
     GoldAmount: 100
-    ListWeaponDataSave: []
+    ListWeaponDataSave:
+    - WeaponType: 0
+      ListUnlockedSkin: 00000000
+    - WeaponType: 1
+      ListUnlockedSkin: 00000000
+    - WeaponType: 2
+      ListUnlockedSkin: 00000000
+    - WeaponType: 3
+      ListUnlockedSkin: 00000000
+    - WeaponType: 4
+      ListUnlockedSkin: 00000000
+    - WeaponType: 5
+      ListUnlockedSkin: 00000000
     ListUnlockedSkinDataSave:
     - SkinType: 0
       ListUnlockedSkin: 00000000
     - SkinType: 1
       ListUnlockedSkin: 00000000
     CurrentEquipedSkin: 0000000000000000
+    CurrentEquipedWeaponSkin: 000000000000000000000000000000000000000000000000
 --- !u!1 &2041887160
 GameObject:
   m_ObjectHideFlags: 0

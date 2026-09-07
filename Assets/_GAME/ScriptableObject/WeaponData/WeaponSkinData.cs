@@ -8,9 +8,13 @@ public class WeaponSkinData : ScriptableObject
 
     [SerializeField] private Sprite spriteUI;
 
+    [SerializeField] private int price;
+
     public Material GetSkinMat() {return skinMat;}
 
     public Sprite GetSpriteUI() {return spriteUI;}
 
     public int SkinId => skinId;
+
+    public int Price => price;
 }

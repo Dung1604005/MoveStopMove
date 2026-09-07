@@ -15,3 +15,4 @@ MonoBehaviour:
   skinId: 1
   skinMat: {fileID: 2100000, guid: bcab18b898a69f54ca01abea292d1036, type: 2}
   spriteUI: {fileID: 21300000, guid: 7dee3da842734bd419a7e86f80db53f7, type: 3}
+  price: 11
