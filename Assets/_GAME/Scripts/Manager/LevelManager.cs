@@ -45,6 +45,16 @@ public class LevelManager : Singleton<LevelManager>
         mapManager = Instantiate(mapData.PrefabMap, mapData.SpawnPos, Quaternion.identity);
     }
 
+    public int GetRankPlayer()
+    {
+        return currentAlive;
+    }
+
+    public int GetGoldReward()
+    {
+        return levelData.GoldPerRank*(levelData.TotalCharacter - currentAlive);
+    }
+
     public void SetCurrentAlive(int _currentAlive)
     {
         currentAlive = _currentAlive;

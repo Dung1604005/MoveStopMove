@@ -1,22 +1,21 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] private CameraFollow mainCameraFollow;
-
-    [SerializeField] private CameraFollow uiCameraFollow;
+    [SerializeField] private List<CameraFollow> listCameraFollow;
+    
 
     [SerializeField] private ModelShowcase modelShowcase;
 
     [SerializeField] private GameState currentGameState;
-    public CameraFollow GetMainCameraFollow()
+
+    public CameraFollow GetCameraFollow(CameraType cameraType)
     {
-        return mainCameraFollow;
+        return listCameraFollow[(int)cameraType];
     }
-    public CameraFollow GetUICameraFollow()
-    {
-        return uiCameraFollow;
-    }
+    
     public ModelShowcase GetModelShowcase()
     {
         return modelShowcase;
@@ -32,9 +31,21 @@ public class GameManager : Singleton<GameManager>
         return currentGameState;
     }
 
-    public void PlayGame()
+    public void OnPlayGame()
     {
         LevelManager.Instance.OnInit();
+        foreach(CameraFollow cameraFollow in listCameraFollow)
+        {
+            cameraFollow.OnStartGame();
+        }
+    }
+
+    public void OnMainMenu()
+    {
+        foreach(CameraFollow cameraFollow in listCameraFollow)
+        {
+            cameraFollow.OnMainMenu();
+        }
     }
     public void OnInit()
     {

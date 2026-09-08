@@ -28,12 +28,14 @@ public class CanvasLoading : UICanvas
         if(canvasParent == null)
         {
             UIManager.Instance.OpenUI<CanvasMainMenu>();
+            GameManager.Instance.SetCurrentGameState(GameState.MAINMENU);
+            GameManager.Instance.OnMainMenu();
         }
         else if(canvasParent is CanvasMainMenu)
         {
             UIManager.Instance.OpenUI<CanvasGamePlay>();
             GameManager.Instance.SetCurrentGameState(GameState.PLAYING);
-            GameManager.Instance.PlayGame();
+            GameManager.Instance.OnPlayGame();
         }
     }
 

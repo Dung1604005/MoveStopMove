@@ -21,7 +21,7 @@ public class IndicatorUI : GameUnit
 
     public void OnInit()
     {
-        uiCamera = GameManager.Instance.GetUICameraFollow().GetCam();
+        uiCamera = GameManager.Instance.GetCameraFollow(CameraType.UIWorldCamera).GetCam();
     }
 
     public void OnDespawn()

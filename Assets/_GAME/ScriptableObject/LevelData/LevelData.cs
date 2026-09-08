@@ -7,7 +7,13 @@ public class LevelData : ScriptableObject
 
     [SerializeField] private int totalCharacter;
 
+    [SerializeField] private int goldPerRank;
+
+    [SerializeField] private Sprite spriteUIMap;
+
     public MapData MapData => mapData;
 
     public int TotalCharacter => totalCharacter;
+
+    public int GoldPerRank => goldPerRank;
 }

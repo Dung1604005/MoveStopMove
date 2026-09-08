@@ -46,11 +46,13 @@ public class CameraFollow : MonoBehaviour
     public void OnStartGame()
     {
         SetTargetOffSet(offSetPlay);
+        SetTargetRotation(rotationEulerPlay);
     }
 
-    public void OnMenuGame()
+    public void OnMainMenu()
     {
         SetTargetOffSet(offSetMainMenu);
+        SetTargetRotation(rotationEulerMainMenu);
     }
 
     public void ChangeOffSetByRange(float range)
@@ -67,16 +69,20 @@ public class CameraFollow : MonoBehaviour
 
     public void SmoothChangeRotation()
     {
-        //tf.rotation = Quaternion.Slerp(tf.rotation, )
+        tf.rotation = Quaternion.Slerp(tf.rotation, Quaternion.Euler(rotationEulerTarget) , speed*Time.deltaTime);
     }
     public void SetTargetOffSet(Vector3 _targetOffSet)
     {
         targetOffset = _targetOffSet;
     }
 
+    public void SetTargetRotation(Vector3 _target)
+    {
+        rotationEulerTarget = _target;
+    }
+
     void Awake()
     {
-        tf = this.transform;
         OnInit();
     }
 
@@ -88,7 +94,14 @@ public class CameraFollow : MonoBehaviour
             return;
         }
         SmoothChangeOffSet();
+        SmoothChangeRotation();
         tf.position = offSet + target.position;
         
     }
+}
+
+public enum CameraType
+{
+    MainCamera = 0,
+    UIWorldCamera = 1
 }

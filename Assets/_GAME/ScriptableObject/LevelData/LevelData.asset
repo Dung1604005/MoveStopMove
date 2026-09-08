@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   mapData: {fileID: 11400000, guid: 2040eacd53ef3db4888283440c71488a, type: 2}
   totalCharacter: 50
+  goldPerRank: 2
+  spriteUIMap: {fileID: 0}

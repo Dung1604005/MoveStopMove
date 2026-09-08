@@ -99,8 +99,8 @@ public class CharacterStat : MonoBehaviour
     }
     private void HandleRangeChanged(float newRange)
     {
-        GameManager.Instance.GetMainCameraFollow().ChangeOffSetByRange(newRange);
-        GameManager.Instance.GetUICameraFollow().ChangeOffSetByRange(newRange);
+        GameManager.Instance.GetCameraFollow(CameraType.MainCamera).ChangeOffSetByRange(newRange);
+        GameManager.Instance.GetCameraFollow(CameraType.UIWorldCamera).ChangeOffSetByRange(newRange);
     }
 
     public void OnDead(Character attacker)
@@ -111,14 +111,14 @@ public class CharacterStat : MonoBehaviour
     }
     public void OnDespawn()
     {
-        if (character.IsPlayer)
-        {
-            
-        }
-        else
+        if (!character.IsPlayer)
         {
             EnemyManager.Instance.DeSpawnEnemy(character as Enemy);
             EnemyManager.Instance.GenerateEnemy();
+        }
+        else
+        {
+            UIManager.Instance.OpenUI<CanvasLose>();
         }
     }
     public void OnHit(float damage, Character attacker, Vector3 hitPosition)

@@ -51,6 +51,6 @@ public static class GameConfig
 
 
     public const int TOTAL_SKINTYPE = 2;
-    
 
+    public const int REVIVE_COST = 100;
 }
