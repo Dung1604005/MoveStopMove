@@ -35,12 +35,16 @@ public class CameraFollow : MonoBehaviour
     {
         target = tfPlayer;
         cam.fieldOfView = 60f;
-        tf.rotation = Quaternion.Euler(rotationEulerPlay);
     }
 
     public Camera GetCam()
     {
         return cam;
+    }
+
+    public void SetActive(bool active)
+    {
+        tf.gameObject.SetActive(active);
     }
 
     public void OnStartGame()

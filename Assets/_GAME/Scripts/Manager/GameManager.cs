@@ -34,6 +34,7 @@ public class GameManager : Singleton<GameManager>
     public void OnPlayGame()
     {
         LevelManager.Instance.OnInit();
+        listCameraFollow[(int)CameraType.UIWorldCamera].SetActive(true);
         foreach(CameraFollow cameraFollow in listCameraFollow)
         {
             cameraFollow.OnStartGame();
@@ -42,6 +43,7 @@ public class GameManager : Singleton<GameManager>
 
     public void OnMainMenu()
     {
+        listCameraFollow[(int)CameraType.UIWorldCamera].SetActive(false);
         foreach(CameraFollow cameraFollow in listCameraFollow)
         {
             cameraFollow.OnMainMenu();

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5883465833407694253}
   - component: {fileID: 3507629075074967074}
   - component: {fileID: 6647641335734192154}
-  - component: {fileID: 2774860189596596135}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -106,23 +105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSkin
   renderer: {fileID: 3507629075074967074}
---- !u!114 &2774860189596596135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2968682293043254373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c01a4c7cf8f41148b3f228e87690c73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponBase
-  tf: {fileID: 0}
-  owner: {fileID: 0}
-  weaponDataSO: {fileID: 0}
-  visualTf: {fileID: 0}
-  bulletPrefab: {fileID: 0}
 --- !u!1 &7067610602748440836
 GameObject:
   m_ObjectHideFlags: 0

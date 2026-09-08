@@ -20,6 +20,12 @@ public class Player : Character
         inputActions.Player.Move.performed -= OnMove;
         inputActions.Player.Move.canceled -= EndInputMove;
     }
+    public override void OnInit()
+    {
+        base.OnInit();
+        GetVisual().EquipSkin(SkinType.HAT, DataManager.Instance.PlayerDataController.GetCurrentEquipedSkin(SkinType.HAT));
+        GetVisual().EquipSkin(SkinType.PANT, DataManager.Instance.PlayerDataController.GetCurrentEquipedSkin(SkinType.PANT));
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -97,6 +103,8 @@ public class Player : Character
     protected override void Update()
     {
         base.Update();
+        if(stat.IsDead || GameManager.Instance.GetCurrentGameState() != GameState.PLAYING) return;
+        
         if (combat.HaveTarget)
         {
             combat.Attack();

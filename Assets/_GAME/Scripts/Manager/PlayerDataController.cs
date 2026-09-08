@@ -104,7 +104,7 @@ public class PlayerDataController : MonoBehaviour
     {
         playerData.CurrentEquipedSkin[(int)skinType] = skinId;
         UIManager.Instance.GetUI<CanvasSkin>().ReloadAllSlots();
-        LevelManager.Instance.GetPlayer().GetVisual().EquipSkin(skinType, skinId);
+        LevelManager.Instance.GetPlayer().GetVisual().ChangeVisualSkin(skinType, skinId);
         SaveData();
     }
 

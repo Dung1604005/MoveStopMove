@@ -24,9 +24,6 @@ public class CharacterStat : MonoBehaviour
     [SerializeField] private float rangeAtk;
     [SerializeField] private float atkBase;
     [SerializeField] private float atk;
-
-    public float GetCurrentHealth() { return currentHealth; }
-
     public void SetSpeed(float _speed) { speed = _speed; }
 
     public void SetHealthBase(float _healthBase) {healthBase = _healthBase;}
@@ -78,7 +75,7 @@ public class CharacterStat : MonoBehaviour
     public void OnInit()
     {
         level = 1;
-        size = 1;
+        size = sizeBase;
         if(!character.IsPlayer)SetRandomName();
 
         speed = speedBase;
@@ -87,6 +84,11 @@ public class CharacterStat : MonoBehaviour
         rangeAtk = rangeAtkBase;
         currentExp = 0f;
         currentHealth = healthBase;
+
+         if (character.IsPlayer)
+        {
+            HandleRangeChanged(rangeAtk);
+        }
     }
 
     public void SetRandomName()
