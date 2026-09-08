@@ -860,7 +860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2603773, g: 0.2603773, b: 0.2603773, a: 0.6862745}
+  m_Color: {r: 0.2603773, g: 0.2603773, b: 0.2603773, a: 0.78431374}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -965,7 +965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c1eb6df8ddd3f48b52e1a61dfca99a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RotateObject
-  tf: {fileID: 0}
+  tf: {fileID: 4541981997184126191}
   rotateDirect: {x: 0, y: 0, z: -1}
   rotateSpeed: 200
 --- !u!1 &6256983012413512490
@@ -983,7 +983,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5505207201162540970
 RectTransform:
   m_ObjectHideFlags: 0

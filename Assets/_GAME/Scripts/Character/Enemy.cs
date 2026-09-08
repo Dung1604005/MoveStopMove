@@ -14,7 +14,10 @@ public class Enemy : Character
     public override void OnInit()
     {
         base.OnInit();
+        
         SetActiveAgent(true);
+        GetVisual().EquipSkin(SkinType.HAT, DataManager.Instance.GetSkinDatabase(SkinType.HAT).GetRandomSkin());
+        GetVisual().EquipSkin(SkinType.PANT, DataManager.Instance.GetSkinDatabase(SkinType.PANT).GetRandomSkin());
     }
     public override void OnDespawn()
     {

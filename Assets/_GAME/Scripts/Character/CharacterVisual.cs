@@ -18,11 +18,8 @@ public class CharacterVisual : MonoBehaviour
     [SerializeField] private RotationConstraint rotationConstraint;
     [SerializeField] private Transform tf;
     [SerializeField] protected Renderer pantRenderer;
-    [SerializeField] protected PantType currentPant;
     [SerializeField] protected Transform hatSkinHolder;
     [SerializeField] protected GameUnit hatPrefab;
-    [SerializeField] protected HatType currentHat;
-
     [SerializeField] protected ColorType colorType;
 
     [SerializeField] protected Renderer skinCharacterRenderer;
@@ -30,10 +27,8 @@ public class CharacterVisual : MonoBehaviour
     public ColorType ColorType => colorType;
     
     public void OnInit()
-    {
-        EquipHat((HatType)DataManager.Instance.GetSkinDatabase(SkinType.HAT).GetRandomSkin());
+    { 
         ChangeColor(DataManager.Instance.ColorDataSO.GetRandomColor());
-        EquipPant((PantType)DataManager.Instance.GetSkinDatabase(SkinType.PANT).GetRandomSkin());
         if (rotationConstraint.sourceCount == 0)
         {
             
@@ -85,18 +80,22 @@ public class CharacterVisual : MonoBehaviour
         stat.SetSpeed(stat.Speed + skinDataSO.SpeedBuff);
     }
 
-    public void EquipHat(HatType hatType)
+    public void ChangeVisualSkin(SkinType skinType, int skinId)
     {
-        currentHat = hatType;
-        ApplyChangeStatSkin(DataManager.Instance.GetSkinDatabase(SkinType.HAT).GetSkinData((int)hatType));
-        ChangeHatVisual(hatType);
+        if(skinType == SkinType.PANT)
+        {
+            ChangePantVisual((PantType)skinId);
+        }
+        else if(skinType == SkinType.HAT)
+        {
+            ChangeHatVisual((HatType)skinId);
+        }
     }
 
-    public void EquipPant(PantType pantType)
+    public void EquipSkin(SkinType skinType, int skinId)
     {
-        currentPant = pantType;
-        ApplyChangeStatSkin(DataManager.Instance.GetSkinDatabase(SkinType.PANT).GetSkinData((int)pantType));
-        ChangePantVisual(pantType);
+        ApplyChangeStatSkin(DataManager.Instance.GetSkinDatabase(skinType).GetSkinData(skinId));
+        ChangeVisualSkin(skinType, skinId);
     }
 
     public void SetNameText(String _name)

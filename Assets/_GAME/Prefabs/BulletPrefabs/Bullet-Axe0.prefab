@@ -28,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2968682293043254373}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.08978532, y: -0.07896712, z: -0.0000006556511}
   m_LocalScale: {x: 39.00005, y: 39.000053, z: 39}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1394526827790036521}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &5883465833407694253
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -133,8 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1394526827790036521}
   - component: {fileID: 2549300530180401386}
-  - component: {fileID: 1068452080220150868}
-  - component: {fileID: 5636869067176205616}
+  - component: {fileID: 4188069380083231287}
   m_Layer: 0
   m_Name: Bullet-Axe0
   m_TagString: Untagged
@@ -178,22 +177,7 @@ MonoBehaviour:
   liveTime: 2
   timerLive: 0
   owner: {fileID: 0}
---- !u!114 &1068452080220150868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7067610602748440836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92c1eb6df8ddd3f48b52e1a61dfca99a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RotateObject
-  tf: {fileID: 1394526827790036521}
-  rotateDirect: {x: 0, y: 0, z: 1}
-  rotateSpeed: 50
---- !u!65 &5636869067176205616
+--- !u!65 &4188069380083231287
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -212,5 +196,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.52281916, y: 0.9688762, z: 0.10241563}
-  m_Center: {x: -0.1388042, y: -0.07387242, z: -0.0018009059}
+  m_Size: {x: 0.4847412, y: 0.085632324, z: 1}
+  m_Center: {x: -0.18408203, y: -0.08779907, z: 0}

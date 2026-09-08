@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190646648232276922}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2107232561130526769}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &110941953191608246
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 2107232561130526769}
   - component: {fileID: 5219224945215065478}
   - component: {fileID: 3463393729087813596}
-  - component: {fileID: 7977116708106426704}
+  - component: {fileID: 5768351118756733061}
   m_Layer: 0
   m_Name: Bullet-Uzi
   m_TagString: Untagged
@@ -161,7 +161,7 @@ MonoBehaviour:
   tf: {fileID: 2107232561130526769}
   rotateDirect: {x: 0, y: 0, z: 1}
   rotateSpeed: 50
---- !u!65 &7977116708106426704
+--- !u!65 &5768351118756733061
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,5 +180,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.67079353, y: 0.626742, z: 0.10627784}
-  m_Center: {x: 0.026456773, y: 0.021004558, z: 0.012734503}
+  m_Size: {x: 0.6759033, y: 0.072143555, z: 0.6053028}
+  m_Center: {x: 0.05267334, y: -0.00048828125, z: -0.014033318}

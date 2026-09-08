@@ -21,6 +21,10 @@ public class LevelManager : Singleton<LevelManager>
     {
         return player.GetStat().Level;
     }
+    public Player GetPlayer()
+    {
+        return player;
+    }
     public MapManager GetMapManager()
     {
         return mapManager;
