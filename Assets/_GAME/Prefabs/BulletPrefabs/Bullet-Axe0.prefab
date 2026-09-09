@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletBase
   tf: {fileID: 1394526827790036521}
   defaultScale: {x: 1, y: 1, z: 1}
+  weaponSkin: {fileID: 6647641335734192154}
   moveDir: {x: 0, y: 0, z: 0}
   moveSpeed: 0
   damage: 0

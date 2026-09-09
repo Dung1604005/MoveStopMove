@@ -42,16 +42,18 @@ public class LevelManager : Singleton<LevelManager>
     
     public void LoadMap(MapData mapData)
     {
-        if(mapManager != null && mapManager.gameObject != null)
-        {
-            Destroy(mapManager.gameObject);
-        }
         mapManager = Instantiate(mapData.PrefabMap, mapData.SpawnPos, Quaternion.identity);
     }
 
     public int GetRankPlayer()
     {
         return currentAlive;
+    }
+
+    public void RevivePlayer()
+    {
+        player.OnRevive();
+        UIManager.Instance.OpenUI<CanvasGamePlay>();
     }
 
     public int GetGoldReward()
@@ -69,8 +71,19 @@ public class LevelManager : Singleton<LevelManager>
         LoadLevelData(levelData);
         SetCurrentAlive(levelData.TotalCharacter);
         mapManager.OnInit();
-        player.GetCombat().SetWeapon(DataManager.Instance.WeaponDatabase.GetRandomWeaponPrefab());
+        player.GetCombat().InitWeapon(DataManager.Instance.WeaponDatabase.GetRandomWeaponPrefab());
         player.OnInit();
         enemyManager.OnInit();
     }
+
+    public void OnDespawn()
+    {
+        if(mapManager != null && mapManager.gameObject != null)
+        {
+            Destroy(mapManager.gameObject);
+        }
+        enemyManager.OnDespawn();
+    }
+
+
 }

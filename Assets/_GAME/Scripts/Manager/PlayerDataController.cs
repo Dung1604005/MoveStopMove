@@ -160,7 +160,7 @@ public class PlayerDataController : MonoBehaviour
 
         playerData.NamePlayer = "You";
         playerData.RankLevel = 1;
-        playerData.GoldAmount = 100;
+        playerData.GoldAmount = 99999;
         //TODO: NEW DATA FOR WEAPON
         playerData.ListUnlockedSkinDataSave = new UnlockedSkinData[GameConfig.TOTAL_SKINTYPE];
         playerData.CurrentEquipedSkin = new int[GameConfig.TOTAL_SKINTYPE];

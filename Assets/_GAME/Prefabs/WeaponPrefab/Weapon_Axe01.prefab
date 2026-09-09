@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 8869337639597983336}
   - component: {fileID: 2499939264644201066}
   - component: {fileID: 6902643666826174016}
-  - component: {fileID: 8238642816266339767}
-  - component: {fileID: 4162331118128541567}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -94,34 +92,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8238642816266339767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2462674419994903082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6848de95df829fc4782966567a5b1466, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponSkin
-  renderer: {fileID: 6902643666826174016}
---- !u!114 &4162331118128541567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2462674419994903082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92c1eb6df8ddd3f48b52e1a61dfca99a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RotateObject
-  tf: {fileID: 8869337639597983336}
-  rotateDirect: {x: 0, y: 1, z: 0}
-  rotateSpeed: 25
 --- !u!1 &3162820522029450649
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,6 +141,8 @@ MonoBehaviour:
   tf: {fileID: 238431384889341968}
   owner: {fileID: 0}
   weaponDataSO: {fileID: 11400000, guid: f9934607764a21042a6a34548c29df80, type: 2}
+  weaponSkin: {fileID: 5782437090017118026}
+  skinId: 0
   visualTf: {fileID: 8869337639597983336}
   bulletPrefab: {fileID: 7364828545121614497, guid: e58dc648d6141d24699c101d84c7de82, type: 3}
 --- !u!114 &5782437090017118026

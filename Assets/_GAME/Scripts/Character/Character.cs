@@ -46,7 +46,6 @@ public class Character : GameUnit
         characterVisual.OnInit();
     }
 
-
     public virtual void OnDespawn()
     {
         rb.useGravity = false;
@@ -112,7 +111,7 @@ public class Character : GameUnit
     protected virtual void Update()
     {
         if(stat.IsDead || GameManager.Instance.GetCurrentGameState() != GameState.PLAYING) return;
-
+        stat.UpdateStat();
         combat.CombatUpdate();
     }
 

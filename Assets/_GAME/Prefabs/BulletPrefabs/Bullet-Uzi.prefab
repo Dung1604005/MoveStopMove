@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 5219224945215065478}
   - component: {fileID: 3463393729087813596}
   - component: {fileID: 5768351118756733061}
+  - component: {fileID: 3440456079580835257}
   m_Layer: 0
   m_Name: Bullet-Uzi
   m_TagString: Untagged
@@ -140,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletBase
   tf: {fileID: 2107232561130526769}
   defaultScale: {x: 1, y: 1, z: 1}
+  weaponSkin: {fileID: 3440456079580835257}
   moveDir: {x: 0, y: 0, z: 0}
   moveSpeed: 0
   damage: 0
@@ -182,3 +184,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6759033, y: 0.072143555, z: 0.6053028}
   m_Center: {x: 0.05267334, y: -0.00048828125, z: -0.014033318}
+--- !u!114 &3440456079580835257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4994656540746320727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6848de95df829fc4782966567a5b1466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponSkin
+  renderer: {fileID: 2503567222420447013}

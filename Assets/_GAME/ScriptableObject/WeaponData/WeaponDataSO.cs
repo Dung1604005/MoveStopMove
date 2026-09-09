@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Numerics;
+
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "WeaponDataSO", menuName = "Scriptable Objects/Weapon/WeaponDataSO")]
@@ -46,6 +46,11 @@ public class WeaponDataSO : ScriptableObject
 
     public WeaponSkinData GetWeaponSkinData(int skinId )
     {
+        return listSkinData[skinId];
+    }
+    public WeaponSkinData GetRandomWeaponSkinData()
+    {
+        int skinId = UnityEngine.Random.Range(0, listSkinData.Count);
         return listSkinData[skinId];
     }
 

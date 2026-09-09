@@ -29,10 +29,19 @@ public class CharacterCombat : MonoBehaviour
         targetList = new List<Character>();
         weapon.OnInit();
     }
-    public void SetWeapon(WeaponBase weaponBase)
+    public void InitWeapon(WeaponBase weaponBase)
     {
+        WeaponType weaponType = weaponBase.GetWeaponType();
         this.weapon = SpawnWeapon(weaponBase);
         weapon.SetOwner(character);
+        if (character.IsPlayer)
+        {
+            weapon.ChangeSkin(DataManager.Instance.PlayerDataController.GetCurrentEquipedSkinWeapon(weaponType));
+        }
+        else
+        {
+            weapon.ChangeSkin(DataManager.Instance.WeaponDatabase.GetWeaponData(weaponType).GetRandomWeaponSkinData().SkinId);
+        }
     }
 
     public WeaponBase SpawnWeapon(WeaponBase weaponBase)

@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class BoosterBase : GameUnit
 {
-    [SerializeField] private BoosterType boosterType;
+    [SerializeField] protected BoosterType boosterType;
+
+    [SerializeField] protected float duration;
 
     public void OnInit()
     {
@@ -33,5 +35,7 @@ public enum BoosterType
 {
     LEVEL_UP = 0,
     HEAL = 1,
-    RANGE_BUFF= 2
+    RANGE_BUFF= 2,
+
+    BUFF_SHIELD = 3
 }

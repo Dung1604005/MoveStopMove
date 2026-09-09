@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletBase
   tf: {fileID: 7341964146631711686}
   defaultScale: {x: 1, y: 1, z: 1}
+  weaponSkin: {fileID: 5329844817913812533}
   moveDir: {x: 0, y: 0, z: 0}
   moveSpeed: 0
   damage: 0
@@ -102,13 +103,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4979126867527099390}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 32.947144, y: 32.94714, z: 32.94713}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7341964146631711686}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &2547643726811830910
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -27,14 +27,17 @@ public class Player : Character
         GetVisual().EquipSkin(SkinType.PANT, DataManager.Instance.PlayerDataController.GetCurrentEquipedSkin(SkinType.PANT));
     }
 
+    public void OnRevive()
+    {
+        stat.Revive();
+        combat.OnInit();
+        ChangeAnim(GameConfig.ANIM_IDLE);
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         moveDir = context.ReadValue<Vector2>();
         moveDir = moveDir.normalized;
-        if(moveDir.sqrMagnitude > 0.1f)
-        {
-            combat.EndAttack();
-        }
     }
 
     public void EndInputMove(InputAction.CallbackContext context)
@@ -104,7 +107,10 @@ public class Player : Character
     {
         base.Update();
         if(stat.IsDead || GameManager.Instance.GetCurrentGameState() != GameState.PLAYING) return;
-        
+        if(moveDir.sqrMagnitude > 0.1f)
+        {
+            combat.EndAttack();
+        }
         if (combat.HaveTarget)
         {
             combat.Attack();

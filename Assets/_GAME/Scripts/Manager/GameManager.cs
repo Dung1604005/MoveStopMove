@@ -33,12 +33,13 @@ public class GameManager : Singleton<GameManager>
 
     public void OnPlayGame()
     {
-        LevelManager.Instance.OnInit();
-        listCameraFollow[(int)CameraType.UIWorldCamera].SetActive(true);
         foreach(CameraFollow cameraFollow in listCameraFollow)
         {
             cameraFollow.OnStartGame();
         }
+        LevelManager.Instance.OnInit();
+        listCameraFollow[(int)CameraType.UIWorldCamera].SetActive(true);
+        
     }
 
     public void OnMainMenu()

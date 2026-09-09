@@ -61,10 +61,9 @@ public class CameraFollow : MonoBehaviour
 
     public void ChangeOffSetByRange(float range)
     {
-        if(GameManager.Instance.GetCurrentGameState() == GameState.PLAYING)
-        {
-            SetTargetOffSet(offSetPlay*(range/5f));
-        }
+        
+        SetTargetOffSet(offSetPlay*(range/5f));
+        
 
     }
     public void SmoothChangeOffSet()

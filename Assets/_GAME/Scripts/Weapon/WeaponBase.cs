@@ -6,6 +6,10 @@ public class WeaponBase : GameUnit
 
     [SerializeField] private WeaponDataSO weaponDataSO;
 
+    [SerializeField] private WeaponSkin weaponSkin;
+
+    [SerializeField] private int skinId;
+
     [SerializeField] private Transform visualTf;
 
     [SerializeField] private BulletBase bulletPrefab;
@@ -15,6 +19,10 @@ public class WeaponBase : GameUnit
         SetActiveVisual(true);
         tf.localPosition = weaponDataSO.SpawnPos;
         ApplyBuff(owner.GetStat());
+    }
+    public WeaponType GetWeaponType()
+    {
+        return weaponDataSO.WeaponType;
     }
     public void ApplyBuff(CharacterStat stat)
     {
@@ -33,6 +41,12 @@ public class WeaponBase : GameUnit
         owner = character;
     }
 
+    public void ChangeSkin(int _skinId)
+    {
+        skinId = _skinId;
+        weaponSkin.ChangeSkin(weaponDataSO.GetWeaponSkinData(skinId));
+    }
+
     public float CaculateCoolDown(float atkSpeed)
     {
         float coolDownTime = weaponDataSO.Cooldown;
@@ -43,8 +57,7 @@ public class WeaponBase : GameUnit
     public virtual void StartAttack(Vector3 dir)
     {
         BulletBase bulletBase = SimplePool.Spawn(bulletPrefab, TF.position, tf.rotation);
-
-        bulletBase.LoadData(dir, weaponDataSO.MoveSpeedBullet, owner.GetStat().Atk, owner);
+        bulletBase.LoadData(dir, weaponDataSO.MoveSpeedBullet, owner.GetStat().Atk, owner, weaponDataSO, skinId);
 
         SetActiveVisual(false);
     }

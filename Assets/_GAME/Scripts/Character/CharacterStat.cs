@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharacterStat : MonoBehaviour
 {
+    
     [SerializeField] private Character character;
     [SerializeField] private String nameCharacter;
     [SerializeField] private float healthBase;
@@ -24,6 +25,9 @@ public class CharacterStat : MonoBehaviour
     [SerializeField] private float rangeAtk;
     [SerializeField] private float atkBase;
     [SerializeField] private float atk;
+
+    [SerializeField] private UniqueStatController uniqueStatController = new UniqueStatController();
+
     public void SetSpeed(float _speed) { speed = _speed; }
 
     public void SetHealthBase(float _healthBase) {healthBase = _healthBase;}
@@ -77,7 +81,11 @@ public class CharacterStat : MonoBehaviour
         level = 1;
         size = sizeBase;
         if(!character.IsPlayer)SetRandomName();
-
+        else
+        {
+            SetName(DataManager.Instance.PlayerDataController.GetNamePlayer());
+        }
+        uniqueStatController.OnInit();
         speed = speedBase;
         atkSpd = atkSpdBase;
         atk = atkBase;
@@ -101,6 +109,10 @@ public class CharacterStat : MonoBehaviour
     }
     private void HandleRangeChanged(float newRange)
     {
+        if (!character.IsPlayer)
+        {
+            return;
+        }
         GameManager.Instance.GetCameraFollow(CameraType.MainCamera).ChangeOffSetByRange(newRange);
         GameManager.Instance.GetCameraFollow(CameraType.UIWorldCamera).ChangeOffSetByRange(newRange);
     }
@@ -120,12 +132,18 @@ public class CharacterStat : MonoBehaviour
         }
         else
         {
+            UIManager.Instance.CloseAllDirectly();
             UIManager.Instance.OpenUI<CanvasLose>();
         }
     }
+
+    public bool CanBeDamage(Character attacker)
+    {
+        return !(IsDead|| attacker.GetStat().IsDead || uniqueStatController.IsThisUniqueStatActive(UniqueStatType.HAVE_SHIELD));
+    }
     public void OnHit(float damage, Character attacker, Vector3 hitPosition)
     {
-        if (IsDead || attacker.GetStat().IsDead) return;
+        if (!CanBeDamage(attacker)) return;
         currentHealth = Mathf.Max(0f, currentHealth - damage);
 
         character.GetEffect().SetActiveVFX(CharacterVFXType.HIT, true);
@@ -188,6 +206,23 @@ public class CharacterStat : MonoBehaviour
         if(IsDead)return;
         character.GetEffect().SetActiveVFX(CharacterVFXType.HEAL, true);
         currentHealth = Mathf.Min(currentHealth + healthHeal, healthBase);
+    }
+
+    public void Revive()
+    {
+
+        currentHealth = healthBase;
+        ActiveUniqueStat(UniqueStatType.HAVE_SHIELD, CharacterVFXType.SHIELD, 2f);
+    }
+
+    public void ActiveUniqueStat(UniqueStatType uniqueStatType, CharacterVFXType characterVFXType, float _duration)
+    {
+        uniqueStatController.ActiveUniqueStat(uniqueStatType, _duration);
+        character.GetEffect().SetActiveVFX(characterVFXType, true);
+    }
+    public void UpdateStat()
+    {
+        uniqueStatController.Update();
     }
 
 

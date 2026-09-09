@@ -49,6 +49,8 @@ MonoBehaviour:
   tf: {fileID: 9154582482110052329}
   owner: {fileID: 0}
   weaponDataSO: {fileID: 11400000, guid: 213529cb3e984554fb98cd807cd269a5, type: 2}
+  weaponSkin: {fileID: 3505825112522559745}
+  skinId: 0
   visualTf: {fileID: 1241267542914231241}
   bulletPrefab: {fileID: 5502956313106883647, guid: f25487ca8e9860040aca29c7a915bbe9, type: 3}
 --- !u!114 &3505825112522559745

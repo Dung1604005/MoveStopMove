@@ -37,5 +37,6 @@ public enum CharacterVFXType
 {
     HEAL,
     LEVEL_UP,
-    HIT
+    HIT,
+    SHIELD
 }

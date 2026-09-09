@@ -92,12 +92,22 @@ public class CanvasLose : UICanvas
 
     public void OnReviveButton()
     {
-        
+        int price = GameConfig.REVIVE_COST;
+        if (DataManager.Instance.PlayerDataController.CanAfford(price))
+        {
+           
+            DataManager.Instance.PlayerDataController.ChangeGold(-price);
+
+            UIManager.Instance.CloseAllDirectly();
+            LevelManager.Instance.RevivePlayer();
+        }
     }
 
     public void OnHomeButton()
     {
-        
+        UIManager.Instance.CloseAllDirectly();
+
+        UIManager.Instance.OpenUI<CanvasMainMenu>();
     }
 
 

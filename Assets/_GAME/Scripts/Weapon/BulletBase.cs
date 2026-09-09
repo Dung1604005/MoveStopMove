@@ -3,6 +3,7 @@ using UnityEngine;
 public class BulletBase : GameUnit
 {
     [SerializeField] private Vector3 defaultScale;
+    [SerializeField] private WeaponSkin weaponSkin;
     [SerializeField] private Vector3 moveDir;
 
     [SerializeField] private float moveSpeed;
@@ -16,7 +17,7 @@ public class BulletBase : GameUnit
     [SerializeField] private Character owner;
 
     
-    public void LoadData(Vector3 _moveDir, float _moveSpeed, float _damage, Character _owner)
+    public void LoadData(Vector3 _moveDir, float _moveSpeed, float _damage, Character _owner, WeaponDataSO weaponDataSO, int skinId)
     {
         moveDir = _moveDir;
         moveSpeed = _moveSpeed;
@@ -25,6 +26,8 @@ public class BulletBase : GameUnit
         owner = _owner;
         SetSize(_owner.GetStat().Size);
         tf.rotation = Quaternion.LookRotation(moveDir);
+
+        weaponSkin.ChangeSkin(weaponDataSO.GetWeaponSkinData(skinId));
     }
 
     public void SetSize(float size)
