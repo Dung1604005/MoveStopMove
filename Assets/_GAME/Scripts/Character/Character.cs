@@ -114,8 +114,9 @@ public class Character : GameUnit
     {
         if(stat.IsDead || GameManager.Instance.GetCurrentGameState() != GameState.PLAYING) return;
         stat.UpdateStat();
-        combat.CombatUpdate();
         characterDetector.UpdateDetector();
+        combat.CombatUpdate();
+        
     }
 
 

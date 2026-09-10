@@ -85,6 +85,8 @@ public class LevelManager : Singleton<LevelManager>
         player.OnDespawn();
         mapManager.OnDespawn();
         enemyManager.OnDespawn();
+        ColliderCache<Character>.ClearAll();
+        ColliderCache<ObstacleVisble>.ClearAll();
 
     }
 

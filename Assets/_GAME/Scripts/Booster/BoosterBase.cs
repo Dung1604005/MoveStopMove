@@ -20,6 +20,10 @@ public class BoosterBase : GameUnit
         if (other.CompareTag(GameConfig.CHARACTER_TAG))
         {
             Character character = ColliderCache<Character>.GetComponent(other);
+            if (character != null &&character.GetStat().IsDead)
+            {
+                return;
+            }
 
             ApplyBuff(character);
 

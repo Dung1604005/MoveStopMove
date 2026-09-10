@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterStat : MonoBehaviour
 {
-    
+
     [SerializeField] private Character character;
     [SerializeField] private String nameCharacter;
     [SerializeField] private float healthBase;
@@ -30,11 +30,12 @@ public class CharacterStat : MonoBehaviour
 
     public void SetSpeed(float _speed) { speed = _speed; }
 
-    public void SetHealthBase(float _healthBase) {healthBase = _healthBase;}
+    public void SetHealthBase(float _healthBase) { healthBase = _healthBase; }
 
     public void SetAtkSpd(float _atkSpd) { atkSpd = _atkSpd; }
 
-    public void SetName(String _name){
+    public void SetName(String _name)
+    {
         nameCharacter = _name;
         character.GetVisual().SetNameText(nameCharacter);
     }
@@ -58,7 +59,13 @@ public class CharacterStat : MonoBehaviour
 
     public void SetAtk(float _atk) { atk = _atk; }
 
-    public void SetLevel(int _level) { level = _level; }
+    public void SetLevel(int _level)
+    {
+        
+        level = _level;
+        HandleLevelChange();
+
+    }
 
     public int Level => level;
 
@@ -79,8 +86,8 @@ public class CharacterStat : MonoBehaviour
     public void OnInit()
     {
         level = 1;
-        size = sizeBase;
-        if(!character.IsPlayer)SetRandomName();
+        SetSize(sizeBase);
+        if (!character.IsPlayer) SetRandomName();
         else
         {
             SetName(DataManager.Instance.PlayerDataController.GetNamePlayer());
@@ -89,14 +96,9 @@ public class CharacterStat : MonoBehaviour
         speed = speedBase;
         atkSpd = atkSpdBase;
         atk = atkBase;
-        rangeAtk = rangeAtkBase;
+        SetRangeAtk(rangeAtkBase);
         currentExp = 0f;
         currentHealth = healthBase;
-
-         if (character.IsPlayer)
-        {
-            HandleRangeChanged(rangeAtk);
-        }
     }
 
     public void SetRandomName()
@@ -105,7 +107,7 @@ public class CharacterStat : MonoBehaviour
 
         SetName(GameConfig.LIST_NAME[randomVal]);
 
-        
+
     }
     private void HandleRangeChanged(float newRange)
     {
@@ -115,6 +117,11 @@ public class CharacterStat : MonoBehaviour
         }
         GameManager.Instance.GetCameraFollow(CameraType.MainCamera).ChangeOffSetByRange(newRange);
         GameManager.Instance.GetCameraFollow(CameraType.UIWorldCamera).ChangeOffSetByRange(newRange);
+    }
+
+    private void HandleLevelChange()
+    {
+        character.GetVisual().SetLevelText(level);
     }
 
     public void OnDead(Character attacker)
@@ -139,7 +146,7 @@ public class CharacterStat : MonoBehaviour
 
     public bool CanBeDamage(Character attacker)
     {
-        return !(IsDead|| attacker.GetStat().IsDead || uniqueStatController.IsThisUniqueStatActive(UniqueStatType.HAVE_SHIELD));
+        return !(IsDead || attacker.GetStat().IsDead || uniqueStatController.IsThisUniqueStatActive(UniqueStatType.HAVE_SHIELD));
     }
     public void OnHit(float damage, Character attacker, Vector3 hitPosition)
     {
@@ -156,7 +163,7 @@ public class CharacterStat : MonoBehaviour
 
     public void GainExp(float exp)
     {
-        if(IsDead)return;
+        if (IsDead) return;
         currentExp += exp;
 
         for (int i = 1; i <= 100; i++)
@@ -175,9 +182,9 @@ public class CharacterStat : MonoBehaviour
 
     public void JumpToLevel(int targetLevel)
     {
-        if(IsDead)return;
+        if (IsDead) return;
         int timeLevelUp = targetLevel - level;
-        for(int i = 0; i < timeLevelUp; i++)
+        for (int i = 0; i < timeLevelUp; i++)
         {
             LevelUp(false);
         }
@@ -186,13 +193,12 @@ public class CharacterStat : MonoBehaviour
 
     public void LevelUp(bool withEffect = true)
     {
-        if(IsDead)return;
+        if (IsDead) return;
         if (withEffect)
         {
             character.GetEffect().SetActiveVFX(CharacterVFXType.LEVEL_UP, true);
         }
         SetLevel(level + 1);
-        character.GetVisual().SetLevelText(level);
         SetAtk(atk + GameConfig.ATK_GROWTH);
         SetRangeAtk(rangeAtk + GameConfig.RANGE_GROWTH);
         SetSize(size + GameConfig.SIZE_GROWTHRATE);
@@ -203,7 +209,7 @@ public class CharacterStat : MonoBehaviour
 
     public void Heal(float healthHeal)
     {
-        if(IsDead)return;
+        if (IsDead) return;
         character.GetEffect().SetActiveVFX(CharacterVFXType.HEAL, true);
         currentHealth = Mathf.Min(currentHealth + healthHeal, healthBase);
     }

@@ -17,7 +17,7 @@ MonoBehaviour:
   spawnPos: {x: -0.1662, y: 0.115, z: 0.0657}
   weaponPrefab: {fileID: 5976094085731162235, guid: a032204df8ff57940b48144c8b2e01f1, type: 3}
   rangeBuff: 0
-  cooldown: 1.5
+  cooldown: 1
   atkBuff: 67
   moveSpeedBullet: 8
   listSkinData:

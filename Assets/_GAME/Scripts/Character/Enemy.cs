@@ -28,6 +28,7 @@ public class Enemy : Character
             indicator.OnDespawn();
             indicator = null;
         }
+        StopMove();
         SetActiveAgent(false);
         SimplePool.Despawn(this);
     }
