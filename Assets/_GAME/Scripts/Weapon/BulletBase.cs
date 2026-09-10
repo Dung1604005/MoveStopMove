@@ -85,7 +85,8 @@ public class BulletBase : GameUnit
         }
         else if(collider.CompareTag(GameConfig.OBSTACLE_TAG))
         {
-            StopMove();
+            //StopMove();
+            OnDespawn();
         }
     }
 }

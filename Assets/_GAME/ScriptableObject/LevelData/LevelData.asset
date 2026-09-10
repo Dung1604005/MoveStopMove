@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050080ba1e14f5b458063cacd44c5031, type: 3}
   m_Name: LevelData
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
-  mapData: {fileID: 11400000, guid: 2040eacd53ef3db4888283440c71488a, type: 2}
+  mapData: {fileID: 11400000, guid: 8bee6337c0eb1464fb580a2460b35ed2, type: 2}
   totalCharacter: 50
   goldPerRank: 2
   spriteUIMap: {fileID: 0}

@@ -27,6 +27,17 @@ public class Player : Character
         GetVisual().EquipSkin(SkinType.PANT, DataManager.Instance.PlayerDataController.GetCurrentEquipedSkin(SkinType.PANT));
     }
 
+    public override void OnDespawn()
+    {
+        base.OnDespawn();
+        ChangeAnim(GameConfig.ANIM_IDLE);
+    }
+
+    public void SetSpawn(Vector3 spawnPos)
+    {
+        tf.position = spawnPos;
+    }
+
     public void OnRevive()
     {
         stat.Revive();

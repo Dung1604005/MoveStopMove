@@ -29,6 +29,14 @@ public class CharacterCombat : MonoBehaviour
         targetList = new List<Character>();
         weapon.OnInit();
     }
+    public void OnDespawn()
+    {
+        ResetCooldown();
+        DespawnWeapon();
+        ClearAllTarget();
+        isAttacking = false;
+
+    }
     public void InitWeapon(WeaponBase weaponBase)
     {
         WeaponType weaponType = weaponBase.GetWeaponType();
@@ -42,6 +50,11 @@ public class CharacterCombat : MonoBehaviour
         {
             weapon.ChangeSkin(DataManager.Instance.WeaponDatabase.GetWeaponData(weaponType).GetRandomWeaponSkinData().SkinId);
         }
+    }
+
+    public void DespawnWeapon()
+    {
+        Destroy(weapon.gameObject);
     }
 
     public WeaponBase SpawnWeapon(WeaponBase weaponBase)
@@ -85,10 +98,10 @@ public class CharacterCombat : MonoBehaviour
             targetList?.Add(character);
         }
     }
-
-    public void RemoveTarget(Character character)
+    public void ClearAllTarget()
     {
-        targetList?.Remove(character);
+        targetList.Clear();
+        currentTarget = null;
     }
 
     public void FilterAllTarget()

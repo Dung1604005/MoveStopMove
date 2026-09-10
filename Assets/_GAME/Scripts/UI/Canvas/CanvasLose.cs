@@ -105,9 +105,11 @@ public class CanvasLose : UICanvas
 
     public void OnHomeButton()
     {
+        LevelManager.Instance.OnDespawn();
         UIManager.Instance.CloseAllDirectly();
 
         UIManager.Instance.OpenUI<CanvasMainMenu>();
+        GameManager.Instance.OnMainMenu();
     }
 
 

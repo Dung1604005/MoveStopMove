@@ -374,6 +374,7 @@ MonoBehaviour:
   mapManager: {fileID: 2202830295228828894}
   maxBooster: 20
   spawnRad: 35
+  delaySpawn: 2
   spawnCenterList:
   - {fileID: 5903214984399557210}
   - {fileID: 5936044432923339810}

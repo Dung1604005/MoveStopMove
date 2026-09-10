@@ -49,6 +49,8 @@ public class Character : GameUnit
     public virtual void OnDespawn()
     {
         rb.useGravity = false;
+        characterDetector.OnDespawn();
+        combat.OnDespawn();
     }
 
     public virtual bool IsStop()
@@ -113,6 +115,7 @@ public class Character : GameUnit
         if(stat.IsDead || GameManager.Instance.GetCurrentGameState() != GameState.PLAYING) return;
         stat.UpdateStat();
         combat.CombatUpdate();
+        characterDetector.UpdateDetector();
     }
 
 

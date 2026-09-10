@@ -8,7 +8,7 @@ public class ObstacleVisble : MonoBehaviour
 
     [SerializeField] private List<Renderer> listRenderer = new List<Renderer>();
 
-    public Transform TF => tf;
+    public Transform TF => tf == null ? tf = this.transform : tf;
     private bool isHide= false;
 
     public void OnInit()

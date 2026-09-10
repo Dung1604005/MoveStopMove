@@ -73,16 +73,19 @@ public class LevelManager : Singleton<LevelManager>
         mapManager.OnInit();
         player.GetCombat().InitWeapon(DataManager.Instance.WeaponDatabase.GetRandomWeaponPrefab());
         player.OnInit();
+        if(LevelManager.Instance.GetMapManager().GetRandomNavMeshPoint(Vector3.zero, 0f, 75f,out Vector3 spawnPos))
+        {
+           player.SetSpawn(spawnPos);
+        }
         enemyManager.OnInit();
     }
 
     public void OnDespawn()
     {
-        if(mapManager != null && mapManager.gameObject != null)
-        {
-            Destroy(mapManager.gameObject);
-        }
+        player.OnDespawn();
+        mapManager.OnDespawn();
         enemyManager.OnDespawn();
+
     }
 
 

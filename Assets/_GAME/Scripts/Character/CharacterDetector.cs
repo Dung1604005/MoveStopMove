@@ -21,7 +21,7 @@ public class CharacterDetector : MonoBehaviour
 
     private LayerMask layerObstacle;
 
-    private float timer = 0f;
+    [SerializeField]private float timer = 0f;
 
 
     public void OnInit()
@@ -31,6 +31,8 @@ public class CharacterDetector : MonoBehaviour
         listObstacle = new List<ObstacleVisble>();
         SetActiveInTargetState(false);
     }
+
+    
     public void SetSizeRange(float size)
     {
         tf.localScale = Vector3.one*size*2;
@@ -40,7 +42,7 @@ public class CharacterDetector : MonoBehaviour
     public void OnDespawn()
     {
         SetActiveInTargetState(false);
-        if(character.IsPlayer) ClearAllObstacle();
+        listObstacle.Clear();
     }
 
     public void SetActiveInTargetState(bool active)
@@ -59,6 +61,13 @@ public class CharacterDetector : MonoBehaviour
             if (character.GetCombat().IsTargetValid(target))
             {
                 character.GetCombat().AddTarget(target);
+            }
+            else
+            {
+                if (character.IsPlayer && target != null)
+                {
+                    Debug.Log("ENEMY IS NOT VALID ");
+                }
             }
         }
     }
@@ -101,7 +110,7 @@ public class CharacterDetector : MonoBehaviour
     }
 
 
-    void Update()
+    public void UpdateDetector()
     {
         timer += Time.deltaTime;
         if(timer >= intervalTime)

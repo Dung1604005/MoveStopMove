@@ -18,6 +18,12 @@ public class BoosterManager : MonoBehaviour
         InitAllBooster();
     }
 
+    public void OnDespawn()
+    {
+        StopAllCoroutines();
+        ClearAllBooster();
+    }
+
     public BoosterBase GetNearestBooster(Vector3 position)
     {
         float minDis = 10000000000f;
@@ -51,8 +57,8 @@ public class BoosterManager : MonoBehaviour
             if (mapManager.GetRandomNavMeshPoint(GetRandomSpawnCenter().position, 0f, spawnRad, out Vector3 spawnPosition))
             {
                 spawnPosition.y += 1.2f;
-
-                BoosterBase booster = SimplePool.Spawn(boosterPrefabData.GetRandomBooster(), spawnPosition, Quaternion.identity);
+                BoosterBase boosterPrefab = boosterPrefabData.GetRandomBooster();
+                BoosterBase booster = SimplePool.Spawn(boosterPrefab, spawnPosition, boosterPrefab.TF.rotation);
                 listBooster.Add(booster);
             }
         }

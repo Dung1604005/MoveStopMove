@@ -18,6 +18,12 @@ public class MapManager : Singleton<MapManager>
 
 
     }
+
+    public void OnDespawn()
+    {
+        boosterManager.OnDespawn();
+        Destroy(this.gameObject);
+    }
     public BoosterManager GetBoosterManager()
     {
         return boosterManager;
